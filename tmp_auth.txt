@@ -1,0 +1,12 @@
+designer rc=1 stderr=b''
+user='Администратор' rc=1 auth_ok=False
+Traceback (most recent call last):
+  File "C:\MyProjects\APKTechPlan\scripts\db_cfe_list.py", line 51, in <module>
+    u = try_users()
+        ^^^^^^^^^^^
+  File "C:\MyProjects\APKTechPlan\scripts\db_cfe_list.py", line 44, in try_users
+    print(out[:2000])
+  File "C:\Python312\Lib\encodings\cp1251.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\ufeff' in position 0: character maps to <undefined>

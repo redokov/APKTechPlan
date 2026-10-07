@@ -1,7 +1,0 @@
-{
-  "objectPath": "src/cfe/ПланированиеТехникиАПК/InformationRegisters/Тх_КоэффициентыПересчетаРабот.xml",
-  "formName": "Тх_ФормаСписка",
-  "purpose": "List",
-  "setDefault": true,
-  "synonym": "Коэффициенты пересчёта работ"
-}

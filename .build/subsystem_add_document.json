@@ -1,6 +1,0 @@
-{
-  "subsystemPath": "src/cfe/ПланированиеТехникиАПК/Subsystems/Тх_ПланированиеТехники.xml",
-  "operations": [
-    { "operation": "add-content", "value": "Document.Тх_ПланТехническихРесурсов" }
-  ]
-}

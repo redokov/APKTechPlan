@@ -1,0 +1,3 @@
+root child: Configuration
+top tags: ['Comment', 'Configuration', 'ConfigurationExtensionCompatibilityMode', 'DefaultRunMode', 'InternalInfo', 'MetaDataObject', 'Name', 'NamePrefix', 'Properties', 'Synonym', 'UsePurposes']
+name: ?

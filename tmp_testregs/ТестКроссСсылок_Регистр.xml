@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.22">
+	<InformationRegister uuid="11111111-2222-3333-4444-555555555555">
+		<InternalInfo>
+			<xr:GeneratedType name="InformationRegisterRecord.ТестКроссСсылок_Регистр" category="Record">
+				<xr:TypeId>46886075-5c1b-41e8-a949-ea9bb5101a06</xr:TypeId>
+				<xr:ValueId>f8845892-b45e-47b5-9967-ea166a8fe410</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="InformationRegisterManager.ТестКроссСсылок_Регистр" category="Manager">
+				<xr:TypeId>4265b9de-44cc-412f-a08f-4b0d14037892</xr:TypeId>
+				<xr:ValueId>15f56a9e-aab6-4b4d-b37a-f7ac4689a7c8</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="InformationRegisterSelection.ТестКроссСсылок_Регистр" category="Selection">
+				<xr:TypeId>d482a817-1a2d-478d-9d2d-06f34b65caa1</xr:TypeId>
+				<xr:ValueId>296c2b4f-f034-4fc6-a281-0496de66f854</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="InformationRegisterList.ТестКроссСсылок_Регистр" category="List">
+				<xr:TypeId>576b9c88-13a3-4021-a2d5-78c6c6de402a</xr:TypeId>
+				<xr:ValueId>5df6ebf9-a8bd-4bde-83ac-f24904bc7d36</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="InformationRegisterRecordSet.ТестКроссСсылок_Регистр" category="RecordSet">
+				<xr:TypeId>0f24c27a-8d1a-4eed-bb79-444b609dfbba</xr:TypeId>
+				<xr:ValueId>91373f7f-dd52-457d-a75c-78897d52fce1</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="InformationRegisterRecordKey.ТестКроссСсылок_Регистр" category="RecordKey">
+				<xr:TypeId>09206350-ead6-4620-ba9c-6d0e63462291</xr:TypeId>
+				<xr:ValueId>a9810bb1-6f10-4bca-9924-c6f8b6ea081f</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="InformationRegisterRecordManager.ТестКроссСсылок_Регистр" category="RecordManager">
+				<xr:TypeId>aa68c903-0a7b-475b-a6c1-5faee2f68d97</xr:TypeId>
+				<xr:ValueId>651c2e5e-65d2-4f09-acf8-e400329da9a1</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>ТестКроссСсылок_Регистр</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тест кросс-ссылок (регистр)</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>true</UseStandardCommands>
+			<EditType>InDialog</EditType>
+			<DefaultRecordForm/>
+			<DefaultListForm/>
+			<RecordSetScript/>
+			<RunFilling>false</RunFilling>
+			<DataLockControlMode>Managed</DataLockControlMode>
+			<InformationRegisterPeriodicity>Nonperiodic</InformationRegisterPeriodicity>
+			<WriteOnPost>Write</WriteOnPost>
+			<DataHistory>false</DataHistory>
+			<InformationRegisterWriteMode>Independent</InformationRegisterWriteMode>
+			<InformationRegisterMainFilterOnDimension/>
+		</Properties>
+		<ChildObjects>
+			<Dimension uuid="02c5eb69-0a40-4b80-a60f-a260e73b369a">
+				<Properties>
+					<Name>МодельТехники</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Модель техники</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>CatalogRef.АпкМоделиСХТехники</v8:Type>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip/>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:type="xs:dateTime"/>
+					<MaxValue xsi:type="xs:dateTime"/>
+					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>false</QuickChoice>
+					<CreateOnInput>Use</CreateOnInput>
+					<ChoiceHistoryMode>Auto</ChoiceHistoryMode>
+					<DataHistory>Write</DataHistory>
+					<Indexing>DontIndex</Indexing>
+				</Properties>
+			</Dimension>
+		</ChildObjects>
+	</InformationRegister>
+</MetaDataObject>

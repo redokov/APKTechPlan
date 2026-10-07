@@ -37,3 +37,8 @@ Wed Oct 07 18:06:26 RTZST 2026 - B5 root cause found via user: Privileged=true i
   3) ТестНеПринятыеТСИсключены: exception at Тх_Тесты(1112): Записать() - 'Значение поля "Дата" не может быть пустой датой' -> document Тх_ПланТехническихРесурсов Дата not set in test (or doc requires date)
 - SKIPs (valid): ТестПланТехресурсовОтсутствует, ТестДетерминированность (no APK annual plan data in base)
 - HEAD 2175b02. Remaining B5: fix 3 test failures (likely test-data setup bugs, maybe product bugs). Then B3/B6/B7/B8.
+- B5 CLOSED (15/15 PASS): 3 FAIL root-caused and fixed.
+  1) PRODUCT BUG: Строка(ТипЗнч()) in 8.5 returns the type SYNONYM ('Модель с/х техники'), not 'СправочникСсылка.<Имя>' -> ИмяСправочникаПоТипуСсылки returned '' -> МощностьДвигателяМодели silently 0 (autofill FR-004 fully broken). FIXED: parse Метаданные().ПолноеИмя (language-independent); NOTE 8.5: ПолноеИмя() is a METHOD (dual-form call метод()/свойство kept). Proof: probes _probe_power*.py, heartbeat/probe_power*.txt.
+  2) TEST BUG: ТестНеПринятыеТСИсключены did not fill Документ.Дата/Организация/Подразделение and ТЧ rows had no ТС (Проведение requires them). FIXED: Дата=ТекущаяДатаСеанса(), org/subdiv find-first, 2 unique ТС created with manual Код (=госномер, unique, no autonumbering in ERP).
+  3) PRODUCT BUG (unmasked by 2): warning query in Тх_ПланТехническихРесурсов.ПредупредитьОПриемкеВДругихПодразделениях addressed header attrs (Проведен/Сценарий/Подразделение) through ТЧ source without JOIN -> 'Поле не найдено ОсновнаяТехника.Проведен'. FIXED: INNER JOIN Документ table (same pattern as ЗапросДоступности).
+  Final: debug removed, gates clean (bsl-ls 0 Error, pre_load 32 OK, extconn OK), generation 0a31c1d7, 15/15 PASS twice. Committing B5 done.

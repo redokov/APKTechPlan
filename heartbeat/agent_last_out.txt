@@ -11,7 +11,7 @@ security-profile-name        :
 unsafe-action-protection     : no
 used-in-distributed-infobase : no
 scope                        : infobase
-hash-sum                     : "qBAsHYSuCvUJDj1bW8y9hXdSTjE="
+hash-sum                     : "bqivAURv3KqNN7xVI/YwqZmIF60="
 
 
 designer> 
@@ -28,13 +28,13 @@ security-profile-name        :
 unsafe-action-protection     : no
 used-in-distributed-infobase : no
 scope                        : infobase
-hash-sum                     : "qBAsHYSuCvUJDj1bW8y9hXdSTjE="
+hash-sum                     : "bqivAURv3KqNN7xVI/YwqZmIF60="
 
 
 designer> 
 $ config update-db-cfg --extension=ПланированиеТехникиАПК --session-terminate=force
 Обработка структуры базы данных...
 Принятие изменений...
-Создано поколение расширения конфигурации: 49ae3a194be261b59b71c72eae1d403abb436221
+Создано поколение расширения конфигурации: 0a31c1d7316f4a26c7bc1317fb6a1265497ff7ca
 Операция завершена успешно
 designer> 

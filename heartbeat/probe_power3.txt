@@ -1,0 +1,5 @@
+enum presentation (session lang): 'Схтехника'
+enum2 presentation: 'Автотранспорт'
+srv.ИмяСправочникаМоделей(СХТехника) = 'АпкМоделиСХТехники'
+srv.МощностьДвигателяМодели(ref) = 0
+cleanup OK

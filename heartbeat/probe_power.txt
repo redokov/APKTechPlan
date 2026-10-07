@@ -1,0 +1,10 @@
+created object, name set: Тх_проба_cb3326c7
+obj.MoshchnostDvigatelya := 100 OK, read-back before write: 100
+write() OK, ref=<COMObject <unknown>>
+fresh object МощностьДвигателя: 100
+fresh object Наименование: 'Тх_проба_cb3326c7'
+query row 1: МощностьДвигателя=100
+query rows: 1
+None
+skip typedesc
+cleanup OK

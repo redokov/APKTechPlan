@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Расчет дефицита</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<ChildItems>
+		<UsualGroup name="ГруппаПараметров" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры расчёта</v8:content>
+				</v8:item>
+			</Title>
+			<Group>HorizontalIfPossible</Group>
+			<ExtendedTooltip name="ГруппаПараметровРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<InputField name="Организация" id="3">
+					<DataPath>Организация</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пусто - все организации</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="5"/>
+				</InputField>
+				<InputField name="Подразделение" id="6">
+					<DataPath>Подразделение</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пусто - все подразделения</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="8"/>
+				</InputField>
+				<InputField name="СценарийПланирования" id="9">
+					<DataPath>СценарийПланирования</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сценарий планирования</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обязательный параметр. Сценарий планирования - элемент справочника «АпкСценарииПланирования»</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ChoiceButton>true</ChoiceButton>
+					<ClearButton>true</ClearButton>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="СценарийПланированияКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="СценарийПланированияРасширеннаяПодсказка" id="11"/>
+					<Events>
+						<Event name="StartChoice">СценарийПланированияНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДатаНачала" id="12">
+					<DataPath>ДатаНачала</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата начала</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пусто - без ограничения по дате начала периода</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="ДатаНачалаРасширеннаяПодсказка" id="14"/>
+				</InputField>
+				<InputField name="ДатаОкончания" id="15">
+					<DataPath>ДатаОкончания</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата окончания</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пусто - без ограничения по дате окончания периода</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="17"/>
+				</InputField>
+				<InputField name="ВидТехники" id="18">
+					<DataPath>ВидТехники</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид техники</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пусто - все виды техники</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ВидТехникиКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="ВидТехникиРасширеннаяПодсказка" id="20"/>
+				</InputField>
+				<InputField name="СменВДень" id="21">
+					<DataPath>СменВДень</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Смен в день</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Коэффициент использования техники, по умолчанию 1 (Q-001)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="СменВДеньКонтекстноеМеню" id="22"/>
+					<ExtendedTooltip name="СменВДеньРасширеннаяПодсказка" id="23"/>
+				</InputField>
+				<InputField name="ВариантОбъема" id="24">
+					<DataPath>ВариантОбъема</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вариант объёма работ</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вариант объёма работ годового плана (FAQ Q3), по умолчанию «Вероятный»</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Минимальный</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Минимальный</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Вероятный</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Вероятный</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Максимальный</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Максимальный</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ВариантОбъемаКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="ВариантОбъемаРасширеннаяПодсказка" id="26"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="ПояснениеРасчета" id="27">
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расчёт очищает регистр «Дефицит техники» по заданным отборам и заполняет его заново (детерминизм, NFR-005)</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ПояснениеРасчетаКонтекстноеМеню" id="28"/>
+			<ExtendedTooltip name="ПояснениеРасчетаРасширеннаяПодсказка" id="29"/>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="30">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.Тх_РасчетДефицита</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Организация" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Подразделение" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.СтруктураПредприятия</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СценарийПланирования" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сценарий планирования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаНачала" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата начала</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаОкончания" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата окончания</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидТехники" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид техники</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.Тх_ВидыТехники</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СменВДень" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Смен в день</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>5</v8:Digits>
+					<v8:FractionDigits>1</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВариантОбъема" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант объема</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="РассчитатьИОткрытьОтчет" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать и открыть отчёт</v8:content>
+				</v8:item>
+			</Title>
+			<Action>РассчитатьИОткрытьОтчет</Action>
+		</Command>
+	</Commands>
+</Form>

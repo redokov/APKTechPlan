@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<DataProcessor uuid="ebba9e25-8397-449a-961b-c3f66c670a60">
+		<InternalInfo>
+			<xr:GeneratedType name="DataProcessorObject.Тх_РасчетДефицита" category="Object">
+				<xr:TypeId>f25cce9d-0784-405e-bbaa-479985df8301</xr:TypeId>
+				<xr:ValueId>a5031ad4-d8ad-4012-8252-05d1cc2046c6</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DataProcessorManager.Тх_РасчетДефицита" category="Manager">
+				<xr:TypeId>bee22c96-59b5-4643-bffc-0b827dd5cdcf</xr:TypeId>
+				<xr:ValueId>7235ef7f-311a-4601-bda7-a1bea08b6108</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>Тх_РасчетДефицита</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расчет дефицита</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>Launch form of the deficit calculation (design 4.8): collects filters/parameters of 4.7, calls Tkh_TekhnikaServer.RasschitatDefitsit, opens report Tkh_DefitsitTekhniki (phase 1 of the two-phase scheme, TD-002/TD-003).</Comment>
+			<UseStandardCommands>true</UseStandardCommands>
+			<DefaultForm>DataProcessor.Тх_РасчетДефицита.Form.Форма</DefaultForm>
+			<AuxiliaryForm/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ExtendedPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Form>Форма</Form>
+		</ChildObjects>
+	</DataProcessor>
+</MetaDataObject>

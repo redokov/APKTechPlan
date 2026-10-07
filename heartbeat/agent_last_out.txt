@@ -1,0 +1,40 @@
+$ common connect-ib
+Операция завершена успешно
+designer> 
+$ config extensions properties get --extension=ПланированиеТехникиАПК
+name                         : "ПланированиеТехникиАПК"
+version                      : "1.0.0.1"
+active                       : yes
+purpose                      : add-on
+safe-mode                    : no
+security-profile-name        : 
+unsafe-action-protection     : no
+used-in-distributed-infobase : no
+scope                        : infobase
+hash-sum                     : "qBAsHYSuCvUJDj1bW8y9hXdSTjE="
+
+
+designer> 
+$ config extensions properties set --extension=ПланированиеТехникиАПК --active=yes --safe-mode=no --unsafe-action-protection=no
+Операция завершена успешно
+designer> 
+$ config extensions properties get --extension=ПланированиеТехникиАПК
+name                         : "ПланированиеТехникиАПК"
+version                      : "1.0.0.1"
+active                       : yes
+purpose                      : add-on
+safe-mode                    : no
+security-profile-name        : 
+unsafe-action-protection     : no
+used-in-distributed-infobase : no
+scope                        : infobase
+hash-sum                     : "qBAsHYSuCvUJDj1bW8y9hXdSTjE="
+
+
+designer> 
+$ config update-db-cfg --extension=ПланированиеТехникиАПК --session-terminate=force
+Обработка структуры базы данных...
+Принятие изменений...
+Создано поколение расширения конфигурации: 49ae3a194be261b59b71c72eae1d403abb436221
+Операция завершена успешно
+designer> 

@@ -1,0 +1,5 @@
+common connect-ib
+config extensions properties get --extension=ПланированиеТехникиАПК
+config extensions properties set --extension=ПланированиеТехникиАПК --active=yes --safe-mode=no --unsafe-action-protection=no
+config extensions properties get --extension=ПланированиеТехникиАПК
+config update-db-cfg --extension=ПланированиеТехникиАПК --session-terminate=force

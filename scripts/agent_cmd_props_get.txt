@@ -1,0 +1,3 @@
+# Шаг 1: текущие свойства расширения
+options set --output-format=json
+config extensions properties get --extension=ПланированиеТехникиАПК

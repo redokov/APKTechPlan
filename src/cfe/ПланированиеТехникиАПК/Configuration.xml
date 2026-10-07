@@ -67,8 +67,10 @@
 			<Language>Русский</Language>
 			<Subsystem>Тх_ПланированиеТехники</Subsystem>
 			<Role>Тх_ОсновнаяРоль</Role>
+			<CommonModule>Тх_ТехникаСервер</CommonModule>
 			<Document>Тх_ПланТехническихРесурсов</Document>
 			<Enum>Тх_ВидыТехники</Enum>
+			<DataProcessor>Тх_ЗаполнениеКоэффициентов</DataProcessor>
 			<InformationRegister>Тх_КоэффициентыПересчетаРабот</InformationRegister>
 		</ChildObjects>
 	</Configuration>

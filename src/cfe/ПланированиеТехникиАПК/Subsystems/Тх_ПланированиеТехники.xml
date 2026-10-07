@@ -24,6 +24,8 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.Тх_ВидыТехники</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.Тх_КоэффициентыПересчетаРабот</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.Тх_ПланТехническихРесурсов</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.Тх_ТехникаСервер</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Тх_ЗаполнениеКоэффициентов</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects/>

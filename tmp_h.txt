@@ -1,0 +1,40 @@
+1:# Tasks: Анализ дефицита техники (по технологическим картам)
+11:## Фазы
+21:## Requirement Coverage
+54:## Design Coverage Check
+63:## Implementation Readiness Check
+77:### Risks / оговорки readiness (не блокируют, но влияют на задачи)
+94:## Implementation Slices
+96:### MVP Slice
+105:### US-001 Slice: Коэффициенты пересчёта
+112:### US-002 Slice: План технических ресурсов
+119:### US-003 Slice: Отчёт о дефиците
+126:### US-004/US-005 Slice: Роли и навигация
+132:### Polish / Cross-Cutting
+138:## Task Summary
+164:## Dependency Diagram
+195:## Task A1: Каркас расширения «ПланированиеТехникиАПК» (cfe-init)
+204:### Overview
+210:### Work
+222:### Acceptance Criteria
+229:### Files
+234:### Verification
+239:### Notes
+245:## Task A2: Перечисление Тх_ВидыТехники + подсистема Тх_ПланированиеТехники
+254:### Overview
+260:### Work
+269:### Acceptance Criteria
+275:### Files
+281:### Verification
+287:## Task A3: Регистр Тх_КоэффициентыПересчетаРабот + модуль набора + форма списка
+296:### Overview
+302:### Work
+323:### Acceptance Criteria
+332:### Files
+337:### Verification
+346:## Task A4: Документ Тх_ПланТехническихРесурсов + модуль + формы
+355:### Overview
+361:### Work
+382:### Acceptance Criteria
+392:### Files
+397:### Verification

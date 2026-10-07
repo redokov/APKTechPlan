@@ -25,17 +25,18 @@
 
 | ID | Feature | Status | Requirements | Design | Tasks | Review |
 |----|---------|--------|--------------|--------|-------|--------|
-| 001 | Анализ дефицита техники | design:approved | approved (ночной прогон, ревью утром; Q-001..Q-007 открыты с рекомендациями) | approved (ночной прогон, ревью утром; Q-001..Q-007 закрыты в дизайне, см. §18 Requirements feedback) | pending | pending |
+| 001 | Анализ дефицита техники | tasks:approved | approved (ночной прогон, ревью утром; Q-001..Q-007 открыты с рекомендациями) | approved (ночной прогон, ревью утром; Q-001..Q-007 закрыты в дизайне, см. §18 Requirements feedback) | approved (ночной прогон, ревью утром; Фаза A офлайн + Фаза B после подъёма кластера) | pending |
 
 ## Handoff
 
-- `.ai/sdd/handoff/sdd-brief.md`: pending (после задач/ревью)
+- `.ai/sdd/handoff/sdd-brief.md`: ready (контракт реализации; Фаза A — сейчас, Фаза B — после подъёма кластера)
 
 ## Next Actions
 
 - [x] Инициализация .ai/ (ночной прогон 2026-10-07, автономно — Open Questions в artifacts)
 - [x] specs/001-analiz-defitsita-tekhniki/requirements.md (sdd-prd, approved автономно по standing-инструкции)
 - [x] specs/001-analiz-defitsita-tekhniki/design.md (sdd-spec, approved автономно по standing-инструкции; ревью утром — §17 Open Questions, §18 Requirements feedback)
-- [ ] specs/001-analiz-defitsita-tekhniki/tasks.md (sdd-tasks)
-- [ ] Реализация + тесты (модульные/сценарные/e2e)
-- [ ] Утреннее ревью: Q-001..Q-007 из requirements.md
+- [x] specs/001-analiz-defitsita-tekhniki/tasks.md (sdd-tasks, approved автономно по standing-инструкции; 21 задача: A1–A13 офлайн + B1–B8 после кластера; ревью утром)
+- [ ] Реализация Фазы A (A1→A13, офлайн-авторинг) — sdd-exec
+- [ ] Фаза B: B1 подъём кластера (админ) → B2 загрузка → B3 ФАКТ-1 → B4 round-trip → B5 тесты → B6/B7/B8
+- [ ] Утреннее ревью: Q-001..Q-007 из requirements.md + tasks.md

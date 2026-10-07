@@ -51,7 +51,8 @@
 			</UsePurposes>
 			<ScriptVariant>Russian</ScriptVariant>
 			<DefaultRoles>
-				<xr:Item xsi:type="xr:MDObjectRef">Role.Тх_ОсновнаяРоль</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.Тх_Чтение</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.Тх_Редактирование</xr:Item>
 			</DefaultRoles>
 			<Vendor>AKP TechPlan</Vendor>
 			<Version>1.0.0.1</Version>
@@ -66,7 +67,8 @@
 		<ChildObjects>
 			<Language>Русский</Language>
 			<Subsystem>Тх_ПланированиеТехники</Subsystem>
-			<Role>Тх_ОсновнаяРоль</Role>
+			<Role>Тх_Чтение</Role>
+			<Role>Тх_Редактирование</Role>
 			<CommonModule>Тх_ТехникаСервер</CommonModule>
 			<Document>Тх_ПланТехническихРесурсов</Document>
 			<Enum>Тх_ВидыТехники</Enum>

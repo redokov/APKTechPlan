@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommandInterface xmlns="http://v8.1c.ru/8.3/xcf/extrnprops" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<CommandsVisibility>
+		<Command name="Document.Тх_ПланТехническихРесурсов.StandardCommand.OpenList">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.Тх_Чтение">true</xr:Value>
+				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
+			</Visibility>
+		</Command>
+		<Command name="InformationRegister.Тх_КоэффициентыПересчетаРабот.StandardCommand.OpenList">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.Тх_Чтение">true</xr:Value>
+				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
+			</Visibility>
+		</Command>
+		<Command name="Report.Тх_ДефицитТехники.StandardCommand.Open">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.Тх_Чтение">true</xr:Value>
+				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
+			</Visibility>
+		</Command>
+		<Command name="Document.Тх_ПланТехническихРесурсов.StandardCommand.Create">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
+			</Visibility>
+		</Command>
+		<Command name="DataProcessor.Тх_ЗаполнениеКоэффициентов.StandardCommand.Open">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.Тх_Чтение">true</xr:Value>
+				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
+			</Visibility>
+		</Command>
+		<Command name="DataProcessor.Тх_РасчетДефицита.StandardCommand.Open">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.Тх_Чтение">true</xr:Value>
+				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
+			</Visibility>
+		</Command>
+	</CommandsVisibility>
+	<CommandsOrder>
+		<Command name="Document.Тх_ПланТехническихРесурсов.StandardCommand.OpenList">
+			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
+		</Command>
+		<Command name="InformationRegister.Тх_КоэффициентыПересчетаРабот.StandardCommand.OpenList">
+			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
+		</Command>
+		<Command name="Report.Тх_ДефицитТехники.StandardCommand.Open">
+			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
+		</Command>
+		<Command name="Document.Тх_ПланТехническихРесурсов.StandardCommand.Create">
+			<CommandGroup>ActionsPanelCreate</CommandGroup>
+		</Command>
+		<Command name="DataProcessor.Тх_ЗаполнениеКоэффициентов.StandardCommand.Open">
+			<CommandGroup>ActionsPanelTools</CommandGroup>
+		</Command>
+		<Command name="DataProcessor.Тх_РасчетДефицита.StandardCommand.Open">
+			<CommandGroup>ActionsPanelTools</CommandGroup>
+		</Command>
+	</CommandsOrder>
+	<GroupsOrder>
+		<Group>NavigationPanelOrdinary</Group>
+		<Group>ActionsPanelCreate</Group>
+		<Group>ActionsPanelTools</Group>
+	</GroupsOrder>
+</CommandInterface>

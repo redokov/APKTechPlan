@@ -1,0 +1,4 @@
+{
+  "src": ".build/form_module.bsl",
+  "dst": "src/cfe/ПланированиеТехникиАПК/InformationRegisters/Тх_КоэффициентыПересчетаРабот/Forms/Тх_ФормаСписка/Ext/Form/Module.bsl"
+}

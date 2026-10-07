@@ -1,0 +1,6 @@
+{
+  "subsystemPath": "src/cfe/ПланированиеТехникиАПК/Subsystems/Тх_ПланированиеТехники.xml",
+  "operations": [
+    { "operation": "add-content", "value": "InformationRegister.Тх_КоэффициентыПересчетаРабот" }
+  ]
+}

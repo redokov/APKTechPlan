@@ -1,0 +1,19 @@
+{
+  "type": "InformationRegister",
+  "name": "Тх_КоэффициентыПересчетаРабот",
+  "synonym": "Коэффициенты пересчёта работ",
+  "comment": "Коэффициенты пересчёта работ по моделям техники (design §4.3, TD-004). Режим записи — независимый, непериодический: «Период» — измерение «действует с».",
+  "writeMode": "Independent",
+  "periodicity": "Nonperiodical",
+  "mainFilterOnPeriod": false,
+  "dimensions": [
+    "Период: Date",
+    "Работа: CatalogRef",
+    "МодельТехники: CatalogRef",
+    "ВидТехники: EnumRef.Тх_ВидыТехники"
+  ],
+  "resources": [
+    "Коэффициент: Number(10,4,nonneg)",
+    "БазоваяМодель: Boolean"
+  ]
+}

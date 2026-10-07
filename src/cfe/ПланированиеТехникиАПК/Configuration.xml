@@ -65,8 +65,10 @@
 		</Properties>
 		<ChildObjects>
 			<Language>Русский</Language>
+			<Subsystem>Тх_ПланированиеТехники</Subsystem>
 			<Role>Тх_ОсновнаяРоль</Role>
 			<Enum>Тх_ВидыТехники</Enum>
+			<InformationRegister>Тх_КоэффициентыПересчетаРабот</InformationRegister>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>

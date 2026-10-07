@@ -1,0 +1,10 @@
+Сценарии (1):
+   <COMObject <unknown>>
+Подразделения (1):
+   <COMObject <unknown>>
+Организации (1):
+   <COMObject <unknown>>
+Работы (1):
+   <COMObject <unknown>>
+Техника (1):
+   <COMObject <unknown>>

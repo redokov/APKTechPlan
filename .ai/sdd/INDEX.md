@@ -12,7 +12,7 @@
 
 | ID | Name | Status | Path |
 |----|------|--------|------|
-| 001 | Анализ дефицита техники по технологическим картам | in-progress | .ai/sdd/specs/001-analiz-defitsita-tekhniki/ |
+| 001 | Анализ дефицита техники по технологическим картам | design:approved | .ai/sdd/specs/001-analiz-defitsita-tekhniki/ |
 
 ## Feature Workspace
 
@@ -25,7 +25,7 @@
 
 | ID | Feature | Status | Requirements | Design | Tasks | Review |
 |----|---------|--------|--------------|--------|-------|--------|
-| 001 | Анализ дефицита техники | requirements:approved | approved (ночной прогон, ревью утром; Q-001..Q-007 открыты с рекомендациями) | pending | pending | pending |
+| 001 | Анализ дефицита техники | design:approved | approved (ночной прогон, ревью утром; Q-001..Q-007 открыты с рекомендациями) | approved (ночной прогон, ревью утром; Q-001..Q-007 закрыты в дизайне, см. §18 Requirements feedback) | pending | pending |
 
 ## Handoff
 
@@ -35,7 +35,7 @@
 
 - [x] Инициализация .ai/ (ночной прогон 2026-10-07, автономно — Open Questions в artifacts)
 - [x] specs/001-analiz-defitsita-tekhniki/requirements.md (sdd-prd, approved автономно по standing-инструкции)
-- [ ] specs/001-analiz-defitsita-tekhniki/design.md (sdd-spec)
+- [x] specs/001-analiz-defitsita-tekhniki/design.md (sdd-spec, approved автономно по standing-инструкции; ревью утром — §17 Open Questions, §18 Requirements feedback)
 - [ ] specs/001-analiz-defitsita-tekhniki/tasks.md (sdd-tasks)
 - [ ] Реализация + тесты (модульные/сценарные/e2e)
 - [ ] Утреннее ревью: Q-001..Q-007 из requirements.md

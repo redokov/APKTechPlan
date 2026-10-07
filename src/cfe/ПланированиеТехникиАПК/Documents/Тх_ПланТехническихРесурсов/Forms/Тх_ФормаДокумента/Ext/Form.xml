@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.22">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -7,6 +7,9 @@
 		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -17,13 +20,13 @@
 			<ExtendedTooltip name="ГруппаШапкиРасширеннаяПодсказка" id="2"/>
 			<ChildItems>
 				<InputField name="Номер" id="3">
-					<DataPath>Объект.Номер</DataPath>
+					<DataPath>Объект.Number</DataPath>
 					<Width>15</Width>
 					<ContextMenu name="НомерКонтекстноеМеню" id="4"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="5"/>
 				</InputField>
 				<InputField name="Дата" id="6">
-					<DataPath>Объект.Дата</DataPath>
+					<DataPath>Объект.Date</DataPath>
 					<ContextMenu name="ДатаКонтекстноеМеню" id="7"/>
 					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="8"/>
 				</InputField>
@@ -50,9 +53,9 @@
 		<InputField name="Комментарий" id="18">
 			<DataPath>Объект.Комментарий</DataPath>
 			<TitleLocation>Top</TitleLocation>
-			<MultiLine>true</MultiLine>
 			<AutoMaxWidth>false</AutoMaxWidth>
 			<Height>2</Height>
+			<MultiLine>true</MultiLine>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="19"/>
 			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="20"/>
 		</InputField>
@@ -70,10 +73,9 @@
 					<ExtendedTooltip name="СтраницаОсновнаяТехникаРасширеннаяПодсказка" id="24"/>
 					<ChildItems>
 						<Table name="ОсновнаяТехника" id="25">
-							<DataPath>Объект.ОсновнаяТехника</DataPath>
-							<ChangeRowSet>true</ChangeRowSet>
-							<ChangeRowOrder>true</ChangeRowOrder>
 							<Height>10</Height>
+							<DataPath>Объект.ОсновнаяТехника</DataPath>
+							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ОсновнаяТехникаКонтекстноеМеню" id="26"/>
 							<AutoCommandBar name="ОсновнаяТехникаКоманднаяПанель" id="27"/>
 							<ExtendedTooltip name="ОсновнаяТехникаРасширеннаяПодсказка" id="28"/>
@@ -129,6 +131,7 @@
 								</InputField>
 								<InputField name="ОсновнаяТехникаХозНомер" id="44">
 									<DataPath>Объект.ОсновнаяТехника.ХозНомер</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -141,7 +144,6 @@
 											<v8:content>Хозяйственный номер ТС (реквизит АпкХозНомер расширения АПК), не сохраняется в документе</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ReadOnly>true</ReadOnly>
 									<ContextMenu name="ОсновнаяТехникаХозНомерКонтекстноеМеню" id="45"/>
 									<ExtendedTooltip name="ОсновнаяТехникаХозНомерРасширеннаяПодсказка" id="46"/>
 								</InputField>
@@ -153,7 +155,6 @@
 											<v8:content>Принят</v8:content>
 										</v8:item>
 									</Title>
-									<CheckBoxType>Auto</CheckBoxType>
 									<TitleLocation>Right</TitleLocation>
 									<ContextMenu name="ОсновнаяТехникаПринятКонтекстноеМеню" id="48"/>
 									<ExtendedTooltip name="ОсновнаяТехникаПринятРасширеннаяПодсказка" id="49"/>
@@ -200,10 +201,9 @@
 					<ExtendedTooltip name="СтраницаОборудованиеРасширеннаяПодсказка" id="57"/>
 					<ChildItems>
 						<Table name="Оборудование" id="58">
-							<DataPath>Объект.Оборудование</DataPath>
-							<ChangeRowSet>true</ChangeRowSet>
-							<ChangeRowOrder>true</ChangeRowOrder>
 							<Height>10</Height>
+							<DataPath>Объект.Оборудование</DataPath>
+							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ОборудованиеКонтекстноеМеню" id="59"/>
 							<AutoCommandBar name="ОборудованиеКоманднаяПанель" id="60"/>
 							<ExtendedTooltip name="ОборудованиеРасширеннаяПодсказка" id="61"/>
@@ -259,6 +259,7 @@
 								</InputField>
 								<InputField name="ОборудованиеХозНомер" id="77">
 									<DataPath>Объект.Оборудование.ХозНомер</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -271,7 +272,6 @@
 											<v8:content>Хозяйственный номер ТС (реквизит АпкХозНомер расширения АПК), не сохраняется в документе</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ReadOnly>true</ReadOnly>
 									<ContextMenu name="ОборудованиеХозНомерКонтекстноеМеню" id="78"/>
 									<ExtendedTooltip name="ОборудованиеХозНомерРасширеннаяПодсказка" id="79"/>
 								</InputField>
@@ -283,7 +283,6 @@
 											<v8:content>Принят</v8:content>
 										</v8:item>
 									</Title>
-									<CheckBoxType>Auto</CheckBoxType>
 									<TitleLocation>Right</TitleLocation>
 									<ContextMenu name="ОборудованиеПринятКонтекстноеМеню" id="81"/>
 									<ExtendedTooltip name="ОборудованиеПринятРасширеннаяПодсказка" id="82"/>
@@ -330,10 +329,9 @@
 					<ExtendedTooltip name="СтраницаАвтотранспортРасширеннаяПодсказка" id="90"/>
 					<ChildItems>
 						<Table name="Автотранспорт" id="91">
-							<DataPath>Объект.Автотранспорт</DataPath>
-							<ChangeRowSet>true</ChangeRowSet>
-							<ChangeRowOrder>true</ChangeRowOrder>
 							<Height>10</Height>
+							<DataPath>Объект.Автотранспорт</DataPath>
+							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="АвтотранспортКонтекстноеМеню" id="92"/>
 							<AutoCommandBar name="АвтотранспортКоманднаяПанель" id="93"/>
 							<ExtendedTooltip name="АвтотранспортРасширеннаяПодсказка" id="94"/>
@@ -389,6 +387,7 @@
 								</InputField>
 								<InputField name="АвтотранспортХозНомер" id="110">
 									<DataPath>Объект.Автотранспорт.ХозНомер</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -401,7 +400,6 @@
 											<v8:content>Хозяйственный номер ТС (реквизит АпкХозНомер расширения АПК), не сохраняется в документе</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ReadOnly>true</ReadOnly>
 									<ContextMenu name="АвтотранспортХозНомерКонтекстноеМеню" id="111"/>
 									<ExtendedTooltip name="АвтотранспортХозНомерРасширеннаяПодсказка" id="112"/>
 								</InputField>
@@ -413,7 +411,6 @@
 											<v8:content>Принят</v8:content>
 										</v8:item>
 									</Title>
-									<CheckBoxType>Auto</CheckBoxType>
 									<TitleLocation>Right</TitleLocation>
 									<ContextMenu name="АвтотранспортПринятКонтекстноеМеню" id="114"/>
 									<ExtendedTooltip name="АвтотранспортПринятРасширеннаяПодсказка" id="115"/>
@@ -472,8 +469,8 @@
 						</Type>
 					</Column>
 				</AdditionalColumns>
-				<AdditionalColumns table="Объект.Оборудование">
-					<Column name="ХозНомер" id="124">
+				<AdditionalColumns table="Объект.Автотранспорт">
+					<Column name="ХозНомер" id="125">
 						<Type>
 							<v8:Type>xs:string</v8:Type>
 							<v8:StringQualifiers>
@@ -483,8 +480,8 @@
 						</Type>
 					</Column>
 				</AdditionalColumns>
-				<AdditionalColumns table="Объект.Автотранспорт">
-					<Column name="ХозНомер" id="125">
+				<AdditionalColumns table="Объект.Оборудование">
+					<Column name="ХозНомер" id="124">
 						<Type>
 							<v8:Type>xs:string</v8:Type>
 							<v8:StringQualifiers>

@@ -1,0 +1,47 @@
+{
+  "type": "Document",
+  "name": "Тх_ПланТехническихРесурсов",
+  "synonym": "План технических ресурсов",
+  "comment": "План технических ресурсов подразделения по сценарию планирования (design 4.4, FR-005..FR-007). Движения не создаёт (FAQ Q9): расчёт дефицита читает табличные части запросом по Проведен = ИСТИНА.",
+  "posting": "Allow",
+  "registerRecords": [],
+  "attributes": [
+    { "name": "Организация", "type": "CatalogRef.Организации", "fillChecking": "ShowError" },
+    { "name": "Подразделение", "type": "CatalogRef.СтруктураПредприятия", "fillChecking": "ShowError", "flags": ["index"] },
+    { "name": "СценарийПланирования", "type": "CatalogRef", "fillChecking": "ShowError", "flags": ["index"],
+      "tooltip": "Сценарий планирования (справочник АпкСценарииПланирования расширения АПК; тип generic по design 4.1)" },
+    { "name": "Комментарий", "type": "String(0)", "multiLine": true }
+  ],
+  "tabularSections": {
+    "ОсновнаяТехника": {
+      "synonym": "Основная техника",
+      "attributes": [
+        { "name": "ТранспортноеСредство", "type": "CatalogRef.ТранспортныеСредства", "fillChecking": "ShowError" },
+        { "name": "МодельТехники", "type": "CatalogRef" },
+        { "name": "Принят", "type": "Boolean", "fillValue": true },
+        { "name": "Количество", "type": "Number(5,0,nonneg)", "fillValue": 1 },
+        { "name": "Комментарий", "type": "String(0)" }
+      ]
+    },
+    "Оборудование": {
+      "synonym": "Оборудование",
+      "attributes": [
+        { "name": "ТранспортноеСредство", "type": "CatalogRef.ТранспортныеСредства", "fillChecking": "ShowError" },
+        { "name": "МодельТехники", "type": "CatalogRef" },
+        { "name": "Принят", "type": "Boolean", "fillValue": true },
+        { "name": "Количество", "type": "Number(5,0,nonneg)", "fillValue": 1 },
+        { "name": "Комментарий", "type": "String(0)" }
+      ]
+    },
+    "Автотранспорт": {
+      "synonym": "Автотранспорт",
+      "attributes": [
+        { "name": "ТранспортноеСредство", "type": "CatalogRef.ТранспортныеСредства", "fillChecking": "ShowError" },
+        { "name": "МодельТехники", "type": "CatalogRef" },
+        { "name": "Принят", "type": "Boolean", "fillValue": true },
+        { "name": "Количество", "type": "Number(5,0,nonneg)", "fillValue": 1 },
+        { "name": "Комментарий", "type": "String(0)" }
+      ]
+    }
+  }
+}

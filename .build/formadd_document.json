@@ -1,0 +1,7 @@
+{
+  "objectPath": "src/cfe/ПланированиеТехникиАПК/Documents/Тх_ПланТехническихРесурсов.xml",
+  "formName": "Тх_ФормаДокумента",
+  "purpose": "Object",
+  "setDefault": true,
+  "synonym": "План технических ресурсов"
+}

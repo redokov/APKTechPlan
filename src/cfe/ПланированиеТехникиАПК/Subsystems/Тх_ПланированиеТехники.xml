@@ -23,6 +23,7 @@
 			<Content>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.Тх_ВидыТехники</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.Тх_КоэффициентыПересчетаРабот</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Тх_ПланТехническихРесурсов</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects/>

@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>План технических ресурсов</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапки" id="1">
+			<Group>HorizontalIfPossible</Group>
+			<ExtendedTooltip name="ГруппаШапкиРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<InputField name="Номер" id="3">
+					<DataPath>Объект.Номер</DataPath>
+					<Width>15</Width>
+					<ContextMenu name="НомерКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="5"/>
+				</InputField>
+				<InputField name="Дата" id="6">
+					<DataPath>Объект.Дата</DataPath>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="8"/>
+				</InputField>
+				<InputField name="Организация" id="9">
+					<DataPath>Объект.Организация</DataPath>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="11"/>
+				</InputField>
+				<InputField name="Подразделение" id="12">
+					<DataPath>Объект.Подразделение</DataPath>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="14"/>
+				</InputField>
+				<InputField name="СценарийПланирования" id="15">
+					<DataPath>Объект.СценарийПланирования</DataPath>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="СценарийПланированияКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="СценарийПланированияРасширеннаяПодсказка" id="17"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Комментарий" id="18">
+			<DataPath>Объект.Комментарий</DataPath>
+			<TitleLocation>Top</TitleLocation>
+			<MultiLine>true</MultiLine>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Height>2</Height>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="19"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="20"/>
+		</InputField>
+		<Pages name="СтраницыТехники" id="21">
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыТехникиРасширеннаяПодсказка" id="22"/>
+			<ChildItems>
+				<Page name="СтраницаОсновнаяТехника" id="23">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основная техника</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаОсновнаяТехникаРасширеннаяПодсказка" id="24"/>
+					<ChildItems>
+						<Table name="ОсновнаяТехника" id="25">
+							<DataPath>Объект.ОсновнаяТехника</DataPath>
+							<ChangeRowSet>true</ChangeRowSet>
+							<ChangeRowOrder>true</ChangeRowOrder>
+							<Height>10</Height>
+							<ContextMenu name="ОсновнаяТехникаКонтекстноеМеню" id="26"/>
+							<AutoCommandBar name="ОсновнаяТехникаКоманднаяПанель" id="27"/>
+							<ExtendedTooltip name="ОсновнаяТехникаРасширеннаяПодсказка" id="28"/>
+							<SearchStringAddition name="ОсновнаяТехникаСтрокаПоиска" id="29">
+								<AdditionSource>
+									<Item>ОсновнаяТехника</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОсновнаяТехникаСтрокаПоискаКонтекстноеМеню" id="30"/>
+								<ExtendedTooltip name="ОсновнаяТехникаСтрокаПоискаРасширеннаяПодсказка" id="31"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОсновнаяТехникаСостояниеПросмотра" id="32">
+								<AdditionSource>
+									<Item>ОсновнаяТехника</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОсновнаяТехникаСостояниеПросмотраКонтекстноеМеню" id="33"/>
+								<ExtendedTooltip name="ОсновнаяТехникаСостояниеПросмотраРасширеннаяПодсказка" id="34"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОсновнаяТехникаУправлениеПоиском" id="35">
+								<AdditionSource>
+									<Item>ОсновнаяТехника</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОсновнаяТехникаУправлениеПоискомКонтекстноеМеню" id="36"/>
+								<ExtendedTooltip name="ОсновнаяТехникаУправлениеПоискомРасширеннаяПодсказка" id="37"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ОсновнаяТехникаТранспортноеСредство" id="38">
+									<DataPath>Объект.ОсновнаяТехника.ТранспортноеСредство</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Транспортное средство</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОсновнаяТехникаТранспортноеСредствоКонтекстноеМеню" id="39"/>
+									<ExtendedTooltip name="ОсновнаяТехникаТранспортноеСредствоРасширеннаяПодсказка" id="40"/>
+									<Events>
+										<Event name="OnChange">ТранспортноеСредствоПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ОсновнаяТехникаМодельТехники" id="41">
+									<DataPath>Объект.ОсновнаяТехника.МодельТехники</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Модель техники</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОсновнаяТехникаМодельТехникиКонтекстноеМеню" id="42"/>
+									<ExtendedTooltip name="ОсновнаяТехникаМодельТехникиРасширеннаяПодсказка" id="43"/>
+								</InputField>
+								<InputField name="ОсновнаяТехникаХозНомер" id="44">
+									<DataPath>Объект.ОсновнаяТехника.ХозНомер</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Хоз. номер</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Хозяйственный номер ТС (реквизит АпкХозНомер расширения АПК), не сохраняется в документе</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ReadOnly>true</ReadOnly>
+									<ContextMenu name="ОсновнаяТехникаХозНомерКонтекстноеМеню" id="45"/>
+									<ExtendedTooltip name="ОсновнаяТехникаХозНомерРасширеннаяПодсказка" id="46"/>
+								</InputField>
+								<CheckBoxField name="ОсновнаяТехникаПринят" id="47">
+									<DataPath>Объект.ОсновнаяТехника.Принят</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Принят</v8:content>
+										</v8:item>
+									</Title>
+									<CheckBoxType>Auto</CheckBoxType>
+									<TitleLocation>Right</TitleLocation>
+									<ContextMenu name="ОсновнаяТехникаПринятКонтекстноеМеню" id="48"/>
+									<ExtendedTooltip name="ОсновнаяТехникаПринятРасширеннаяПодсказка" id="49"/>
+									<Events>
+										<Event name="OnChange">ПринятПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="ОсновнаяТехникаКоличество" id="50">
+									<DataPath>Объект.ОсновнаяТехника.Количество</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Количество</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОсновнаяТехникаКоличествоКонтекстноеМеню" id="51"/>
+									<ExtendedTooltip name="ОсновнаяТехникаКоличествоРасширеннаяПодсказка" id="52"/>
+									<Events>
+										<Event name="OnChange">КоличествоПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ОсновнаяТехникаКомментарий" id="53">
+									<DataPath>Объект.ОсновнаяТехника.Комментарий</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Комментарий</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОсновнаяТехникаКомментарийКонтекстноеМеню" id="54"/>
+									<ExtendedTooltip name="ОсновнаяТехникаКомментарийРасширеннаяПодсказка" id="55"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОборудование" id="56">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оборудование</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаОборудованиеРасширеннаяПодсказка" id="57"/>
+					<ChildItems>
+						<Table name="Оборудование" id="58">
+							<DataPath>Объект.Оборудование</DataPath>
+							<ChangeRowSet>true</ChangeRowSet>
+							<ChangeRowOrder>true</ChangeRowOrder>
+							<Height>10</Height>
+							<ContextMenu name="ОборудованиеКонтекстноеМеню" id="59"/>
+							<AutoCommandBar name="ОборудованиеКоманднаяПанель" id="60"/>
+							<ExtendedTooltip name="ОборудованиеРасширеннаяПодсказка" id="61"/>
+							<SearchStringAddition name="ОборудованиеСтрокаПоиска" id="62">
+								<AdditionSource>
+									<Item>Оборудование</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОборудованиеСтрокаПоискаКонтекстноеМеню" id="63"/>
+								<ExtendedTooltip name="ОборудованиеСтрокаПоискаРасширеннаяПодсказка" id="64"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОборудованиеСостояниеПросмотра" id="65">
+								<AdditionSource>
+									<Item>Оборудование</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОборудованиеСостояниеПросмотраКонтекстноеМеню" id="66"/>
+								<ExtendedTooltip name="ОборудованиеСостояниеПросмотраРасширеннаяПодсказка" id="67"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОборудованиеУправлениеПоиском" id="68">
+								<AdditionSource>
+									<Item>Оборудование</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОборудованиеУправлениеПоискомКонтекстноеМеню" id="69"/>
+								<ExtendedTooltip name="ОборудованиеУправлениеПоискомРасширеннаяПодсказка" id="70"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ОборудованиеТранспортноеСредство" id="71">
+									<DataPath>Объект.Оборудование.ТранспортноеСредство</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Транспортное средство</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОборудованиеТранспортноеСредствоКонтекстноеМеню" id="72"/>
+									<ExtendedTooltip name="ОборудованиеТранспортноеСредствоРасширеннаяПодсказка" id="73"/>
+									<Events>
+										<Event name="OnChange">ТранспортноеСредствоПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ОборудованиеМодельТехники" id="74">
+									<DataPath>Объект.Оборудование.МодельТехники</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Модель техники</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОборудованиеМодельТехникиКонтекстноеМеню" id="75"/>
+									<ExtendedTooltip name="ОборудованиеМодельТехникиРасширеннаяПодсказка" id="76"/>
+								</InputField>
+								<InputField name="ОборудованиеХозНомер" id="77">
+									<DataPath>Объект.Оборудование.ХозНомер</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Хоз. номер</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Хозяйственный номер ТС (реквизит АпкХозНомер расширения АПК), не сохраняется в документе</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ReadOnly>true</ReadOnly>
+									<ContextMenu name="ОборудованиеХозНомерКонтекстноеМеню" id="78"/>
+									<ExtendedTooltip name="ОборудованиеХозНомерРасширеннаяПодсказка" id="79"/>
+								</InputField>
+								<CheckBoxField name="ОборудованиеПринят" id="80">
+									<DataPath>Объект.Оборудование.Принят</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Принят</v8:content>
+										</v8:item>
+									</Title>
+									<CheckBoxType>Auto</CheckBoxType>
+									<TitleLocation>Right</TitleLocation>
+									<ContextMenu name="ОборудованиеПринятКонтекстноеМеню" id="81"/>
+									<ExtendedTooltip name="ОборудованиеПринятРасширеннаяПодсказка" id="82"/>
+									<Events>
+										<Event name="OnChange">ПринятПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="ОборудованиеКоличество" id="83">
+									<DataPath>Объект.Оборудование.Количество</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Количество</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОборудованиеКоличествоКонтекстноеМеню" id="84"/>
+									<ExtendedTooltip name="ОборудованиеКоличествоРасширеннаяПодсказка" id="85"/>
+									<Events>
+										<Event name="OnChange">КоличествоПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ОборудованиеКомментарий" id="86">
+									<DataPath>Объект.Оборудование.Комментарий</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Комментарий</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОборудованиеКомментарийКонтекстноеМеню" id="87"/>
+									<ExtendedTooltip name="ОборудованиеКомментарийРасширеннаяПодсказка" id="88"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаАвтотранспорт" id="89">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автотранспорт</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаАвтотранспортРасширеннаяПодсказка" id="90"/>
+					<ChildItems>
+						<Table name="Автотранспорт" id="91">
+							<DataPath>Объект.Автотранспорт</DataPath>
+							<ChangeRowSet>true</ChangeRowSet>
+							<ChangeRowOrder>true</ChangeRowOrder>
+							<Height>10</Height>
+							<ContextMenu name="АвтотранспортКонтекстноеМеню" id="92"/>
+							<AutoCommandBar name="АвтотранспортКоманднаяПанель" id="93"/>
+							<ExtendedTooltip name="АвтотранспортРасширеннаяПодсказка" id="94"/>
+							<SearchStringAddition name="АвтотранспортСтрокаПоиска" id="95">
+								<AdditionSource>
+									<Item>Автотранспорт</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="АвтотранспортСтрокаПоискаКонтекстноеМеню" id="96"/>
+								<ExtendedTooltip name="АвтотранспортСтрокаПоискаРасширеннаяПодсказка" id="97"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="АвтотранспортСостояниеПросмотра" id="98">
+								<AdditionSource>
+									<Item>Автотранспорт</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="АвтотранспортСостояниеПросмотраКонтекстноеМеню" id="99"/>
+								<ExtendedTooltip name="АвтотранспортСостояниеПросмотраРасширеннаяПодсказка" id="100"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="АвтотранспортУправлениеПоиском" id="101">
+								<AdditionSource>
+									<Item>Автотранспорт</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="АвтотранспортУправлениеПоискомКонтекстноеМеню" id="102"/>
+								<ExtendedTooltip name="АвтотранспортУправлениеПоискомРасширеннаяПодсказка" id="103"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="АвтотранспортТранспортноеСредство" id="104">
+									<DataPath>Объект.Автотранспорт.ТранспортноеСредство</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Транспортное средство</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АвтотранспортТранспортноеСредствоКонтекстноеМеню" id="105"/>
+									<ExtendedTooltip name="АвтотранспортТранспортноеСредствоРасширеннаяПодсказка" id="106"/>
+									<Events>
+										<Event name="OnChange">ТранспортноеСредствоПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="АвтотранспортМодельТехники" id="107">
+									<DataPath>Объект.Автотранспорт.МодельТехники</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Модель техники</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АвтотранспортМодельТехникиКонтекстноеМеню" id="108"/>
+									<ExtendedTooltip name="АвтотранспортМодельТехникиРасширеннаяПодсказка" id="109"/>
+								</InputField>
+								<InputField name="АвтотранспортХозНомер" id="110">
+									<DataPath>Объект.Автотранспорт.ХозНомер</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Хоз. номер</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Хозяйственный номер ТС (реквизит АпкХозНомер расширения АПК), не сохраняется в документе</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ReadOnly>true</ReadOnly>
+									<ContextMenu name="АвтотранспортХозНомерКонтекстноеМеню" id="111"/>
+									<ExtendedTooltip name="АвтотранспортХозНомерРасширеннаяПодсказка" id="112"/>
+								</InputField>
+								<CheckBoxField name="АвтотранспортПринят" id="113">
+									<DataPath>Объект.Автотранспорт.Принят</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Принят</v8:content>
+										</v8:item>
+									</Title>
+									<CheckBoxType>Auto</CheckBoxType>
+									<TitleLocation>Right</TitleLocation>
+									<ContextMenu name="АвтотранспортПринятКонтекстноеМеню" id="114"/>
+									<ExtendedTooltip name="АвтотранспортПринятРасширеннаяПодсказка" id="115"/>
+									<Events>
+										<Event name="OnChange">ПринятПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="АвтотранспортКоличество" id="116">
+									<DataPath>Объект.Автотранспорт.Количество</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Количество</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АвтотранспортКоличествоКонтекстноеМеню" id="117"/>
+									<ExtendedTooltip name="АвтотранспортКоличествоРасширеннаяПодсказка" id="118"/>
+									<Events>
+										<Event name="OnChange">КоличествоПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="АвтотранспортКомментарий" id="119">
+									<DataPath>Объект.Автотранспорт.Комментарий</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Комментарий</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АвтотранспортКомментарийКонтекстноеМеню" id="120"/>
+									<ExtendedTooltip name="АвтотранспортКомментарийРасширеннаяПодсказка" id="121"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="122">
+			<Type>
+				<v8:Type>cfg:DocumentObject.Тх_ПланТехническихРесурсов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<Columns>
+				<AdditionalColumns table="Объект.ОсновнаяТехника">
+					<Column name="ХозНомер" id="123">
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>50</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Объект.Оборудование">
+					<Column name="ХозНомер" id="124">
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>50</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Объект.Автотранспорт">
+					<Column name="ХозНомер" id="125">
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>50</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+	</Attributes>
+</Form>

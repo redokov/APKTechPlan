@@ -52,7 +52,9 @@
 			<MainAttribute>true</MainAttribute>
 		</Attribute>
 		<Attribute name="Результаты" id="11">
-			<Type xmlns:d5p1="http://v8.1c.ru/8.1/data/core">d5p1:ValueTable</Type>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
 			<Columns>
 				<Column name="Тест" id="1">
 					<Title>

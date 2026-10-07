@@ -39,7 +39,7 @@
 					<v8:content>Коэффициенты пересчёта работ</v8:content>
 				</v8:item>
 			</Synonym>
-			<Comment>Коэффициенты пересчёта работ по моделям техники (design §4.3, TD-004). Режим записи — независимый, непериодический: «Период» — измерение «действует с».</Comment>
+			<Comment>Коэффициенты пересчёта работ по моделям техники (design §4.3, TD-004). Режим записи — независимый, периодический (день): стандартный реквизит «Период» = «действует с». Periodic, т.к. платформа запрещает измерение с именем «Период» (B2, 2026-10-08).</Comment>
 			<UseStandardCommands>true</UseStandardCommands>
 			<EditType>InDialog</EditType>
 			<DefaultRecordForm/>
@@ -156,9 +156,9 @@
 					<xr:ChoiceParameters/>
 				</xr:StandardAttribute>
 			</StandardAttributes>
-			<InformationRegisterPeriodicity>Nonperiodical</InformationRegisterPeriodicity>
+			<InformationRegisterPeriodicity>Day</InformationRegisterPeriodicity>
 			<WriteMode>Independent</WriteMode>
-			<MainFilterOnPeriod>false</MainFilterOnPeriod>
+			<MainFilterOnPeriod>true</MainFilterOnPeriod>
 			<IncludeHelpInContents>false</IncludeHelpInContents>
 			<DataLockControlMode>Managed</DataLockControlMode>
 			<FullTextSearch>Use</FullTextSearch>
@@ -257,53 +257,7 @@
 					<DataHistory>Use</DataHistory>
 				</Properties>
 			</Resource>
-			<Dimension uuid="79e39094-78d8-419e-8da2-cd05988d9790">
-				<Properties>
-					<Name>Период</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Период</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Type>
-						<v8:Type>xs:dateTime</v8:Type>
-						<v8:DateQualifiers>
-							<v8:DateFractions>Date</v8:DateFractions>
-						</v8:DateQualifiers>
-					</Type>
-					<PasswordMode>false</PasswordMode>
-					<Format/>
-					<EditFormat/>
-					<ToolTip/>
-					<MarkNegatives>false</MarkNegatives>
-					<Mask/>
-					<MultiLine>false</MultiLine>
-					<ExtendedEdit>false</ExtendedEdit>
-					<MinValue xsi:nil="true"/>
-					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:nil="true"/>
-					<FillChecking>DontCheck</FillChecking>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
-					<ChoiceParameters/>
-					<QuickChoice>Auto</QuickChoice>
-					<CreateOnInput>Auto</CreateOnInput>
-					<ChoiceForm/>
-					<LinkByType/>
-					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-					<Master>false</Master>
-					<MainFilter>false</MainFilter>
-					<DenyIncompleteValues>false</DenyIncompleteValues>
-					<Indexing>DontIndex</Indexing>
-					<FullTextSearch>Use</FullTextSearch>
-					<DataHistory>Use</DataHistory>
-					<TypeReductionMode>TransformValues</TypeReductionMode>
-				</Properties>
-			</Dimension>
-			<Dimension uuid="8b8c3380-ef73-4ba3-a9b7-7ac8f26fb690">
+						<Dimension uuid="8b8c3380-ef73-4ba3-a9b7-7ac8f26fb690">
 				<Properties>
 					<Name>Работа</Name>
 					<Synonym>

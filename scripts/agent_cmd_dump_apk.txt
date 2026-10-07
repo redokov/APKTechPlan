@@ -1,0 +1,2 @@
+common connect-ib
+config dump-config-to-files --extension=Расширение_АПК --dir=C:\Users\r.edokov\AppData\Local\Temp\1c_agent_base\apkapk_dump

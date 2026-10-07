@@ -9,6 +9,7 @@ Usage:
 import os
 import subprocess
 import sys
+import tempfile
 import time
 
 V8 = r"C:\Program Files\1cv8\8.5.4.1683\bin\1cv8.exe"
@@ -22,9 +23,13 @@ LOG_FILE = os.path.join(os.path.dirname(__file__), "..", "heartbeat", "designer_
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "heartbeat", "designer_agent_out.txt")
 
+AGENT_BASE_DIR = os.path.join(os.environ.get("TEMP", tempfile.gettempdir()), "1c_agent_base")
+
 def start():
+    os.makedirs(AGENT_BASE_DIR, exist_ok=True)
     cmd = [V8, "DESIGNER", f"/S", f"{SERVER}\\{REF}", f"/N{ADMIN_ORLOV}",
            "/AgentMode", "/AgentSSHHostKeyAuto",
+           "/AgentBaseDir", AGENT_BASE_DIR,
            "/DisableStartupDialogs", "/Out", OUT]
     log = open(LOG_FILE, "wb")
     p = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT)

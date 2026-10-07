@@ -1,0 +1,2 @@
+common connect-ib
+config dump-config-to-files --extension=ТестКроссСсылок --dir=C:\Users\r.edokov\AppData\Local\Temp\1c_agent_base\tks_dump

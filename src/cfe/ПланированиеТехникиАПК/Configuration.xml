@@ -70,11 +70,13 @@
 			<Role>Тх_Чтение</Role>
 			<Role>Тх_Редактирование</Role>
 			<CommonModule>Тх_ТехникаСервер</CommonModule>
+			<CommonModule>Тх_Тесты</CommonModule>
 			<Document>Тх_ПланТехническихРесурсов</Document>
 			<Enum>Тх_ВидыТехники</Enum>
 			<Report>Тх_ДефицитТехники</Report>
 			<DataProcessor>Тх_ЗаполнениеКоэффициентов</DataProcessor>
 			<DataProcessor>Тх_РасчетДефицита</DataProcessor>
+			<DataProcessor>Тх_РаннерТестов</DataProcessor>
 			<InformationRegister>Тх_КоэффициентыПересчетаРабот</InformationRegister>
 			<InformationRegister>Тх_ДефицитТехники</InformationRegister>
 		</ChildObjects>

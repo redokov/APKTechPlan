@@ -19,3 +19,4 @@ Wed Oct  7 10:55:50 RTZST 2026 A7 agent started (register Tkh_DefitsitTekhniki +
 Wed Oct  7 13:31:08 RTZST 2026 A8+A9 committed, gates clean
 Wed Oct  7 13:56:41 RTZST 2026 A10 committed (roles+cmd interface, NFR-004 gate PASS)
 Wed Oct  7 15:09:56 RTZST 2026 session wrap: A1-A10 committed (6c96261), A11 files ready+fixed but uncommitted (2 bsl-ls CommonModuleInvalidType unattributed in full-tree run), continuation prompt in docs/continuation-2026-10-08.md, new MCP added by user
+Wed Oct 07 15:32:05 RTZST 2026 - A11 closed: 2x CommonModuleInvalidType attributed = bsl-ls 1.0.7 false positive (Designer-dump XML layout vs MDClasses expectations), proof in docs/bsl-ls-false-positives.md, fulltree gate script scripts/bsl_ls_fulltree.py 17 files 0 Error PASS; pre_load_validate 31 OK; check_form_handlers 6/6 OK; committing A11

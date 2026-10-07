@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<DataProcessor uuid="d5ff0b5a-1adc-440f-ab90-dc32397a4df3">
+		<InternalInfo>
+			<xr:GeneratedType name="DataProcessorObject.Тх_РаннерТестов" category="Object">
+				<xr:TypeId>60534aa7-178c-4583-845c-f25e96283bcf</xr:TypeId>
+				<xr:ValueId>7b35fffe-a638-4347-b508-6a586de9d563</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DataProcessorManager.Тх_РаннерТестов" category="Manager">
+				<xr:TypeId>26026924-02da-4177-849b-59948781a13d</xr:TypeId>
+				<xr:ValueId>2eb197fe-61ae-4f4b-91dc-ba20c6892a56</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>Тх_РаннерТестов</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запуск модульных тестов</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>Unit-test runner (design 11, task A11): sequential run of the 15 server tests of the Tkh_Testy common module; entry point for the form button, COM (V83.COMConnector: DataProcessors.Tkh_RannnerTestov.Create().RunTests()) and /Execute. Not placed in the subsystem interface.</Comment>
+			<UseStandardCommands>true</UseStandardCommands>
+			<DefaultForm>DataProcessor.Тх_РаннерТестов.Form.Форма</DefaultForm>
+			<AuxiliaryForm/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ExtendedPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Form>Форма</Form>
+		</ChildObjects>
+	</DataProcessor>
+</MetaDataObject>

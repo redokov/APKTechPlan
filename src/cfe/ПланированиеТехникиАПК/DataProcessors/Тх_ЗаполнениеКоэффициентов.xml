@@ -16,7 +16,7 @@
 			<Synonym>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Тх_заполнение коэффициентов</v8:content>
+					<v8:content>Заполнение коэффициентов</v8:content>
 				</v8:item>
 			</Synonym>
 			<Comment>Autofill of Tkh_KoeffitsientyPereschetaRabot by engine power (design 4.6, TD-005).</Comment>

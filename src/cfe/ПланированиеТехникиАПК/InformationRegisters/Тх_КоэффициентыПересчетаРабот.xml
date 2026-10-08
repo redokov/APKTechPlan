@@ -42,7 +42,7 @@
 			<Comment>Коэффициенты пересчёта работ по моделям техники (design §4.3, TD-004). Режим записи — независимый, периодический (день): стандартный реквизит «Период» = «действует с». Periodic, т.к. платформа запрещает измерение с именем «Период» (B2, 2026-10-08).</Comment>
 			<UseStandardCommands>true</UseStandardCommands>
 			<EditType>InDialog</EditType>
-			<DefaultRecordForm/>
+			<DefaultRecordForm>InformationRegister.Тх_КоэффициентыПересчетаРабот.Form.Тх_ФормаЗаписи</DefaultRecordForm>
 			<DefaultListForm>InformationRegister.Тх_КоэффициентыПересчетаРабот.Form.Тх_ФормаСписка</DefaultListForm>
 			<AuxiliaryRecordForm/>
 			<AuxiliaryListForm/>
@@ -387,6 +387,7 @@
 				</Properties>
 			</Dimension>
 			<Form>Тх_ФормаСписка</Form>
+			<Form>Тх_ФормаЗаписи</Form>
 		</ChildObjects>
 	</InformationRegister>
 </MetaDataObject>

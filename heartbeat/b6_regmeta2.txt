@@ -1,6 +1,0 @@
-=== АпкМеханизированныеРаботыПоГодовомуПлану len=79068 ===
-has Dimensions: False
-has Attributes: False
-=== АпкТранспортныеРаботыПоГодовомуПлану len=89493 ===
-has Dimensions: False
-has Attributes: False

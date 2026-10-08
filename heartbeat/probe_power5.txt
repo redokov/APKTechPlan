@@ -1,4 +1,0 @@
-Организации first: <COMObject <unknown>>
-СтруктураПредприятия first: <COMObject <unknown>>
-created 2 ТС OK
-cleanup OK

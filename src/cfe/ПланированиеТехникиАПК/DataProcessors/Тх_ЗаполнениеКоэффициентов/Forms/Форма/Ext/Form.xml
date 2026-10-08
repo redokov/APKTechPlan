@@ -21,6 +21,7 @@
 			<ChildItems>
 				<InputField name="Работа" id="3">
 					<DataPath>Работа</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -69,6 +70,7 @@
 				</InputField>
 				<InputField name="БазоваяМодель" id="12">
 					<DataPath>БазоваяМодель</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

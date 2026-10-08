@@ -32,18 +32,21 @@
 				</InputField>
 				<InputField name="Организация" id="9">
 					<DataPath>Объект.Организация</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 					<AutoMarkIncomplete>true</AutoMarkIncomplete>
 					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="10"/>
 					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="11"/>
 				</InputField>
 				<InputField name="Подразделение" id="12">
 					<DataPath>Объект.Подразделение</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 					<AutoMarkIncomplete>true</AutoMarkIncomplete>
 					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="13"/>
 					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="14"/>
 				</InputField>
 				<InputField name="СценарийПланирования" id="15">
 					<DataPath>Объект.СценарийПланирования</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 					<AutoMarkIncomplete>true</AutoMarkIncomplete>
 					<ContextMenu name="СценарийПланированияКонтекстноеМеню" id="16"/>
 					<ExtendedTooltip name="СценарийПланированияРасширеннаяПодсказка" id="17"/>
@@ -106,6 +109,7 @@
 							<ChildItems>
 								<InputField name="ОсновнаяТехникаТранспортноеСредство" id="38">
 									<DataPath>Объект.ОсновнаяТехника.ТранспортноеСредство</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -120,6 +124,7 @@
 								</InputField>
 								<InputField name="ОсновнаяТехникаМодельТехники" id="41">
 									<DataPath>Объект.ОсновнаяТехника.МодельТехники</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -234,6 +239,7 @@
 							<ChildItems>
 								<InputField name="ОборудованиеТранспортноеСредство" id="71">
 									<DataPath>Объект.Оборудование.ТранспортноеСредство</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -248,6 +254,7 @@
 								</InputField>
 								<InputField name="ОборудованиеМодельТехники" id="74">
 									<DataPath>Объект.Оборудование.МодельТехники</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -362,6 +369,7 @@
 							<ChildItems>
 								<InputField name="АвтотранспортТранспортноеСредство" id="104">
 									<DataPath>Объект.Автотранспорт.ТранспортноеСредство</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -376,6 +384,7 @@
 								</InputField>
 								<InputField name="АвтотранспортМодельТехники" id="107">
 									<DataPath>Объект.Автотранспорт.МодельТехники</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>

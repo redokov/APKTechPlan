@@ -21,6 +21,7 @@
 			<ChildItems>
 				<InputField name="Организация" id="3">
 					<DataPath>Организация</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -39,6 +40,7 @@
 				</InputField>
 				<InputField name="Подразделение" id="6">
 					<DataPath>Подразделение</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -57,6 +59,7 @@
 				</InputField>
 				<InputField name="СценарийПланирования" id="9">
 					<DataPath>СценарийПланирования</DataPath>
+			<ListChoiceMode>false</ListChoiceMode>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

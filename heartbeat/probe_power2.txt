@@ -1,4 +1,0 @@
-srv module resolved: <COMObject <unknown>>
-model created via COM, ref ok: True
-srv.МощностьДвигателяМодели(ref) = 0
-cleanup OK

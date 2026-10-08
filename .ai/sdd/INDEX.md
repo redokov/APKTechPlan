@@ -27,7 +27,7 @@
 | ID | Feature | Status | Requirements | Design | Tasks | Review |
 |----|---------|--------|--------------|--------|-------|--------|
 | 001 | Анализ дефицита техники | tasks:approved | approved (ночной прогон, ревью утром; Q-001..Q-007 открыты с рекомендациями) | approved (ночной прогон, ревью утром; Q-001..Q-007 закрыты в дизайне, см. §18 Requirements feedback) | approved (ночной прогон, ревью утром; Фаза A офлайн + Фаза B после подъёма кластера) | pending |
-| 002 | Редизайн планирования техники (расчёт потребности) | design:approved | approved (D-001..D-008) | approved (TD-001..TD-008, FAQ Q1–Q4 ок) | — | — |
+| 002 | Редизайн планирования техники (расчёт потребности) | design:approved | approved (D-001..D-008) | approved (TD-001..TD-008, FAQ Q1–Q4 ок) | draft (T1–T13, readiness Pass) | — |
 
 ## Handoff
 
@@ -44,3 +44,5 @@
 - [ ] Утреннее ревью: Q-001..Q-007 из requirements.md + tasks.md
 - [x] specs/002-redesign-planirovaniia-tekhniki/requirements.md — APPROVED (2026-10-09; D-001..D-008, все Q закрыты) — sdd-prd
 - [x] specs/002-redesign-planirovaniia-tekhniki/design.md — APPROVED (TD-001..TD-008; источники: АпкМеханизированныеРаботыПоГодовомуПлану + АпкТранспортныеРаботыПоГодовомуПлану Turnovers, доступность через АпкПланТехническихРесурсов → ТС.АпкМодель) — sdd-spec
+
+- [x] specs/002-redesign-planirovaniia-tekhniki/tasks.md — DRAFT (T1–T13, readiness Pass; порядок T1..T13) — sdd-tasks

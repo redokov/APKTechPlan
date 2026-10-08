@@ -2,7 +2,7 @@
 
 > Requirements: @requirements.md (approved, D-001..D-008)
 > Design: @design.md (approved, TD-001..TD-008, FAQ Q1–Q4 ок)
-> Status: Draft
+> Status: Approved (2026-10-09)
 > Спека: 002-redesign-planirovaniia-tekhniki
 
 ## Общий пайплайн каждой задачи (§9 redesign-prompt, строго)

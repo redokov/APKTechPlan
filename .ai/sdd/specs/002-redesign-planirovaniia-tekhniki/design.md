@@ -1,7 +1,7 @@
 # Design: Редизайн «Планирования техники АПК» — расчёт потребности по техкартам
 
 > Requirements: @requirements.md (approved, D-001..D-008)
-> Status: Draft
+> Status: Approved (2026-10-09; FAQ Q1–Q4 подтверждены пользователем)
 > Спека: 002-redesign-planirovaniia-tekhniki
 > Факты собраны через rlm-tools-bsl по индексам APKModSrc (АПК 2.5.27.88) и APKTechPlan (2026-10-09); канонические ответы — §6.1.
 

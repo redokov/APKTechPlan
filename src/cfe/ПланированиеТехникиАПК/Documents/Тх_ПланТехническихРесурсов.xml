@@ -89,7 +89,7 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:TypeId>55adb97e-a84e-453e-8020-7665bb2abdef</v8:TypeId>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -128,7 +128,7 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:TypeId>56c86461-d1a1-4757-ac34-d36ef2ecf333</v8:TypeId>
+						<v8:Type>cfg:CatalogRef.СтруктураПредприятия</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -167,7 +167,7 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+						<v8:Type>cfg:CatalogRef.АпкСценарииПланирования</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>

@@ -86,6 +86,21 @@ def canon_xml(path):
             return
         if tag == "Type" and txt in DROP_TYPE_DEFAULTS:
             return
+        if tag == "Type":
+            # составной тип: дети сортируются (Designer переупорядочивает по GUID)
+            kids = []
+            for c in e:
+                ctag = c.tag.split("}")[-1] if isinstance(c.tag, str) else "?"
+                ctxt = " ".join((c.text or "").split())
+                if ctag in DROP_LINES or (ctag == "Type" and ctxt in DROP_TYPE_DEFAULTS):
+                    continue
+                ctok = norm_token(ctag, dict(sorted(c.attrib.items())), ctxt)
+                label = "TRef" if (isinstance(ctok, tuple) and ctok[0] == "REFTYPE") else ctag
+                kids.append("%s%s %s" % ("  " * (depth + 1), label, ctok))
+            kids.sort()
+            out.append("%sType {}" % ("  " * depth))
+            out.extend(kids)
+            return
         tok = norm_token(tag, dict(sorted(e.attrib.items())), txt)
         label = "TRef" if (tag in ("Type", "TypeId") and isinstance(tok, tuple) and tok[0] == "REFTYPE") else tag
         out.append("%s%s %s" % ("  " * depth, label, tok))

@@ -16,7 +16,7 @@
 			<Synonym>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Дефицит техники</v8:content>
+					<v8:content>Анализ дефицита техники</v8:content>
 				</v8:item>
 			</Synonym>
 			<Comment>Deficit of machinery report (design 4.5, FR-013..FR-015, NFR-005). SKD reads only InformationRegister Tkh_DefitsitTekhniki - no runtime queries to extension #1 (TD-003). The main DCS template is compiled by skd-compile (task A9).</Comment>

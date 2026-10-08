@@ -12,7 +12,8 @@
 
 | ID | Name | Status | Path |
 |----|------|--------|------|
-| 001 | Анализ дефицита техники по технологическим картам | design:approved | .ai/sdd/specs/001-analiz-defitsita-tekhniki/ |
+| 001 | Анализ дефицита техники по технологическим картам | design:approved (устарела в части форм/типов) | .ai/sdd/specs/001-analiz-defitsita-tekhniki/ |
+| 002 | Редизайн «Планирования техники АПК» — расчёт потребности по техкартам | idea:captured | .ai/sdd/ideas/002-redesign-planirovaniia-tekhniki.md |
 
 ## Feature Workspace
 
@@ -26,6 +27,7 @@
 | ID | Feature | Status | Requirements | Design | Tasks | Review |
 |----|---------|--------|--------------|--------|-------|--------|
 | 001 | Анализ дефицита техники | tasks:approved | approved (ночной прогон, ревью утром; Q-001..Q-007 открыты с рекомендациями) | approved (ночной прогон, ревью утром; Q-001..Q-007 закрыты в дизайне, см. §18 Requirements feedback) | approved (ночной прогон, ревью утром; Фаза A офлайн + Фаза B после подъёма кластера) | pending |
+| 002 | Редизайн планирования техники (расчёт потребности) | requirements:draft | draft (Q-001, Q-002 открыты) | — | — | — |
 
 ## Handoff
 
@@ -40,3 +42,4 @@
 - [ ] Реализация Фазы A (A1→A13, офлайн-авторинг) — sdd-exec
 - [ ] Фаза B: B1 подъём кластера (админ) → B2 загрузка → B3 ФАКТ-1 → B4 round-trip → B5 тесты → B6/B7/B8
 - [ ] Утреннее ревью: Q-001..Q-007 из requirements.md + tasks.md
+- [x] specs/002-redesign-planirovaniia-tekhniki/requirements.md — draft (редизайн 2026-10-09; D-001..D-006, Q-001/Q-002 открыты) — sdd-prd

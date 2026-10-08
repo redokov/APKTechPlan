@@ -42,4 +42,4 @@
 - [ ] Реализация Фазы A (A1→A13, офлайн-авторинг) — sdd-exec
 - [ ] Фаза B: B1 подъём кластера (админ) → B2 загрузка → B3 ФАКТ-1 → B4 round-trip → B5 тесты → B6/B7/B8
 - [ ] Утреннее ревью: Q-001..Q-007 из requirements.md + tasks.md
-- [x] specs/002-redesign-planirovaniia-tekhniki/requirements.md — draft (редизайн 2026-10-09; D-001..D-006, Q-001/Q-002 открыты) — sdd-prd
+- [x] specs/002-redesign-planirovaniia-tekhniki/requirements.md — APPROVED (2026-10-09; D-001..D-008, все Q закрыты) — sdd-prd

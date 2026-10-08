@@ -106,6 +106,9 @@
 								<ContextMenu name="ОсновнаяТехникаУправлениеПоискомКонтекстноеМеню" id="36"/>
 								<ExtendedTooltip name="ОсновнаяТехникаУправлениеПоискомРасширеннаяПодсказка" id="37"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">ОсновнаяТехникаПередНачаломДобавления</Event>
+							</Events>
 							<ChildItems>
 								<InputField name="ОсновнаяТехникаТранспортноеСредство" id="38">
 									<DataPath>Объект.ОсновнаяТехника.ТранспортноеСредство</DataPath>
@@ -236,6 +239,9 @@
 								<ContextMenu name="ОборудованиеУправлениеПоискомКонтекстноеМеню" id="69"/>
 								<ExtendedTooltip name="ОборудованиеУправлениеПоискомРасширеннаяПодсказка" id="70"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">ОборудованиеПередНачаломДобавления</Event>
+							</Events>
 							<ChildItems>
 								<InputField name="ОборудованиеТранспортноеСредство" id="71">
 									<DataPath>Объект.Оборудование.ТранспортноеСредство</DataPath>
@@ -366,6 +372,9 @@
 								<ContextMenu name="АвтотранспортУправлениеПоискомКонтекстноеМеню" id="102"/>
 								<ExtendedTooltip name="АвтотранспортУправлениеПоискомРасширеннаяПодсказка" id="103"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">АвтотранспортПередНачаломДобавления</Event>
+							</Events>
 							<ChildItems>
 								<InputField name="АвтотранспортТранспортноеСредство" id="104">
 									<DataPath>Объект.Автотранспорт.ТранспортноеСредство</DataPath>
@@ -458,7 +467,11 @@
 				</Page>
 			</ChildItems>
 		</Pages>
-	</ChildItems>
+			<Button name="КнопкаЗаполнитьМодельИХозНомер" id="200">
+			<CommandName>Form.Command.ЗаполнитьМодельИХозНомер</CommandName>
+			<ExtendedTooltip name="КнопкаЗаполнитьМодельИХозНомерРасширеннаяПодсказка" id="201"/>
+		</Button>
+</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="122">
 			<Type>
@@ -503,4 +516,15 @@
 			</Columns>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьМодельИХозНомер" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить модель и хозномер</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗаполнитьМодельИХозНомерОбработка</Action>
+		</Command>
+	</Commands>
 </Form>

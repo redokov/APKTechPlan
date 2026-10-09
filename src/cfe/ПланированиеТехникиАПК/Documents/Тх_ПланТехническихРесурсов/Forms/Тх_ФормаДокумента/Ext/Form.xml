@@ -195,6 +195,61 @@
 									<ContextMenu name="ОсновнаяТехникаКомментарийКонтекстноеМеню" id="54"/>
 									<ExtendedTooltip name="ОсновнаяТехникаКомментарийРасширеннаяПодсказка" id="55"/>
 								</InputField>
+								<InputField name="ОсновнаяТехникаОборудование" id="202">
+									<DataPath>Объект.ОсновнаяТехника.Оборудование</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Оборудование</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОсновнаяТехникаОборудованиеКонтекстноеМеню" id="203"/>
+									<ExtendedTooltip name="ОсновнаяТехникаОборудованиеРасширеннаяПодсказка" id="204"/>
+								</InputField>
+								<InputField name="ОсновнаяТехникаВидРаботы" id="205">
+									<DataPath>Объект.ОсновнаяТехника.ВидРаботы</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид работы</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОсновнаяТехникаВидРаботыКонтекстноеМеню" id="206"/>
+									<ExtendedTooltip name="ОсновнаяТехникаВидРаботыРасширеннаяПодсказка" id="207"/>
+								</InputField>
+								<InputField name="ОсновнаяТехникаПотребностьСмен" id="208">
+									<DataPath>Объект.ОсновнаяТехника.ПотребностьСмен</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Потребность, смен</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОсновнаяТехникаПотребностьСменКонтекстноеМеню" id="209"/>
+									<ExtendedTooltip name="ОсновнаяТехникаПотребностьСменРасширеннаяПодсказка" id="210"/>
+								</InputField>
+								<InputField name="ОсновнаяТехникаПотребностьЧасов" id="211">
+									<DataPath>Объект.ОсновнаяТехника.ПотребностьЧасов</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Потребность, часов</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОсновнаяТехникаПотребностьЧасовКонтекстноеМеню" id="212"/>
+									<ExtendedTooltip name="ОсновнаяТехникаПотребностьЧасовРасширеннаяПодсказка" id="213"/>
+								</InputField>
+								<InputField name="ОсновнаяТехникаДоступноЕдиниц" id="214">
+									<DataPath>Объект.ОсновнаяТехника.ДоступноЕдиниц</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Доступно, единиц</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОсновнаяТехникаДоступноЕдиницКонтекстноеМеню" id="215"/>
+									<ExtendedTooltip name="ОсновнаяТехникаДоступноЕдиницРасширеннаяПодсказка" id="216"/>
+								</InputField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
@@ -460,6 +515,61 @@
 									</Title>
 									<ContextMenu name="АвтотранспортКомментарийКонтекстноеМеню" id="120"/>
 									<ExtendedTooltip name="АвтотранспортКомментарийРасширеннаяПодсказка" id="121"/>
+								</InputField>
+								<InputField name="АвтотранспортОборудование" id="217">
+									<DataPath>Объект.Автотранспорт.Оборудование</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Прицеп</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АвтотранспортОборудованиеКонтекстноеМеню" id="218"/>
+									<ExtendedTooltip name="АвтотранспортОборудованиеРасширеннаяПодсказка" id="219"/>
+								</InputField>
+								<InputField name="АвтотранспортВидРаботы" id="220">
+									<DataPath>Объект.Автотранспорт.ВидРаботы</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид работы</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АвтотранспортВидРаботыКонтекстноеМеню" id="221"/>
+									<ExtendedTooltip name="АвтотранспортВидРаботыРасширеннаяПодсказка" id="222"/>
+								</InputField>
+								<InputField name="АвтотранспортПотребностьСмен" id="223">
+									<DataPath>Объект.Автотранспорт.ПотребностьСмен</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Потребность, смен</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АвтотранспортПотребностьСменКонтекстноеМеню" id="224"/>
+									<ExtendedTooltip name="АвтотранспортПотребностьСменРасширеннаяПодсказка" id="225"/>
+								</InputField>
+								<InputField name="АвтотранспортПотребностьЧасов" id="226">
+									<DataPath>Объект.Автотранспорт.ПотребностьЧасов</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Потребность, часов</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АвтотранспортПотребностьЧасовКонтекстноеМеню" id="227"/>
+									<ExtendedTooltip name="АвтотранспортПотребностьЧасовРасширеннаяПодсказка" id="228"/>
+								</InputField>
+								<InputField name="АвтотранспортДоступноЕдиниц" id="229">
+									<DataPath>Объект.Автотранспорт.ДоступноЕдиниц</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Доступно, единиц</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АвтотранспортДоступноЕдиницКонтекстноеМеню" id="230"/>
+									<ExtendedTooltip name="АвтотранспортДоступноЕдиницРасширеннаяПодсказка" id="231"/>
 								</InputField>
 							</ChildItems>
 						</Table>

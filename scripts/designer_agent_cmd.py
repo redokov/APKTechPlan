@@ -25,7 +25,9 @@ CMD_TIMEOUT = int(os.environ.get("AGENT_CMD_TIMEOUT", "900"))
 
 def run_commands(commands):
     t = paramiko.Transport((HOST, PORT))
-    t.start_client(timeout=30)
+    t.auth_timeout = 180
+    t.banner_timeout = 180
+    t.start_client(timeout=60)
     t.auth_password(ADMIN_ORLOV, "")
     chan = t.open_session()
     chan.invoke_shell()

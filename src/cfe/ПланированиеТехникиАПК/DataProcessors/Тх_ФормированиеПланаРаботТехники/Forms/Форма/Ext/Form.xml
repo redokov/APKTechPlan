@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.22">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Формирование плана работ техники</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<ChildItems>
+		<UsualGroup name="ГруппаПараметров" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры потребности</v8:content>
+				</v8:item>
+			</Title>
+			<Group>HorizontalIfPossible</Group>
+			<ExtendedTooltip name="ГруппаПараметровРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+			<InputField name="Организация" id="3">
+				<DataPath>Организация</DataPath>
+				<ListChoiceMode>false</ListChoiceMode>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Пусто - все организации</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ClearButton>true</ClearButton>
+				<ContextMenu name="ОрганизацияКонтекстноеМеню" id="4"/>
+				<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="5"/>
+			</InputField>
+			<InputField name="Подразделение" id="6">
+				<DataPath>Подразделение</DataPath>
+				<ListChoiceMode>false</ListChoiceMode>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Подразделение</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Пусто - все подразделения выращивания (отбор В ИЕРАРХИИ)</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ClearButton>true</ClearButton>
+				<ContextMenu name="ПодразделениеКонтекстноеМеню" id="7"/>
+				<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="8"/>
+			</InputField>
+			<InputField name="СценарийПланирования" id="9">
+				<DataPath>СценарийПланирования</DataPath>
+				<ListChoiceMode>false</ListChoiceMode>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сценарий планирования</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Обязательный параметр</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ClearButton>true</ClearButton>
+				<ContextMenu name="СценарийПланированияКонтекстноеМеню" id="10"/>
+				<ExtendedTooltip name="СценарийПланированияРасширеннаяПодсказка" id="11"/>
+				<Events>
+					<Event name="StartChoice">СценарийПланированияНачалоВыбора</Event>
+				</Events>
+			</InputField>
+			<InputField name="ПериодС" id="12">
+				<DataPath>ПериодС</DataPath>
+				<ListChoiceMode>false</ListChoiceMode>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период с</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Левая граница окна потребности (пересечение с периодами строк техкарт)</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ClearButton>true</ClearButton>
+				<ContextMenu name="ПериодСКонтекстноеМеню" id="13"/>
+				<ExtendedTooltip name="ПериодСРасширеннаяПодсказка" id="14"/>
+			</InputField>
+			<InputField name="ПериодПо" id="15">
+				<DataPath>ПериодПо</DataPath>
+				<ListChoiceMode>false</ListChoiceMode>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период по</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Правая граница окна потребности</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ClearButton>true</ClearButton>
+				<ContextMenu name="ПериодПоКонтекстноеМеню" id="16"/>
+				<ExtendedTooltip name="ПериодПоРасширеннаяПодсказка" id="17"/>
+			</InputField>
+			<InputField name="ДнейПериода" id="18">
+				<DataPath>ДнейПериода</DataPath>
+				<ListChoiceMode>false</ListChoiceMode>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Дней в периоде</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Календарных дней периода для расчёта количества единиц (T9)</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ClearButton>true</ClearButton>
+				<ContextMenu name="ДнейПериодаКонтекстноеМеню" id="19"/>
+				<ExtendedTooltip name="ДнейПериодаРасширеннаяПодсказка" id="20"/>
+			</InputField>
+			<InputField name="СменВдень" id="21">
+				<DataPath>СменВдень</DataPath>
+				<ListChoiceMode>false</ListChoiceMode>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Смен в день</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>1..3, по умолчанию 1</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ClearButton>true</ClearButton>
+				<ContextMenu name="СменВденьКонтекстноеМеню" id="22"/>
+				<ExtendedTooltip name="СменВденьРасширеннаяПодсказка" id="23"/>
+			</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Button name="КнопкаСформировать" id="24">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.Сформировать</CommandName>
+			<ExtendedTooltip name="КнопкаСформироватьРасширеннаяПодсказка" id="25"/>
+		</Button>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="38">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.Тх_ФормированиеПланаРаботТехники</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Организация" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+				<Type>
+					<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+				</Type>
+		</Attribute>
+		<Attribute name="Подразделение" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</Title>
+				<Type>
+					<v8:Type>cfg:CatalogRef.СтруктураПредприятия</v8:Type>
+				</Type>
+		</Attribute>
+		<Attribute name="СценарийПланирования" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>СценарийПланирования</v8:content>
+				</v8:item>
+			</Title>
+				<Type>
+					<v8:Type>cfg:CatalogRef.АпкСценарииПланирования</v8:Type>
+				</Type>
+		</Attribute>
+		<Attribute name="ПериодС" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ПериодС</v8:content>
+				</v8:item>
+			</Title>
+				<Type>
+					<v8:Type>xs:dateTime</v8:Type>
+					<v8:DateQualifiers>
+						<v8:DateFractions>Date</v8:DateFractions>
+					</v8:DateQualifiers>
+				</Type>
+		</Attribute>
+		<Attribute name="ПериодПо" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ПериодПо</v8:content>
+				</v8:item>
+			</Title>
+				<Type>
+					<v8:Type>xs:dateTime</v8:Type>
+					<v8:DateQualifiers>
+						<v8:DateFractions>Date</v8:DateFractions>
+					</v8:DateQualifiers>
+				</Type>
+		</Attribute>
+		<Attribute name="ДнейПериода" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ДнейПериода</v8:content>
+				</v8:item>
+			</Title>
+				<Type>
+					<v8:Type>xs:decimal</v8:Type>
+					<v8:NumberQualifiers>
+						<v8:Digits>10</v8:Digits>
+						<v8:FractionDigits>0</v8:FractionDigits>
+						<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+					</v8:NumberQualifiers>
+				</Type>
+		</Attribute>
+		<Attribute name="СменВдень" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>СменВдень</v8:content>
+				</v8:item>
+			</Title>
+				<Type>
+					<v8:Type>xs:decimal</v8:Type>
+					<v8:NumberQualifiers>
+						<v8:Digits>5</v8:Digits>
+						<v8:FractionDigits>1</v8:FractionDigits>
+						<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+					</v8:NumberQualifiers>
+				</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Сформировать" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Сформировать</Action>
+		</Command>
+	</Commands>
+</Form>

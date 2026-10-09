@@ -87,6 +87,7 @@
 			<Report>Тх_ДефицитТехники</Report>
 			<DataProcessor>Тх_РасчетДефицита</DataProcessor>
 			<DataProcessor>Тх_РаннерТестов</DataProcessor>
+			<DataProcessor>Тх_ФормированиеПланаРаботТехники</DataProcessor>
 			<InformationRegister>Тх_ДефицитТехники</InformationRegister>
 		</ChildObjects>
 	</Configuration>

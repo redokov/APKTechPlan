@@ -28,6 +28,13 @@
 				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
 			</Visibility>
 		</Command>
+		<Command name="DataProcessor.Тх_ФормированиеПланаРаботТехники.StandardCommand.Open">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.Тх_Чтение">true</xr:Value>
+				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
+			</Visibility>
+		</Command>
 	</CommandsVisibility>
 	<CommandsOrder>
 		<Command name="Document.Тх_ПланТехническихРесурсов.StandardCommand.OpenList">
@@ -40,6 +47,9 @@
 			<CommandGroup>ActionsPanelCreate</CommandGroup>
 		</Command>
 		<Command name="DataProcessor.Тх_РасчетДефицита.StandardCommand.Open">
+			<CommandGroup>ActionsPanelTools</CommandGroup>
+		</Command>
+		<Command name="DataProcessor.Тх_ФормированиеПланаРаботТехники.StandardCommand.Open">
 			<CommandGroup>ActionsPanelTools</CommandGroup>
 		</Command>
 	</CommandsOrder>

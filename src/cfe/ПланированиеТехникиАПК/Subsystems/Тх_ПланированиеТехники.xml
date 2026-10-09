@@ -26,6 +26,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Document.Тх_ПланТехническихРесурсов</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.Тх_ТехникаСервер</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Тх_РасчетДефицита</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Тх_ФормированиеПланаРаботТехники</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Report.Тх_ДефицитТехники</xr:Item>
 			</Content>
 		</Properties>

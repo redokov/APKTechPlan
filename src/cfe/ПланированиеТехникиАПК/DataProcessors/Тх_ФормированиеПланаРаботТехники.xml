@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.22">
+	<DataProcessor uuid="7e8a95b3-d4cf-46d4-8d97-92469337bd3f">
+		<InternalInfo>
+			<xr:GeneratedType name="DataProcessorObject.Тх_ФормированиеПланаРаботТехники" category="Object">
+				<xr:TypeId>91f8afa6-5ac3-4b97-8a9a-626668a9cdfd</xr:TypeId>
+				<xr:ValueId>91f408ea-0a77-4806-aa80-ea723e69c7f2</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DataProcessorManager.Тх_ФормированиеПланаРаботТехники" category="Manager">
+				<xr:TypeId>8c8d8af9-7bda-4888-8f03-ba455ea6462d</xr:TypeId>
+				<xr:ValueId>0429a687-8544-43fc-bbe5-22f7d4751e20</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>Тх_ФормированиеПланаРаботТехники</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Формирование плана работ техники</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>Launch form of the work plan forming (design 5.4/6.1, TD-005/006): collects demand parameters (Organization/Department/Scenario/Period/DaysPerPeriod/ShiftsPerDay), queries demand from APK yearly plan turnover registers via Tkh_TekhnikaServer.PotrebnostPoTekhkartam. Document creation/filling - T9 (ZapolnitPlanRabot).</Comment>
+			<UseStandardCommands>true</UseStandardCommands>
+			<DefaultForm>DataProcessor.Тх_ФормированиеПланаРаботТехники.Form.Форма</DefaultForm>
+			<AuxiliaryForm/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ExtendedPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Form>Форма</Form>
+		</ChildObjects>
+	</DataProcessor>
+</MetaDataObject>

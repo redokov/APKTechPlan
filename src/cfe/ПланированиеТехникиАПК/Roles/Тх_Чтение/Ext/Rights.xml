@@ -4,17 +4,6 @@
 	<setForAttributesByDefault>true</setForAttributesByDefault>
 	<independentRightsOfChildObjects>false</independentRightsOfChildObjects>
 	<object>
-		<name>InformationRegister.Тх_КоэффициентыПересчетаРабот</name>
-		<right>
-			<name>Read</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
 		<name>Subsystem.Тх_ПланированиеТехники</name>
 		<right>
 			<name>View</name>
@@ -49,17 +38,6 @@
 	</object>
 	<object>
 		<name>Report.Тх_ДефицитТехники</name>
-		<right>
-			<name>Use</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>DataProcessor.Тх_ЗаполнениеКоэффициентов</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>

@@ -8,13 +8,6 @@
 				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
 			</Visibility>
 		</Command>
-		<Command name="InformationRegister.Тх_КоэффициентыПересчетаРабот.StandardCommand.OpenList">
-			<Visibility>
-				<xr:Common>false</xr:Common>
-				<xr:Value name="Role.Тх_Чтение">true</xr:Value>
-				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
-			</Visibility>
-		</Command>
 		<Command name="Report.Тх_ДефицитТехники.StandardCommand.Open">
 			<Visibility>
 				<xr:Common>false</xr:Common>
@@ -25,13 +18,6 @@
 		<Command name="Document.Тх_ПланТехническихРесурсов.StandardCommand.Create">
 			<Visibility>
 				<xr:Common>false</xr:Common>
-				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
-			</Visibility>
-		</Command>
-		<Command name="DataProcessor.Тх_ЗаполнениеКоэффициентов.StandardCommand.Open">
-			<Visibility>
-				<xr:Common>false</xr:Common>
-				<xr:Value name="Role.Тх_Чтение">true</xr:Value>
 				<xr:Value name="Role.Тх_Редактирование">true</xr:Value>
 			</Visibility>
 		</Command>
@@ -47,17 +33,11 @@
 		<Command name="Document.Тх_ПланТехническихРесурсов.StandardCommand.OpenList">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
-		<Command name="InformationRegister.Тх_КоэффициентыПересчетаРабот.StandardCommand.OpenList">
-			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
-		</Command>
 		<Command name="Report.Тх_ДефицитТехники.StandardCommand.Open">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
 		<Command name="Document.Тх_ПланТехническихРесурсов.StandardCommand.Create">
 			<CommandGroup>ActionsPanelCreate</CommandGroup>
-		</Command>
-		<Command name="DataProcessor.Тх_ЗаполнениеКоэффициентов.StandardCommand.Open">
-			<CommandGroup>ActionsPanelTools</CommandGroup>
 		</Command>
 		<Command name="DataProcessor.Тх_РасчетДефицита.StandardCommand.Open">
 			<CommandGroup>ActionsPanelTools</CommandGroup>

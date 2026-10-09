@@ -4,7 +4,7 @@
 Connects to dev_erpapk_demo, creates Tkh_RannnerTestov data processor,
 calls VypolnitTesty() (COM: Latin-safe transliteration is NOT used - COM
 dispatch resolves Cyrillic method names fine from python string literals).
-Prints per-test results and a summary. Exit 0 iff all 20 tests report
+Prints per-test results and a summary. Exit 0 iff all 13 tests report
 Passed=True (SKIPs are reported by the runner as True per A11 design).
 """
 import sys
@@ -67,8 +67,8 @@ def main():
                 print("    | " + dl)
     print("\n[summary] total=%d passed=%d failed=%d wall=%.1fs"
           % (total, passed, failed, elapsed))
-    if total != 20:
-        print("UNEXPECTED: expected 20 tests, got %d" % total)
+    if total != 13:
+        print("UNEXPECTED: expected 13 tests, got %d" % total)
         return 1
     return 0 if failed == 0 else 1
 

@@ -48,9 +48,17 @@ def ensure_roles():
 def main():
     feature = os.path.abspath(sys.argv[1])
     timeout = int(sys.argv[2]) if len(sys.argv) > 2 else 600
-    if not ensure_roles():
-        print("[va] ABORT: could not ensure roles")
-        return 2
+    # argv[3] (optional): test-client user override. TestManager stays under
+    # USER (admin); only КлиентыТестирования connects as the override user.
+    # Role ensure (admin's Tх_ roles) is skipped for override runs: the
+    # override user's roles are managed by the caller (T12 stages).
+    tc_user = sys.argv[3] if len(sys.argv) > 3 else None
+    if tc_user is None:
+        if not ensure_roles():
+            print("[va] ABORT: could not ensure roles")
+            return 2
+    else:
+        print("[va] test-client user override: " + tc_user)
     stem = os.path.splitext(os.path.basename(feature))[0]
     vap_path = os.path.join(LOGDIR, "vap_%s.json" % stem)
     onec_log = os.path.join(LOGDIR, "va_1c_%s.log" % stem)
@@ -72,7 +80,8 @@ def main():
         "КлиентыТестирования": [
             {
                 "Имя": "Основной",
-                "ПутьКИнфобазе": '/S "%s" /N "%s" /P ""' % (BASE, USER),
+                "ПутьКИнфобазе": '/S "%s" /N "%s" /P ""' % (
+                    BASE, tc_user if tc_user is not None else USER),
                 "ДопПараметры": (
                     "/DisableStartupMessages /DisableStartupDialogs"
                 ),

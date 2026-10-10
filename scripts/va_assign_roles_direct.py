@@ -53,6 +53,9 @@ def contains_role(agent, user, role_obj):
 def main():
     name = sys.argv[1]
     action = sys.argv[2] if len(sys.argv) > 2 else "add"
+    # argv[3] (optional): comma-separated role list (T12: stage-wise
+    # assignment, e.g. only Тх_Чтение). Default: both Тх_-roles.
+    roles = sys.argv[3].split(",") if len(sys.argv) > 3 else list(ROLES)
 
     c = win32com.client.Dispatch("V85.COMConnector")
     agent = c.Connect(CONN_STRING)
@@ -71,7 +74,7 @@ def main():
     # metadata role objects
     md_roles = {}
     md = agent.Метаданные.Роли
-    for role_name in ROLES:
+    for role_name in roles:
         role_obj = getattr(md, role_name)
         if role_obj is None:
             print("[fail] metadata role missing: " + role_name)
@@ -111,7 +114,7 @@ def main():
     user2 = find_ib_user(agent2, name)
     have2 = set()
     md2 = agent2.Метаданные.Роли
-    for role_name in ROLES:
+    for role_name in roles:
         try:
             if user2.Роли.Содержит(getattr(md2, role_name)):
                 have2.add(role_name)
@@ -119,9 +122,9 @@ def main():
             pass
     print("[verify] Тх-roles now: " + (", ".join(sorted(have2)) or "none"))
     if action == "add":
-        ok = all(r in have2 for r in ROLES)
+        ok = all(r in have2 for r in roles)
     else:
-        ok = not any(r in have2 for r in ROLES)
+        ok = not any(r in have2 for r in roles)
     print("[verify] " + ("OK" if ok else "FAILED"))
     return 0 if ok else 1
 

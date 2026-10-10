@@ -99,7 +99,7 @@ def main():
         "ПутьКФайлуДляВыгрузкиСтатусаВыполненияСценариев": (
             os.path.join(LOGDIR, "va_status_%s.log" % stem).replace("\\", "/")
         ),
-        "ТаймаутЗапуска1С": "180",
+        "ТаймаутЗапуска1С": "600",
     }
     with io.open(vap_path, "w", encoding="utf-8") as f:
         json.dump(vap, f, ensure_ascii=False)

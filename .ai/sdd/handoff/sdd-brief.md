@@ -1,7 +1,7 @@
 # SDD Handoff Brief: Редизайн «Планирования техники АПК» — расчёт потребности по техкартам
 
-> Status: Implemented (T1–T13 DONE, все гейты зелёные)
-> Readiness: Ready for sdd-review (финальная верификация T13 пройдена 2026-10-10)
+> Status: Review done (T1–T13 DONE; sdd-review 2026-10-10: Approved with follow-ups)
+> Readiness: Ready for release (review.md зафиксирован, блокеров нет)
 > Updated: 2026-10-10
 > Supersedes: `.ai/sdd/handoff/sdd-brief.md` спеки 001 (частично реализована; устарела в части форм/типов — использовать только как справочник фактов релиза 001)
 
@@ -53,7 +53,7 @@ Unit: python scripts/run_unit_tests.py (серверные, headless COM)
 
 ## Review / Release Notes
 
-- **Review Artifact:** `review.md` — создаётся фазой sdd-review после T13.
+- **Review Artifact:** `.ai/sdd/specs/002-redesign-planirovaniia-tekhniki/review.md` — СОЗДАН (2026-10-10). Вердикт: **Approved with follow-ups**. Coverage: FR-001..007 / NFR-001..004 — все Pass; TD-001..008 — Pass; T1–T13 — Pass. Findings (оба Low, не блокируют): (1) сцепка реализована структурной типизацией вместо форменных фильтров design §10 — сильнее задуманного, задокументировано в T4; (2) VA-фичи 05/06 устарели после T11-редизайна СКД (элемент «ТолькоДефицит» удалён) — вне acceptance-набора спеки, follow-up.
 - **Final verification (T13, 2026-10-10, поколение 6693e570):** RT PASS (content REAL = 0, сирот нет); unit 20/20 PASS; bsl-ls: Documents 0 Error, DataProcessors 0 Error, CommonModules 11 Error — все документированные FP (QueryToMissingMetadata на таблицы основной конфигурации, docs/bsl-ls-false-positives.md), Reports — BSL-модулей нет (formless СКД); в T13 добавлена проверка ОбменДанными.Загрузка в ПередЗаписью/ОбработкаПроведения (v8std 773, была единственной реальной находкой финального гейта); inventory: ни одного TypeId у ретайпированных реквизитов (13 cfg:-типов в документе, 9 в регистре); VA: 01/02/03/07/08 PASS + 09 (3 стадии под «Агрономом») PASS; UI-доказательство скрытия раздела без Тх_-ролей — OCR-захваты окна (драйвер run_t12_roles.py).
 - **Known Follow-ups:** «команда не найдена в панели раздела» — ЗАКРЫТО в T12: видимость строго ролевая (CommandInterface Common=false), без Тх_-ролей раздела нет (OCR ×51 захват), с ролями команды открываются; ограничения VA-single задокументированы (нет шагов «отсутствует», «код на сервере» идёт под TestManager-админом, флейк подключения TestClient); межподразделенческие замены — roadmap (design FAQ Q9).
 - **Baseline:** коммит `144b782` (WIP feature 03) → T10 `cbb06de` → T11 `47d67f2` → T12 `eeaa6b1` → T13 (финальный).

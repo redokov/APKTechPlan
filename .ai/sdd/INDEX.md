@@ -27,7 +27,7 @@
 | ID | Feature | Status | Requirements | Design | Tasks | Review |
 |----|---------|--------|--------------|--------|-------|--------|
 | 001 | Анализ дефицита техники | tasks:approved | approved (ночной прогон, ревью утром; Q-001..Q-007 открыты с рекомендациями) | approved (ночной прогон, ревью утром; Q-001..Q-007 закрыты в дизайне, см. §18 Requirements feedback) | approved (ночной прогон, ревью утром; Фаза A офлайн + Фаза B после подъёма кластера) | pending |
-| 002 | Редизайн планирования техники (расчёт потребности) | design:approved | approved (D-001..D-008) | approved (TD-001..TD-008, FAQ Q1–Q4 ок) | approved (T1–T13) | — |
+| 002 | Редизайн планирования техники (расчёт потребности) | review:done | approved (D-001..D-008) | approved (TD-001..TD-008, FAQ Q1–Q4 ок) | done (T1–T13, все гейты зелёные, поколение 6693e570) | approved with follow-ups (2026-10-10; Findings: Low×2 — сцепка структурно, фичи 05/06 stale) |
 
 ## Handoff
 

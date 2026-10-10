@@ -8,6 +8,9 @@
 	</Title>
 	<AutoTitle>false</AutoTitle>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаПараметров" id="1">
 			<Title>
@@ -35,6 +38,7 @@
 					</v8:item>
 				</ToolTip>
 				<ClearButton>true</ClearButton>
+				<QuickChoice>false</QuickChoice>
 				<ContextMenu name="ОрганизацияКонтекстноеМеню" id="4"/>
 				<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="5"/>
 			</InputField>
@@ -54,6 +58,7 @@
 					</v8:item>
 				</ToolTip>
 				<ClearButton>true</ClearButton>
+				<QuickChoice>false</QuickChoice>
 				<ContextMenu name="ПодразделениеКонтекстноеМеню" id="7"/>
 				<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="8"/>
 			</InputField>
@@ -73,11 +78,9 @@
 					</v8:item>
 				</ToolTip>
 				<ClearButton>true</ClearButton>
+				<QuickChoice>false</QuickChoice>
 				<ContextMenu name="СценарийПланированияКонтекстноеМеню" id="10"/>
 				<ExtendedTooltip name="СценарийПланированияРасширеннаяПодсказка" id="11"/>
-				<Events>
-					<Event name="StartChoice">СценарийПланированияНачалоВыбора</Event>
-				</Events>
 			</InputField>
 			<InputField name="ПериодС" id="12">
 				<DataPath>ПериодС</DataPath>

@@ -35,6 +35,7 @@
 						</v8:item>
 					</ToolTip>
 					<ClearButton>true</ClearButton>
+				<QuickChoice>false</QuickChoice>
 					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="4"/>
 					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="5"/>
 				</InputField>
@@ -54,6 +55,7 @@
 						</v8:item>
 					</ToolTip>
 					<ClearButton>true</ClearButton>
+				<QuickChoice>false</QuickChoice>
 					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="7"/>
 					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="8"/>
 				</InputField>
@@ -74,6 +76,7 @@
 					</ToolTip>
 					<ChoiceButton>true</ChoiceButton>
 					<ClearButton>true</ClearButton>
+				<QuickChoice>false</QuickChoice>
 					<AutoMarkIncomplete>true</AutoMarkIncomplete>
 					<ContextMenu name="СценарийПланированияКонтекстноеМеню" id="10"/>
 					<ExtendedTooltip name="СценарийПланированияРасширеннаяПодсказка" id="11"/>
@@ -222,6 +225,10 @@
 			<ContextMenu name="ПояснениеРасчетаКонтекстноеМеню" id="28"/>
 			<ExtendedTooltip name="ПояснениеРасчетаРасширеннаяПодсказка" id="29"/>
 		</LabelDecoration>
+		<Button name="РассчитатьИОткрытьОтчет" id="40">
+			<CommandName>Form.Command.РассчитатьИОткрытьОтчет</CommandName>
+			<ExtendedTooltip name="РассчитатьИОткрытьОтчетРасширеннаяПодсказка" id="41"/>
+		</Button>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="30">

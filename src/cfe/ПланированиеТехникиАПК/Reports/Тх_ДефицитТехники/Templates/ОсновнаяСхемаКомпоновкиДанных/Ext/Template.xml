@@ -245,16 +245,7 @@
 	ДефицитТехники.ПланТехресурсовОтсутствует КАК ПланТехресурсовОтсутствует
 ИЗ
 	РегистрСведений.Тх_ДефицитТехники КАК ДефицитТехники
-ГДЕ
-	(&amp;Организация ЕСТЬ NULL ИЛИ ДефицитТехники.Организация = &amp;Организация)
-	И (&amp;Подразделение ЕСТЬ NULL ИЛИ ДефицитТехники.Подразделение = &amp;Подразделение)
-	И (&amp;СценарийПланирования ЕСТЬ NULL ИЛИ ДефицитТехники.СценарийПланирования = &amp;СценарийПланирования)
-	И (&amp;ДатаНачала ЕСТЬ NULL ИЛИ ДефицитТехники.ПериодНачала &gt;= &amp;ДатаНачала)
-	И (&amp;ДатаОкончания ЕСТЬ NULL ИЛИ ДефицитТехники.ПериодОкончания &lt;= &amp;ДатаОкончания)
-	И (&amp;ВидРаботы ЕСТЬ NULL ИЛИ ДефицитТехники.ВидРаботы = &amp;ВидРаботы)
-	И (&amp;МодельТехники ЕСТЬ NULL ИЛИ ДефицитТехники.МодельТехники = &amp;МодельТехники)
-	И (&amp;ВидТехники ЕСТЬ NULL ИЛИ ДефицитТехники.ВидТехники = &amp;ВидТехники)
-	И (НЕ &amp;ТолькоДефицит ИЛИ ДефицитТехники.НехватаетСмен &gt; 0)</query>
+</query>
 	</dataSet>
 	<calculatedField>
 		<dataPath>ПометкаКоэффициента</dataPath>
@@ -302,142 +293,6 @@
 		<dataPath>НехватаетСмен</dataPath>
 		<expression>Сумма(НехватаетСмен)</expression>
 	</totalField>
-	<parameter>
-		<name>Организация</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Организация</v8:content>
-			</v8:item>
-		</title>
-		<value xsi:nil="true"/>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>Подразделение</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Подразделение</v8:content>
-			</v8:item>
-		</title>
-		<value xsi:nil="true"/>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>СценарийПланирования</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Сценарий планирования</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:TypeSet xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef</v8:TypeSet>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>ДатаНачала</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата начала</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>Date</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>ДатаОкончания</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата окончания</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>Date</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>ВидРаботы</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Вид работы</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:TypeSet xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef</v8:TypeSet>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>МодельТехники</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Модель техники</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:TypeSet xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef</v8:TypeSet>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>ВидТехники</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Вид техники</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.Тх_ВидыТехники</v8:Type>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>ТолькоДефицит</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Только дефицитные строки</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">true</value>
-		<useRestriction>false</useRestriction>
-		<denyIncompleteValues>true</denyIncompleteValues>
-		<use>Always</use>
-	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
@@ -447,61 +302,64 @@
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
-			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Организация</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>a3e0aabc-8b38-407c-9fb6-93034740c2d4</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Подразделение</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>cb3071ae-7bed-4201-b924-ec30cfba62a9</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>СценарийПланирования</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>eb2378ce-1d22-4d32-a285-3f74cbd15a06</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ДатаНачала</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>86e5a654-3411-4247-9d7f-0ec2e4f6e246</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ДатаОкончания</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>970a7b73-881a-41e8-87bb-86471e14ceac</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ВидРаботы</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>0aaab944-434d-4273-a6ff-9817ef8e76da</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>МодельТехники</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>a9d18a1f-b4a2-48f4-8115-8aa82f5d302d</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ВидТехники</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>6eaef0bc-9c41-4c19-adac-91b80d1b77b0</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ТолькоДефицит</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:userSettingID>f9bc672e-d82f-46cd-9950-b7c000c2e161</dcsset:userSettingID>
-				</dcscor:item>
-			</dcsset:dataParameters>
+			<dcsset:filter>
+			<dcsset:item xsi:type="dcsset:FilterItemComparison">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+				<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				<dcsset:userSettingID>a1b2c3d4-1111-4a11-9a11-000000000001</dcsset:userSettingID>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:FilterItemComparison">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
+				<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				<dcsset:userSettingID>a1b2c3d4-1111-4a11-9a11-000000000002</dcsset:userSettingID>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:FilterItemComparison">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:left xsi:type="dcscor:Field">СценарийПланирования</dcsset:left>
+				<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				<dcsset:userSettingID>a1b2c3d4-1111-4a11-9a11-000000000003</dcsset:userSettingID>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:FilterItemComparison">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:left xsi:type="dcscor:Field">ПериодНачала</dcsset:left>
+				<dcsset:comparisonType>GreaterOrEqual</dcsset:comparisonType>
+				<dcsset:userSettingID>a1b2c3d4-1111-4a11-9a11-000000000004</dcsset:userSettingID>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:FilterItemComparison">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:left xsi:type="dcscor:Field">ПериодОкончания</dcsset:left>
+				<dcsset:comparisonType>LessOrEqual</dcsset:comparisonType>
+				<dcsset:userSettingID>a1b2c3d4-1111-4a11-9a11-000000000005</dcsset:userSettingID>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:FilterItemComparison">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:left xsi:type="dcscor:Field">ВидРаботы</dcsset:left>
+				<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				<dcsset:userSettingID>a1b2c3d4-1111-4a11-9a11-000000000006</dcsset:userSettingID>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:FilterItemComparison">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:left xsi:type="dcscor:Field">МодельТехники</dcsset:left>
+				<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				<dcsset:userSettingID>a1b2c3d4-1111-4a11-9a11-000000000007</dcsset:userSettingID>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:FilterItemComparison">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:left xsi:type="dcscor:Field">ВидТехники</dcsset:left>
+				<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				<dcsset:userSettingID>a1b2c3d4-1111-4a11-9a11-000000000008</dcsset:userSettingID>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:FilterItemComparison">
+				<dcsset:use>true</dcsset:use>
+				<dcsset:left xsi:type="dcscor:Field">НехватаетСмен</dcsset:left>
+				<dcsset:comparisonType>Greater</dcsset:comparisonType>
+				<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+				<dcsset:userSettingID>a1b2c3d4-1111-4a11-9a11-000000000009</dcsset:userSettingID>
+			</dcsset:item>
+			</dcsset:filter>
+			
 			<dcsset:conditionalAppearance>
 				<dcsset:item>
 					<dcsset:selection/>
@@ -543,112 +401,50 @@
 				</dcsset:item>
 			</dcsset:conditionalAppearance>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
-				<dcsset:groupItems>
-					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Подразделение</dcsset:field>
-						<dcsset:groupType>Items</dcsset:groupType>
-						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-					</dcsset:item>
-				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-				</dcsset:selection>
-				<dcsset:item xsi:type="dcsset:StructureItemGroup">
-					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Подразделение</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>ПериодНачала</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
-					</dcsset:groupItems>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-					<dcsset:item xsi:type="dcsset:StructureItemGroup">
-						<dcsset:groupItems>
-							<dcsset:item xsi:type="dcsset:GroupItemField">
-								<dcsset:field>ПериодОкончания</dcsset:field>
-								<dcsset:groupType>Items</dcsset:groupType>
-								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-							</dcsset:item>
-						</dcsset:groupItems>
-						<dcsset:order>
-							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-						</dcsset:order>
-						<dcsset:selection>
-							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-						</dcsset:selection>
-						<dcsset:item xsi:type="dcsset:StructureItemGroup">
-							<dcsset:groupItems>
-								<dcsset:item xsi:type="dcsset:GroupItemField">
-									<dcsset:field>ВидРаботы</dcsset:field>
-									<dcsset:groupType>Items</dcsset:groupType>
-									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-								</dcsset:item>
-							</dcsset:groupItems>
-							<dcsset:order>
-								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-							</dcsset:order>
-							<dcsset:selection>
-								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-							</dcsset:selection>
-							<dcsset:item xsi:type="dcsset:StructureItemGroup">
-								<dcsset:groupItems>
-									<dcsset:item xsi:type="dcsset:GroupItemField">
-										<dcsset:field>МодельТехники</dcsset:field>
-										<dcsset:groupType>Items</dcsset:groupType>
-										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-									</dcsset:item>
-								</dcsset:groupItems>
-								<dcsset:order>
-									<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-								</dcsset:order>
-								<dcsset:selection>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>МодельТехники</dcsset:field>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>ПотребностьСмен</dcsset:field>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>ДоступноСмен</dcsset:field>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>НехватаетСмен</dcsset:field>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>ДнейПериода</dcsset:field>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>СменВДень</dcsset:field>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>ПометкаКоэффициента</dcsset:field>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>ПометкаПлана</dcsset:field>
-									</dcsset:item>
-								</dcsset:selection>
-							</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ПериодОкончания</dcsset:field>
 						</dcsset:item>
-					</dcsset:item>
-				</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ВидРаботы</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>МодельТехники</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ВидТехники</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ПотребностьСмен</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ДоступноСмен</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>НехватаетСмен</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ДнейПериода</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СменВДень</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ПометкаКоэффициента</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ПометкаПлана</dcsset:field>
+						</dcsset:item>
+				</dcsset:selection>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>

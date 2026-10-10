@@ -115,8 +115,13 @@ def capture_loop(proc, stage_name):
     while proc.poll() is None and n < 120:
         n += 1
         time.sleep(15)
-        rc, out = run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
-                       "-File", CAP_PS1], timeout=120)
+        try:
+            rc, out = run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
+                           "-File", CAP_PS1], timeout=60)
+        except subprocess.TimeoutExpired:
+            # hung capture (e.g. a frozen window) must not kill the driver
+            print("[t12] capture ps1 timed out - skipping cycle")
+            continue
         for m in re.finditer(r"-> (C:\\\S+?\.png)", out):
             png = m.group(1)
             if png in seen:

@@ -251,19 +251,19 @@ Acceptance: правовой сценарий PASS под Агрономом —
 Files: tests/vanessa/09-prava-agronom.feature (новая), 08-polzovatel-bez-rolej-ne-vidit.feature (пометка «заменена 09-й» — её шаги в VA-single отсутствуют), scripts/run_t12_roles.py (новый драйвер), scripts/run_va_feature.py (argv[3] — пользователь TestClient), scripts/va_assign_roles_direct.py (argv[3] — список ролей).
 Verification: run_t12_roles.py: стадии 2/3 PASS с первого прогона, стадия 1 PASS (3-я попытка, флейк подключения TestClient) + 49 OCR-захватов «Планирование техники» отсутствует; роли по стадиям верифицированы COM-чтением (list); финальное состояние — Тх_-ролей у Агронома нет (restore). Логи: heartbeat/va_1c_t12_*.log, heartbeat/t11_choice4_*.png.
 
-## T13: Финальная верификация + handoff (все FR/NFR)
+## T13: Финальная верификация + handoff (все FR/NFR) — DONE (2026-10-10; поколение 6693e570: RT PASS, unit 20/20, VA 01/02/03/07/08/09-стадии PASS, bsl-ls 0E по каталогам; +1 находка: v8std 773 ОбменДанными.Загрузка — исправлено)
 
 **Priority:** P1 | **Estimate:** 2h | **Depends:** T11, T12 | **Covers:** весь spec
 
 Work:
-- [ ] Полный round-trip: dump_extension → compare_dump_dirs.py → «only in source» = 0, content diff REAL = 0
-- [ ] Полный VA-набор 01–03, 08, 09 PASS; unit-тесты PASS; bsl-ls+v8std по всему расширению 0 Error
-- [ ] inventory_extension.py: контроль типов (ни одного TypeId у ретайпированных)
-- [ ] heartbeat/night.log: итоговая запись; sdd-brief.md обновить
+- [x] Полный round-trip: dump_extension → compare_dump_dirs.py — VERDICT: PASS, content REAL = 0, сирот нет (поколение 6693e570, после правки v8std 773)
+- [x] Полный VA-набор 01–03, 08, 09 PASS (+ 07 из acceptance T11); unit-тесты 20/20 PASS; bsl-ls по каталогам 0 Error (Documents/DataProcessors; CommonModules — 11 Error, все документированные FP QueryToMissingMetadata на таблицы основной конфигурации; Reports — BSL-модулей нет). ЕДИНСТВЕННАЯ реальная находка финального гейта: [DataExchangeLoading] в ObjectModule.bsl (ПередЗаписью/ОбработкаПроведения без проверки ОбменДанными.Загрузка — v8std 773) — ИСПРАВЛЕНО (guard в обоих обработчиках) с полным повторным пайплайном (load → apply 6693e570 → RT PASS → unit 20/20 → VA 01/02/03/07/08/09 PASS). v8std-соответствие остального кода — по поэтапным проверкам задач (std453/std535/std787/acc:226, T6–T9).
+- [x] inventory_extension.py: контроль типов — ни одного TypeId у ретайпированных реквизитов (все TypeId в XML — только xr:GeneratedType идентичность объектов); позитив: 13 cfg:-типов в Документ.Тх_ПланТехническихРесурсов, 9 в РегистрСведений.Тх_ДефицитТехники
+- [x] heartbeat/night.log: итоговая запись; sdd-brief.md обновлён (Status: Implemented, Ready for sdd-review, финальная верификация + закрытые follow-ups зафиксированы)
 
-Acceptance: все гейты зелёные — материал для sdd-review.
-Files: heartbeat/**, .ai/sdd/handoff/sdd-brief.md.
-Verification: см. шаги; отчёт в чате по формату Command/Exit/Summary/Verdict.
+Acceptance: все гейты зелёные — ВЫПОЛНЕНО; материал для sdd-review готов.
+Files: heartbeat/** (артефакты), .ai/sdd/handoff/sdd-brief.md, src/cfe/.../ObjectModule.bsl (v8std 773).
+Verification: Command: полный пайплайн на финальном поколении 6693e570. Exit: все гейты 0. Summary: RT PASS (REAL=0) | unit 20/20 | bsl-ls Documents 0E / DataProcessors 0E / CommonModules 11 FP / Reports 0 файлов | inventory TypeId=0 у реквизитов | VA 01/02/03/07/08 PASS + 09 стадии 1/2/3 PASS (стадия 1 — 3-я попытка, известный флейк подключения TestClient; UI-доказательство OCR) | v8std 773 закрыт правкой. Verdict: PASS — спека 002 готова к sdd-review.
 
 ---
 

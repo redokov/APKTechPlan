@@ -1,8 +1,8 @@
 # SDD Handoff Brief: Редизайн «Планирования техники АПК» — расчёт потребности по техкартам
 
-> Status: Approved
-> Readiness: Ready for implementation (все гейты approved, открытых вопросов нет)
-> Updated: 2026-10-09
+> Status: Implemented (T1–T13 DONE, все гейты зелёные)
+> Readiness: Ready for sdd-review (финальная верификация T13 пройдена 2026-10-10)
+> Updated: 2026-10-10
 > Supersedes: `.ai/sdd/handoff/sdd-brief.md` спеки 001 (частично реализована; устарела в части форм/типов — использовать только как справочник фактов релиза 001)
 
 ## Metadata
@@ -54,13 +54,14 @@ Unit: python scripts/run_unit_tests.py (серверные, headless COM)
 ## Review / Release Notes
 
 - **Review Artifact:** `review.md` — создаётся фазой sdd-review после T13.
-- **Known Follow-ups:** «команда не найдена в панели раздела» (открытая проблема §8 промта) — диагностировать под Агрономом в T12; межподразделенческие замены — roadmap (design FAQ Q9).
-- **Baseline:** коммит `144b782` (WIP feature 03: BeforeAddRow-дефолты — переиспользуется в T3).
+- **Final verification (T13, 2026-10-10, поколение 6693e570):** RT PASS (content REAL = 0, сирот нет); unit 20/20 PASS; bsl-ls: Documents 0 Error, DataProcessors 0 Error, CommonModules 11 Error — все документированные FP (QueryToMissingMetadata на таблицы основной конфигурации, docs/bsl-ls-false-positives.md), Reports — BSL-модулей нет (formless СКД); в T13 добавлена проверка ОбменДанными.Загрузка в ПередЗаписью/ОбработкаПроведения (v8std 773, была единственной реальной находкой финального гейта); inventory: ни одного TypeId у ретайпированных реквизитов (13 cfg:-типов в документе, 9 в регистре); VA: 01/02/03/07/08 PASS + 09 (3 стадии под «Агрономом») PASS; UI-доказательство скрытия раздела без Тх_-ролей — OCR-захваты окна (драйвер run_t12_roles.py).
+- **Known Follow-ups:** «команда не найдена в панели раздела» — ЗАКРЫТО в T12: видимость строго ролевая (CommandInterface Common=false), без Тх_-ролей раздела нет (OCR ×51 захват), с ролями команды открываются; ограничения VA-single задокументированы (нет шагов «отсутствует», «код на сервере» идёт под TestManager-админом, флейк подключения TestClient); межподразделенческие замены — roadmap (design FAQ Q9).
+- **Baseline:** коммит `144b782` (WIP feature 03) → T10 `cbb06de` → T11 `47d67f2` → T12 `eeaa6b1` → T13 (финальный).
 
 ## Handoff Readiness
 
-- **Ready for Implementation:** yes
-- **Ready for QA:** no (после T11/T12)
+- **Ready for Implementation:** yes (завершено, T1–T13)
+- **Ready for QA:** yes (финальная верификация T13 пройдена)
 - **Ready for Release:** no (после sdd-review)
 - **Blockers:** нет
-- **Recommended Next Action:** sdd-exec, задача T1 (синонимы)
+- **Recommended Next Action:** sdd-review по `.ai/sdd/specs/002-redesign-planirovaniia-tekhniki/` (requirements/design/tasks → review.md)

@@ -6,7 +6,7 @@
 
 ## Plan
 
-- `.ai/sdd/PLAN.md`: missing (roadmap не требуется — один фиче-спека)
+- `.ai/sdd/PLAN.md`: superseded — roadmap ведётся в `docs/roadmap.md` (релизы 2–6, зафиксирован 2026-10-11)
 
 ## Ideas
 

@@ -1,5 +1,5 @@
 .its_creds.txt
-wiki/raw
+wiki/
 __pycache__/
 *.epf
 *.erf

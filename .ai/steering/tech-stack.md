@@ -9,5 +9,7 @@
   -Extension <имя> -UpdateDB) → round-trip verify.
 - Тесты: модульные (серверные, headless через COM/ Automation), сценарные (Vanessa BDD,
   .feature + step definitions), e2e (веб-клиент через Chrome DevTools, публикация Apache).
-- Вики по функциональности АПК: C:/MyProjects/APKTechPlan/wiki (raw/md — 261 страница ИТС apkmod25).
+- Вики по функциональности АПК: C:/MyProjects/LLMWiki/APK (raw/md — 261 страница ИТС apkmod25).
+  Вики обновляется и ищется в LLMWiki; в проекте APKTechPlan её больше нет — в старом месте
+  (APKTechPlan/wiki) только README-заглушка.
 - 1cv8.exe: C:\Program Files\1cv8\8.5.4.1683\bin

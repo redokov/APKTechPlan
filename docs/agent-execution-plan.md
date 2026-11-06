@@ -12,7 +12,9 @@
 - Исходники ЕРП: C:\MyProjects\ERPsrc
 - Исходники модуля АПК: C:\MyProjects\APKModSrc
 - База: Srvr="localhost";Ref="dev_erpapk_demo", пользователь Администратор, без пароля
-- Вики: C:/MyProjects/APKTechPlan/wiki (скелет от USO-Wiki)
+- Вики: C:/MyProjects/LLMWiki/APK (скелет был взят от вики УСО, ныне C:/MyProjects/LLMWiki/ERP-USO).
+  Вики обновляется и ищется в LLMWiki; в проекте APKTechPlan её больше нет — в старом месте
+  (APKTechPlan/wiki) только README-заглушка.
 - Презентация идеи: C:\MyProjects\MyTasks\ПрезентацияПланированияТехники.md
 - ИТС-креды: .its_creds.txt (не коммитить)
 

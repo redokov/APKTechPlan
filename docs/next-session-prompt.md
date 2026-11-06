@@ -30,7 +30,9 @@ docs/agent-execution-plan.md, .ai/sdd/specs/001-analiz-defitsita-tekhniki/tasks.
 
 ## Что уже готово (проверено, в git)
 
-- wiki/ — вики по ИТС apkmod25 (261 страница, raw/md) + синтез-страницы; docs/digest-apk-techplanning.md
+- Вики по ИТС apkmod25 (261 страница, raw/md) + синтез-страницы — теперь в C:/MyProjects/LLMWiki/APK
+  (обновляется и ищется в LLMWiki; в проекте её больше нет — в wiki/ только README-заглушка);
+  docs/digest-apk-techplanning.md
   (функционал типового), docs/digest-apk-objects.md (ТОЧНЫЕ метаданные: ТЧ техкарт, регистры,
   справочники — источник имён для кода), docs/product-reference-screens.md (референс UI из OCR).
 - .ai/sdd/specs/001-analiz-defitsita-tekhniki/ — requirements.md (18 FR, Q-001..Q-007), design.md

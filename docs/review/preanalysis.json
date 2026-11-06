@@ -1,0 +1,59 @@
+{
+  "bslCount": 13,
+  "topFiles": [
+    [
+      "CommonModules\\Тх_Тесты\\Ext\\Module.bsl",
+      121162
+    ],
+    [
+      "CommonModules\\Тх_ТехникаСервер\\Ext\\Module.bsl",
+      99450
+    ],
+    [
+      "DataProcessors\\Тх_РаннерТестов\\Ext\\ObjectModule.bsl",
+      24137
+    ],
+    [
+      "Documents\\Тх_ПланТехническихРесурсов\\Ext\\ObjectModule.bsl",
+      21980
+    ],
+    [
+      "Documents\\Тх_ПланТехническихРесурсов\\Forms\\Тх_ФормаДокумента\\Ext\\Form\\Module.bsl",
+      15307
+    ],
+    [
+      "DataProcessors\\Тх_ФормированиеПланаРаботТехники\\Forms\\Форма\\Ext\\Form\\Module.bsl",
+      8320
+    ],
+    [
+      "DataProcessors\\Тх_РасчетДефицита\\Forms\\Форма\\Ext\\Form\\Module.bsl",
+      6140
+    ],
+    [
+      "DataProcessors\\Тх_РаннерТестов\\Forms\\Форма\\Ext\\Form\\Module.bsl",
+      2556
+    ],
+    [
+      "Documents\\Тх_ПланТехническихРесурсов\\Forms\\Тх_ФормаСписка\\Ext\\Form\\Module.bsl",
+      492
+    ],
+    [
+      "DataProcessors\\Тх_РаннерТестов\\Ext\\ManagerModule.bsl",
+      3
+    ],
+    [
+      "DataProcessors\\Тх_РасчетДефицита\\Ext\\ManagerModule.bsl",
+      3
+    ],
+    [
+      "DataProcessors\\Тх_РасчетДефицита\\Ext\\ObjectModule.bsl",
+      3
+    ],
+    [
+      "Enums\\Тх_ВидыТехники\\Ext\\ManagerModule.bsl",
+      3
+    ]
+  ],
+  "extensions": [],
+  "submodules": 0
+}

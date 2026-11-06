@@ -9,7 +9,7 @@
 					<v8:content>Тх_тесты</v8:content>
 				</v8:item>
 			</Synonym>
-			<Comment>Server unit-test module (design 11, task A11): 15 export Test*() functions of the extension logic with self-contained data setup and cleanup; run by the Tkh_RannnerTestov data processor (form button, COM or /Execute). No interface placement.</Comment>
+			<Comment>Server unit-test module (design 11, task A11): 20 export Test*() functions of the extension logic with self-contained data setup and cleanup; run by the Tkh_RannnerTestov data processor (form button, COM or /Execute). No interface placement.</Comment>
 			<Global>false</Global>
 			<ClientManagedApplication>false</ClientManagedApplication>
 			<Server>true</Server>

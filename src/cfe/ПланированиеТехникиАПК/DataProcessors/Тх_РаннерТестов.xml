@@ -19,7 +19,7 @@
 					<v8:content>Запуск модульных тестов</v8:content>
 				</v8:item>
 			</Synonym>
-			<Comment>Unit-test runner (design 11, task A11): sequential run of the 15 server tests of the Tkh_Testy common module; entry point for the form button, COM (V83.COMConnector: DataProcessors.Tkh_RannnerTestov.Create().RunTests()) and /Execute. Not placed in the subsystem interface.</Comment>
+			<Comment>Unit-test runner (design 11, task A11): sequential run of the 20 server tests of the Tkh_Testy common module; entry point for the form button, COM (V83.COMConnector: DataProcessors.Tkh_RannnerTestov.Create().RunTests()) and /Execute. Not placed in the subsystem interface.</Comment>
 			<UseStandardCommands>true</UseStandardCommands>
 			<DefaultForm>DataProcessor.Тх_РаннерТестов.Form.Форма</DefaultForm>
 			<AuxiliaryForm/>

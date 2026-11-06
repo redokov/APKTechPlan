@@ -577,10 +577,6 @@
 				</Page>
 			</ChildItems>
 		</Pages>
-			<Button name="КнопкаЗаполнитьМодельИХозНомер" id="200">
-			<CommandName>Form.Command.ЗаполнитьМодельИХозНомер</CommandName>
-			<ExtendedTooltip name="КнопкаЗаполнитьМодельИХозНомерРасширеннаяПодсказка" id="201"/>
-		</Button>
 </ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="122">
@@ -626,15 +622,5 @@
 			</Columns>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="ЗаполнитьМодельИХозНомер" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить модель и хозномер</v8:content>
-				</v8:item>
-			</Title>
-			<Action>ЗаполнитьМодельИХозНомерОбработка</Action>
-		</Command>
-	</Commands>
+	<Commands/>
 </Form>

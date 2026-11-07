@@ -20,7 +20,10 @@ import sys
 import time
 
 V8C = r"C:\Program Files\1cv8\8.5.4.1683\bin\1cv8c.exe"
-EPF = r"C:\MyProjects\APKTechPlan\tests\vanessa\vanessa-automation-single.epf"
+EPF = os.environ.get(
+    "VA_EPF",
+    r"C:\Program Files\OneScript\lib\vanessa-automation-single\vanessa-automation-single.epf",
+)
 USER = "Администратор (ОрловАВ)"
 BASE = r"localhost\dev_erpapk_demo"
 LOGDIR = r"C:\MyProjects\APKTechPlan\heartbeat"
@@ -71,8 +74,10 @@ def main():
         "ИмяСборки": "B6 " + stem,
         "ВерсияПлатформы": "8.5.4",
         "КаталогПоискаВерсииПлатформы": r"C:\Program Files\1cv8",
+        # 1C's parser rejects the spaced form  /N "user"  ("Ошибка в параметрах
+        # командной строки") - keys and values must be glued: /N"user".
         "СтрокаПодключенияКБазе": (
-            'ENTERPRISE /S "%s" /N "%s" /P ""' % (BASE, USER)
+            'ENTERPRISE /S"%s" /N"%s" /P""' % (BASE, USER)
         ),
         "ПутьКVanessaAutomation": EPF,
         "КаталогФич": feature.replace("\\", "/"),
@@ -80,7 +85,7 @@ def main():
         "КлиентыТестирования": [
             {
                 "Имя": "Основной",
-                "ПутьКИнфобазе": '/S "%s" /N "%s" /P ""' % (
+                "ПутьКИнфобазе": '/S"%s" /N"%s" /P""' % (
                     BASE, tc_user if tc_user is not None else USER),
                 "ДопПараметры": (
                     "/DisableStartupMessages /DisableStartupDialogs"

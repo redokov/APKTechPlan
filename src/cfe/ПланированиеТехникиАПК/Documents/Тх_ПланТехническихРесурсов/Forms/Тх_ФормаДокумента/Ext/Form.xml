@@ -10,7 +10,14 @@
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="КнопкаЗаполнитьМодельИХозНомер" id="233">
+				<CommandName>Form.Command.ЗаполнитьМодельИХозНомер</CommandName>
+				<ExtendedTooltip name="КнопкаЗаполнитьМодельИХозНомерРасширеннаяПодсказка" id="234"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -622,4 +629,15 @@
 			</Columns>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьМодельИХозНомер" id="232">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить модель и хозномер</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗаполнитьМодельИХозНомер</Action>
+		</Command>
+	</Commands>
 </Form>

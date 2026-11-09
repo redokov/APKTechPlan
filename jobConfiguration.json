@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/firstBitMarksistskaya/jenkins-lib/master/resources/schema.json",
+  "v8version": "8.5.4.1683",
+  "defaultBranch": "master",
+  "stages": {
+    "initSteps": false,
+    "sonarqube": true,
+    "syntaxCheck": false,
+    "bdd": false,
+    "smoke": false,
+    "edtValidate": false,
+    "yaxunit": false,
+    "runInContainer": false,
+    "email": false,
+    "telegram": false
+  },
+  "timeout": {
+    "sonarqube": 90
+  },
+  "sonarqube": {
+    "sonarQubeInstallation": "sonarqube10",
+    "useSonarScannerFromPath": false,
+    "sonarScannerToolName": "sonar-scanner",
+    "branchAnalysisConfiguration": "auto",
+    "waitForQualityGate": false
+  }
+}

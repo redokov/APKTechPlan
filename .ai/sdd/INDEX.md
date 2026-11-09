@@ -28,12 +28,21 @@
 |----|---------|--------|--------------|--------|-------|--------|
 | 001 | Анализ дефицита техники | superseded (заменена спекой 002; частично реализована в релизе 001, факты — справочник; ревью не проводилось, т.к. всё ценное переделано и проверено в 002) | approved (ночной прогон, ревью утром; Q-001..Q-007 открыты с рекомендациями) | approved (ночной прогон, ревью утром; Q-001..Q-007 закрыты в дизайне, см. §18 Requirements feedback) | approved (ночной прогон, ревью утром; Фаза A офлайн + Фаза B после подъёма кластера) | pending |
 | 002 | Редизайн планирования техники (расчёт потребности) | review:done | approved (D-001..D-008) | approved (TD-001..TD-008, FAQ Q1–Q4 ок) | done (T1–T13, все гейты зелёные, поколение 6693e570) | approved with follow-ups (2026-10-10; Findings: Low×2 — сцепка структурно, фичи 05/06 stale) |
+| 003 | Исправление дефектов по код-ревью APKTechPlan | implementation:in-progress | approved | approved | approved | safe remediation + authorized scenario/e2e verification in progress |
 
 ## Handoff
 
 - `.ai/sdd/handoff/sdd-brief.md`: ready (контракт реализации; Фаза A — сейчас, Фаза B — после подъёма кластера)
 
 ## Next Actions
+
+- [x] User approved spec-003 remediation envelope and safe source fixes (2026-11-08)
+- [x] DECISION-2026-11-09: owner confirmed approval of safe source fixes + test-IB E2E (variant 2); documentation-only self-description superseded
+- [ ] Keep Q-001..Q-008 blocked for dependent business-rule changes; do not invent semantics
+- [x] Safe source implementation and target test-IB verification explicitly authorized by user (2026-11-08)
+- [ ] Run static gate, then authorized scenario/E2E verification
+
+## Historical / Existing Actions
 
 - [x] Инициализация .ai/ (ночной прогон 2026-10-07, автономно — Open Questions в artifacts)
 - [x] specs/001-analiz-defitsita-tekhniki/requirements.md (sdd-prd, approved автономно по standing-инструкции)
@@ -46,3 +55,6 @@
 - [x] specs/002-redesign-planirovaniia-tekhniki/design.md — APPROVED (TD-001..TD-008; источники: АпкМеханизированныеРаботыПоГодовомуПлану + АпкТранспортныеРаботыПоГодовомуПлану Turnovers, доступность через АпкПланТехническихРесурсов → ТС.АпкМодель) — sdd-spec
 
 - [x] specs/002-redesign-planirovaniia-tekhniki/tasks.md — APPROVED (T1–T13, порядок T1..T13) — sdd-tasks
+- [x] specs/003-remediation-code-review/requirements.md — APPROVED by user (2026-11-08); dependent questions Q-001..Q-008 remain open
+- [x] specs/003-remediation-code-review/design.md — APPROVED by user (2026-11-08); safe implementation lane active
+- [x] specs/003-remediation-code-review/tasks.md — APPROVED by user (2026-11-08); safe tasks active, dependent tasks blocked

@@ -29,7 +29,7 @@ import subprocess
 import sys
 import time
 
-V8C = r"C:\Program Files\1cv8\8.5.4.1683\bin\1cv8c.exe"
+V8C = r"C:\Program Files\1cv8\8.5.4.2028\bin\1cv8c.exe"
 EPF = os.environ.get(
     "VA_EPF",
     r"C:\Program Files\OneScript\lib\vanessa-automation-single\vanessa-automation-single.epf",

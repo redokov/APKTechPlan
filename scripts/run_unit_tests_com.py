@@ -9,7 +9,8 @@ converts COM result array to plain objects, feeds scripts/run_unit_tests.py:main
 exits with its code.
 
 Requires: interactive Windows session (pywin32 + running 1cv8 cluster).
-Exit codes (from run_unit_tests.main): 0=PASS, 1=FAIL, 2=SKIP-only.
+Exit codes (from run_unit_tests.main): 0=all PASS, 1=FAIL, skipped test or
+count mismatch (Q-007/Ж1: SKIP is always a failure; exit code 2 retired).
 """
 import os
 import sys

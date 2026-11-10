@@ -12,7 +12,7 @@ PS_SCRIPT = r"C:/MyProjects/PiPack/skills/1c/db-load-xml/scripts/db-load-xml.ps1
 
 ARGS_BASE = [
     "-NoProfile", "-File", PS_SCRIPT,
-    "-V8Path", r"C:\Program Files\1cv8\8.5.4.1683\bin",
+    "-V8Path", r"C:\Program Files\1cv8\8.5.4.2028\bin",
     "-InfoBaseServer", "localhost",
     "-InfoBaseRef", "dev_erpapk_demo",
     "-UserName", "Администратор (ОрловАВ)",

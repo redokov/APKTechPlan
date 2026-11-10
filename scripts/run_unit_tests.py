@@ -7,11 +7,13 @@ PASS / FAIL / SKIP. Любое нераспознанное значение (в
 поле Статус) считается FAIL (fail-closed) и печатается явно — «молчаливый
 PASS» для мусорного статуса больше невозможен.
 
-Политика SKIP не меняется (spec-003 Q-007 остаётся открытой):
-SKIP — явный, отдельный счётчик, exit-код 2, это не провал.
-Exit-код 2 означает «SKIP-only» (без FAIL) — как задокументировано
-в run_unit_tests_com.py; при одновременных FAIL и SKIP доминирует
-FAIL (exit 1, fail-closed: провал не маскируется сигналом SKIP).
+Политика SKIP (спецификация 003, решение владельца Q-007, вариант Ж1,
+2026-11-09): пропуск теста — ВСЕГДА провал прогона. Прежний контракт
+«exit-код 2 = SKIP-only, это не провал» ОТМЕНЁН. Любой SKIP даёт
+exit-код 1 и явное сообщение; счётчик пропусков и причина остаются
+видимыми в выводе и артефакте. Строгий разбор статусов (нераспознанное
+значение или отсутствие поля Статус = FAIL, fail-closed) и проверка
+ожидаемого числа тестов (20) сохраняются.
 
 Offline self-test (без COM / ИБ / 1С):
   python scripts/run_unit_tests.py --selftest
@@ -68,19 +70,16 @@ def summarize(results):
 
 
 def exit_code(counters):
-    """Exit-code policy: 0 PASS, 1 FAIL (dominates), 2 SKIP-only, 1 on count mismatch.
-
-    2 is reserved for SKIP-only runs (documented contract in
-    run_unit_tests_com.py: "0=PASS, 1=FAIL, 2=SKIP-only"); a FAIL is never
-    masked by a concurrent SKIP. Whether SKIP itself is a CI failure stays
-    undecided (spec-003 Q-007) and is NOT changed here.
+    """Exit-code policy (Q-007, Ж1, owner decision 2026-11-09): 0 only for a
+    fully green run. Any SKIP or FAIL, or a count mismatch, returns 1.
+    The retired "exit code 2 = SKIP-only" contract is no longer produced.
     """
     if counters["total"] != EXPECTED_TOTAL:
         return 1
     if counters["failed"] > 0:
         return 1
     if counters["skipped"] > 0:
-        return 2
+        return 1
     return 0
 
 
@@ -108,8 +107,9 @@ def main(results):
                   % counters["skipped"])
         return 1
     if counters["skipped"] > 0:
-        print("[skip] %d test(s) skipped (exit code 2, not a failure)" % counters["skipped"])
-        return 2
+        print("[skip] %d test(s) skipped (exit 1: SKIP is a failure per Q-007/Ж1; "
+              "run is RED until the skip cause is removed)" % counters["skipped"])
+        return 1
     return 0
 
 
@@ -146,8 +146,8 @@ def _selftest():
                   [p(i) for i in range(20)]))
     cases.append(("19 PASS + 1 FAIL -> 1", {"total": 20, "passed": 19, "skipped": 0, "failed": 1}, 1,
                   [p(i) for i in range(19)] + [_Item("t_fail", "FAIL")]))
-    cases.append(("19 PASS + 1 SKIP -> 2 (SKIP preserved, not a failure)",
-                  {"total": 20, "passed": 19, "skipped": 1, "failed": 0}, 2,
+    cases.append(("19 PASS + 1 SKIP -> 1 (SKIP is a failure per Q-007/Ж1)",
+                  {"total": 20, "passed": 19, "skipped": 1, "failed": 0}, 1,
                   [p(i) for i in range(19)] + [_Item("t_skip", "SKIP")]))
     cases.append(("unknown status ERROR -> fail-closed 1",
                   {"total": 20, "passed": 19, "skipped": 0, "failed": 1}, 1,
@@ -160,7 +160,7 @@ def _selftest():
                   [p(i) for i in range(19)] + [_Item("t_ws", " PASS ")]))
     cases.append(("total 19 -> 1 (count mismatch)", {"total": 19, "passed": 19, "skipped": 0, "failed": 0}, 1,
                   [p(i) for i in range(19)]))
-    cases.append(("SKIP + FAIL -> 1 (FAIL dominates; 2 is SKIP-only per contract)",
+    cases.append(("SKIP + FAIL -> 1 (SKIP is a failure too, Q-007/Ж1)",
                   {"total": 20, "passed": 18, "skipped": 1, "failed": 1}, 1,
                   [p(i) for i in range(18)] + [_Item("t_skip", "SKIP"), _Item("t_fail", "FAIL")]))
 

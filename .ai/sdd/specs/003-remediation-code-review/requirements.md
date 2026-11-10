@@ -205,11 +205,40 @@ The review findings do not supersede spec-002 decisions. P2-6 is explicitly stil
 
 ### Q-001: Period replacement scope
 
-**Status:** open. Confirm whether cleanup is exact interval, overlapping interval, or full-scenario replacement. This remains a prerequisite for SRV-01.
+**Status:** DECIDED (owner decision 2026-11-09, chat): overlapping-interval cleanup.
+Clearing removes every register row whose period intersects the requested
+range by at least one day, and the demand selection is made by the same
+intersection rule so every removed row is rewritten. Register semantics:
+"always reflects the last calculation over the whole affected range".
+Non-regression obligation: January/February rows must survive a March-only
+recalculation unless they intersect March. SRV-01 remains additionally gated
+by Q-004 (concurrency) per the 8a matrix.
 
 ### Q-002: Availability facts and semantics
 
-**Status:** open; narrowed by SAFE-SDD-002 and gated by SAFE-SDD-003.
+**Status:** DECIDED (owner decision 2026-11-09, chat; facts per inventory.md):
+- source: main-config Документ.АпкПланТехническихРесурсов ONLY; extension
+  document Тх_ПланТехническихРесурсов is excluded entirely and its metadata
+  object will be REMOVED from the CFE (test fixtures migrate to the
+  main-config document);
+- unit: one row = one physical vehicle (state number); no Количество column;
+- "Принят" filter: removed — a row of a POSTED document is accepted by
+  definition;
+- calculation (2-а = A2, two-level): level 1 — demand of a subdivision is
+  first covered by vehicles ATTACHED to that subdivision; level 2 — the
+  remainder is covered by the shared pool of ALL organizations of the
+  scenario (2-б = B2: the pool crosses organization boundaries). The deficit
+  register stores TWO numbers: "shortage after own vehicles" and "final
+  deficit after the shared pool"; the report shows required moves
+  (attachment org/subdivision -> demand org/subdivision);
+- categories (2-в = V1): all four tabular parts are canonical (Техника,
+  Оборудование, Автотранспорт, Прицепы); the extension enum gets a fourth
+  value "Прицеп"; trailer deficit is computed like vehicle deficit;
+- demand side unchanged: yearly-plan turnover registers (fed by
+  АпкТехнологическиеКартыНаКультуру) already provide org/subdivision/field/
+  period/model/shifts; model matching via ТранспортноеСредство.АпкМодель;
+  substitution by converted power remains.
+Decisions recorded earlier (narrowing by SAFE-SDD-002) remain in force.
 
 Provide read-only confirmation against the full configuration of:
 
@@ -219,49 +248,235 @@ Provide read-only confirmation against the full configuration of:
 - whether subdivision matching is equality or hierarchy and whether the same rule applies to demand and availability;
 - whether `Количество` is allocated capacity, physical-vehicle count, or another quantity, and how duplicate vehicle rows are interpreted.
 
-This question does **not** ask whether the source is `Тх_ПланТехническихРесурсов` or `АпкПланТехническихРесурсов`: D-006/TD-007 preserve the latter as the current baseline. Q-002 remains open and is not closed by this document.
+This question did **not** ask whether the source is `Тх_ПланТехническихРесурсов` or
+`АпкПланТехническихРесурсов`: D-006/TD-007 preserve the latter as the current
+baseline. The factual sub-questions were answered read-only and are recorded in
+`inventory.md`; the semantic part is closed by the decision above.
 
-### Q-003: Duplicate vehicles and quantity
+### Q-003: Duplicate vehicles and attachment period
 
-**Status:** open. Keep separate from the factual part of Q-002 until the owner confirms whether availability is physical uniqueness, allocated quantity, or another capacity rule.
+**Status:** DECIDED (owner decision 2026-11-09, chat; facts per inventory.md and
+read-only probes `scripts/q003_probe_readonly*.py`):
+
+- **duplicates — no action** (owner: "ничего не делаем"). Units are counted per
+  PHYSICAL VEHICLE taken from the posted plan documents of the scenario: a
+  repeated row of the same `ТранспортноеСредство` does not increase
+  availability. No deduplication flag, no warning and no posting lock is added.
+  Recorded consequence: demo document `НВЦБ-000001` lists
+  "John Deer, Гос.№ВК30-64ВН3" twice, so the model counts 3 units, not 4;
+- **attachment source is changed**: which subdivision/organization a machine
+  belongs to is NO LONGER read from the plan document. The source of truth is
+  `РегистрСведений.АпкИсторияТранспортныхСредств` (periodicity Day, independent,
+  dimension `ТранспортноеСредство`, resources `Организация` and
+  `ЭксплуатирующееПодразделение`);
+- **slice rule (variant П2)**: `СрезПоследних` is taken ONCE for the whole
+  calculation, at the START of the calculated period (`ДатаНачала`); when
+  `ДатаНачала` is empty — at the plan document date. Interval/time-weighted
+  accounting (variant П3) is NOT introduced: a machine transferred inside the
+  period is attributed to the slice subdivision for the whole period;
+- a machine without a history record receives no level-1 attachment: it
+  contributes to the shared scenario pool (level 2) only;
+- the plan document keeps its Q-002 role — it defines the SET of machines
+  available to the scenario; the organization/subdivision placement of each
+  machine comes from the slice;
+- category consistency confirmed read-only: every tabular part matches the
+  `АпкМодель` type (`Техника`↔СХТехники, `Оборудование`↔СХОборудования,
+  `Автотранспорт`↔Автотранспорта, `Прицепы`↔Прицепов) and no machine appears in
+  two parts.
+
+Derived consequences for SRV-02 (implementation notes, not new decisions):
+
+- the document tabular part `Подразделения` no longer scopes availability;
+  availability rows are built per machine from the slice, so availability
+  filters by organization/subdivision apply to the slice values, not to the
+  document header;
+- `Исправно` (a periodic resource of the same register) is NOT used for
+  availability in this decision and stays out of scope until separately decided;
+- the earlier demo-data shape (early history records with an empty organization)
+  is why the slice must be `СрезПоследних`, not a first record.
+
+Decisions recorded for Q-002 remain in force.
 
 ### Q-004: Concurrency
 
-**Status:** open. Locking, serialization, or retry/snapshot behavior is not selected.
+**Status:** DECIDED (owner decision 2026-11-09, chat; facts from a read-only code
+review of `Тх_ТехникаСервер.РассчитатьДефицит`):
+
+- **scheme С1 — dimension locking with all reads inside the transaction.** The
+  demand read, the plan-document read and the history-register slice move INSIDE
+  the transaction, after the write set is known and the managed lock is
+  acquired. There is no "read outside, write inside" window;
+- **exact key set, not a coarse group.** The lock element uses
+  `ИсточникДанных` (a query result) with `ИспользоватьИзИсточникаДанных`, so the
+  lock covers exactly the register keys of the affected set: rows that will be
+  deleted by the period-overlap cleanup plus the keys that will be written.
+  `УстановитьЗначение` remains only where a single dimension value is fixed by
+  the launch parameters;
+- **bounded wait, then cancel.** A lock wait limit is set; on expiry the
+  transaction is rolled back completely, the platform text is not shown, and the
+  user gets an explicit message ("parallel calculation for this scope is running,
+  run the calculation again when convenient"). **No automatic retry** — the owner
+  restarts the calculation himself;
+- **plan documents are NOT locked** for the duration of the calculation. A plan
+  document posted concurrently can change availability between reads; this
+  residual risk is accepted and is corrected by the next recalculation;
+- implementation note (not a new decision): after the lock is acquired, the
+  delete-set selection is re-queried (cheap) so that a row committed by a
+  competing calculation inside the narrow window between the first selection and
+  the lock is not lost.
+
+The approved spec-002 behavior outside this defect scope is unchanged: the
+calculation still writes the result in one transaction and still fails without
+partial changes.
 
 ### Q-005: Dynamic model-property error contract
 
-**Status:** open. Confirm absent business requisites versus infrastructure, permission, module, and query failures.
+**Status:** DECIDED (owner decision 2026-11-09, chat; facts from a read-only code
+review of `Тх_ТехникаСервер`):
+
+- **variant Р1 — classification by metadata, not by exception text.** Whether a
+  model requisite exists is checked against the catalog metadata before the
+  query. No parsing of platform error text is allowed (locale- and
+  version-fragile);
+- **absent requisite in metadata = version-mismatch situation**: write a journal
+  entry of level "Warning", treat the property as unfilled, and CONTINUE the
+  calculation. Read-only check of the current configuration shows that every
+  attribute the code requests exists in all four model catalogs, so this outcome
+  can only mean an АПК version mismatch, not ordinary data;
+- **infrastructure failure** (no rights, broken query, disabled module, execution
+  error) = incident: journal entry of level "Error", STOP the whole calculation
+  with a clear user message that references the journal entry, and no partial
+  register rows (the transaction is rolled back). An unknown failure is NEVER
+  converted to zero;
+- **no third state in the result.** The owner confirmed that a separate result
+  mark "property unavailable" is not required — the journal entry is enough. The
+  existing `КоэффициентНеЗадан` mark keeps its approved business meaning ("no
+  filled requisite"), and its triggers are unchanged;
+- the present swallowing points are removed: `ЗначениеРеквизитаМодели` no longer
+  catches every exception into 0, and the non-reference branch of
+  `ИмяСправочникаПоТипуСсылки` no longer degrades silently;
+- SRV-04 stays bound to this contract: batch/cache loading must preserve the same
+  classification and must prove numerical equivalence of substitution
+  coefficients to the current behavior.
+
+The approved spec-002 coefficient and fallback semantics are unchanged.
 
 ### Q-006: Test runner boundary
 
-**Status:** open. Operational CFE versus test-only extension, test-IB marker, and role boundary are not selected.
+**Status:** DECIDED (owner decision 2026-11-09, chat; the owner adopted the
+recommended combination and added a deferred work item):
+
+- **runner placement — К1б now, К1а deferred.** The runner (`Тх_РаннерТестов`)
+  and the test module (`Тх_Тесты`) stay in the working CFE for this development
+  phase, but gain a hard guard: every test entry point and every writing test
+  helper refuses to run unless the test-infobase marker is set, and raises a
+  clear exception otherwise. Extracting the runner and the test module into a
+  SEPARATE test extension (К1а) is registered as future work **after this
+  development phase is finished** (task TEST-03, explicitly deferred);
+- **test-infobase marker — К2а + К2в.** A boolean CFE constant (proposed name
+  `Тх_ТестоваяБаза`, default False) holds the in-database marker and is set only
+  in the test infobase; as an additional independent line the launch scripts also
+  verify the target infobase reference before running anything. A session
+  parameter (К2б) is NOT used because the platform cannot set it from the command
+  line without reworking the launch pipeline;
+- **roles — К3а.** Only the external script may assign or remove roles; the script
+  must restore the original role state on ANY exit (guaranteed block, not a
+  trailing statement), must verify the restoration at the end, and a failed
+  restoration is a VISIBLE run failure. Scenarios inside 1C must not change roles;
+- **cleanup — К4а.** Every run keeps a registry of created objects (catalogs and
+  documents); cleanup runs from that registry on any exit; a failed cleanup is a
+  VISIBLE run failure with the list of leftovers written to an artifact file next
+  to the logs; scenario fixtures are additionally swept by their name masks
+  (`Тх_Тест…`, `Тх_Тест4…`, `Тх_VA_…`). A journal entry of level "Information"
+  is not an acceptable substitute for visibility.
+
+Read-only facts behind the decision: the runner executes all 20 tests
+unconditionally; the CFE contains no test-infobase marker of any kind; cleanup
+failures are currently swallowed at "Information" level with the comment "the
+next run will remove the leftovers", while grouping-test fixtures carry unique
+identifiers that cannot be found by mask; the role-restore step in the T12 driver
+is not in a guaranteed block, so an early `return` leaves the user's roles
+changed.
 
 ### Q-007: SKIP policy
 
-**Status:** open. Confirm whether SKIP is a CI failure for all tests or only mandatory integration suites.
+**Status:** DECIDED (owner decision 2026-11-09, chat): **variant Ж1 — a SKIP is
+always a failure, everywhere.**
+
+- the terminal verdict of a run is failure whenever any test did not actually
+  pass; SKIP is not a separate acceptable outcome;
+- `run_unit_tests.py`: the "exit code 2 = SKIP-only, not a failure" contract is
+  RETIRED. Any SKIP produces a failing run (exit 1) with an explicit message.
+  The skip counter and the reason remain printed and stored in the artifact —
+  visibility stays, only the "not a failure" interpretation is removed;
+- `run_va_feature.py` already treats anything not provably PASS as a failure;
+  the two runners now follow one policy instead of two;
+- the strict status parsing stays: an unrecognized or missing status remains a
+  failure (fail-closed), and the expected-total check (20 tests) stays;
+- mandatory consequence (obligation of TEST-01/TEST-02, not a new decision): the
+  current baseline "19 PASS + 1 SKIP" becomes a RED run. The skipped test must
+  lose its skip cause — either the required data is guaranteed before the run or
+  the test is rewritten so that its conditions always hold. Deleting or disabling
+  the test to obtain green is not allowed, and the T13 non-regression baseline
+  must be re-established as 20 PASS, not as "green with one skip".
 
 ### Q-008: Form UX and platform events
 
-**Status:** open. Confirm zero-result report behavior, stale values, period validation, and supported row events.
+**Status:** DECIDED (owner decision 2026-11-09, chat; facts from a read-only review
+of the forms, the report data-composition template and the form modules):
+
+- **empty result — variant (b).** The report still opens (the current behavior is
+  kept, the P2-1 recommendation to terminate the procedure is NOT adopted), but a
+  "no data" text is configured in the data-composition scheme, so a report opened
+  from the section no longer shows a blank sheet without explanation. The
+  zero-record user message in the calculation form stays as well;
+- **stale values — variant (c), full form.** The calculation moment is stored and
+  the report detects whether the sources changed after it, marks the data as stale
+  and offers a recalculation. This adds the scope of tracking changes of the
+  demand and availability sources; the exact detection mechanism is an engineering
+  choice to be settled during implementation (candidate mechanisms: a stored
+  per-row calculation moment compared with the latest change moment of the demand
+  registers and of the availability documents, with the standard "change dates"
+  facility preferred when available). The factual constraint is recorded: the
+  deficit register is non-periodical and currently carries NO calculation
+  timestamp, so staleness cannot be detected without adding one;
+- **client-side input validation — variant (a).** Before the server call the form
+  checks: period boundaries are filled, the start is not later than the end, and
+  "shifts per day" is greater than zero; failures are shown as a message, not as a
+  platform exception;
+- **supported platform events — variant (a).** A closed list of supported events is
+  fixed in the specification — `ПриИзменении`, `НачалоВыбора`,
+  `ПередНачаломДобавления`, `ПриСозданииНаСервере`, and form commands — with the
+  rule that handlers outside this list must not be added without verifying them on
+  platform 8.5. Read-only check confirmed the live forms contain no dead handler
+  bindings; the document-form counter defect (P2-3) disappears together with the
+  CFE document removed by Q-002;
+- **write-error diagnostics — variant (a).** In the work-plan form the "no data"
+  branch and the "write/access operation failed" branch are separated, the original
+  error is journaled and the user sees a meaningful message instead of the
+  misleading "техкарты не найдены".
+
+Approved spec-002 form and public contracts outside these findings are unchanged.
 
 ## 8a. Question-to-gate matrix
 
-All questions remain open. The following matrix is normative: an implementation task is executable only after every question in its gate column is explicitly closed by an owner decision. `DEC-02` is the sole pre-approval preparation lane; it is read-only and cannot close a question.
+All questions are closed as of 2026-11-09 (owner decisions recorded in chat); the column below records each gate state. The following matrix is normative: an implementation task is executable only after every question in its gate column is explicitly closed by an owner decision. `DEC-02` is the sole pre-approval preparation lane; it is read-only and cannot close a question. The "Status" column below records the gate state as of 2026-11-09.
 
-| Question | Exact requirements | Implementation tasks blocked | Verification gate blocked | Pre-approval preparation |
-|---|---|---|---|---|
-| Q-001 | FR-004, FR-008 | SRV-01 | GATE-02 period-scope/non-regression | DEC-02 inventory only |
-| Q-002 | FR-003, FR-008, FR-011 | SRV-02, UI-01 | GATE-02 availability-contract | DEC-02 inventory only |
-| Q-003 | FR-003, FR-008 | SRV-02 | GATE-02 availability-contract | DEC-02 inventory only |
-| Q-004 | FR-008 | SRV-01 | GATE-02 concurrency/non-regression | DEC-02 inventory only |
-| Q-005 | FR-006, FR-008 | SRV-03, SRV-04 | GATE-02 error-contract | DEC-02 inventory only |
-| Q-006 | FR-007, FR-008, FR-011 | TEST-02 | GATE-03 test-boundary | DEC-02 inventory only |
-| Q-007 | FR-005, FR-007, FR-008 | TEST-01, TEST-02 | GATE-03 result/SKIP | DEC-02 inventory only |
-| Q-008 | FR-008, FR-011 | UI-01 | GATE-04 UI-contract | DEC-02 inventory only |
+| Question | Exact requirements | Implementation tasks blocked | Verification gate blocked | Pre-approval preparation | Status 2026-11-09 |
+|---|---|---|---|---|---|
+| Q-001 | FR-004, FR-008 | SRV-01 | GATE-02 period-scope/non-regression | DEC-02 inventory only | DECIDED (overlap-interval cleanup) |
+| Q-002 | FR-003, FR-008, FR-011 | SRV-02, UI-01 | GATE-02 availability-contract | DEC-02 inventory only | DECIDED (availability contract) |
+| Q-003 | FR-003, FR-008 | SRV-02 | GATE-02 availability-contract | DEC-02 inventory only | DECIDED (per-machine count; attachment from АпкИсторияТранспортныхСредств, slice last, once at period start) |
+| Q-004 | FR-008 | SRV-01 | GATE-02 concurrency/non-regression | DEC-02 inventory only | DECIDED (С1; exact-key managed lock via source data; bounded wait then cancel, no retry; plan documents not locked) |
+| Q-005 | FR-006, FR-008 | SRV-03, SRV-04 | GATE-02 error-contract | DEC-02 inventory only | DECIDED (Р1 metadata-based split; absent requisite = Warning + continue; infrastructure = Error + stop; no third result state) |
+| Q-006 | FR-007, FR-008, FR-011 | TEST-02 | GATE-03 test-boundary | DEC-02 inventory only | DECIDED (runner stays + guard, extraction deferred to TEST-03; marker = CFE constant + script check; roles only by script with guaranteed restore; cleanup by registry, visible failure) |
+| Q-007 | FR-005, FR-007, FR-008 | TEST-01, TEST-02 | GATE-03 result/SKIP | DEC-02 inventory only | DECIDED (Ж1: SKIP is always a failure; exit-code 2 retired; visibility kept; skipped test must lose its cause) |
+| Q-008 | FR-008, FR-011 | UI-01 | GATE-04 UI-contract | DEC-02 inventory only | DECIDED (no-data text in DCS while the report still opens; full staleness marking with stored calculation moment; client-side input checks; closed list of supported events; split no-data from write failures) |
 
 No matrix row grants implementation permission. A static-analysis PASS cannot bypass an unresolved question or GATE-01.
 
 ## 9. Decision status
 
-No new business decision is made by SAFE-SDD-003. Spec-002 D-006/TD-007 remain inherited. Confirmed review findings are remediation deltas only. Q-001..Q-008 remain open, and implementation-dependent work remains BLOCKED until the relevant future owner decisions and separate implementation authorization exist.
+No new business decision is made by SAFE-SDD-003 itself. Spec-002 D-006/TD-007 remain inherited. Confirmed review findings are remediation deltas only.
+
+Owner decisions recorded in chat on 2026-11-09: Q-001 (overlap-interval cleanup), Q-002 (availability contract), Q-003 (per-machine count and attachment from `АпкИсторияТранспортныхСредств`, slice last taken once at period start), Q-004 (concurrency: exact-key managed lock, all reads inside the transaction, bounded wait then cancel without retry), Q-005 (error contract: metadata-based classification, Warning and continue for an absent requisite, Error and stop for infrastructure failure), Q-006 (test boundary: guarded runner, CFE marker plus script check, script-only role changes with guaranteed restore, registry-based cleanup with visible failure; separate test extension deferred to TEST-03), Q-007 (SKIP is always a failure), Q-008 (form behaviour and supported events). **All eight questions are now closed.** Closing a question does not grant implementation permission: SRV-01..SRV-04, TEST-01, TEST-02 and UI-01 are READY (their gate questions are closed) and stay unauthorised until the owner gives an explicit implementation approval; TEST-03 stays deferred until this development phase ends. GATE-01 applies to every implementation lane.

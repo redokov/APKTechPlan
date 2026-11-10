@@ -1,0 +1,2 @@
+common connect-ib
+config dump-config-to-files --extension=ПланированиеТехникиАПК --dir=C:\Users\r.edokov\AppData\Local\Temp\1c_agent_base\apktechplan_rt_dump_20261110

@@ -5,14 +5,22 @@ Cyrillic args (user name, extension name, paths) live HERE as python literals,
 never inline in bash argv. Handles the 'extension already exists' case:
 retry without -UpdateDB, then re-run with -UpdateDB (per db-cfe-admin skill).
 """
+import os
 import subprocess
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v8conf
+
 PS_SCRIPT = r"C:/MyProjects/PiPack/skills/1c/db-load-xml/scripts/db-load-xml.ps1"
+
+# Platform bin dir: --v8path > APK_V8_PATH > autodetect (scripts/v8conf.py).
+V8_BIN = v8conf.resolve_v8path(v8conf.cli_v8path(prune=True))
+print("[load_extension] platform bin: %s" % V8_BIN)
 
 ARGS_BASE = [
     "-NoProfile", "-File", PS_SCRIPT,
-    "-V8Path", r"C:\Program Files\1cv8\8.5.4.2028\bin",
+    "-V8Path", V8_BIN,
     "-InfoBaseServer", "localhost",
     "-InfoBaseRef", "dev_erpapk_demo",
     "-UserName", "Администратор (ОрловАВ)",

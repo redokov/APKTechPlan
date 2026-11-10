@@ -29,7 +29,11 @@ import subprocess
 import sys
 import time
 
-V8C = r"C:\Program Files\1cv8\8.5.4.2028\bin\1cv8c.exe"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v8conf
+
+# Thin-client path: --v8path > APK_V8_PATH > autodetect (scripts/v8conf.py).
+V8C = v8conf.v8c_exe(v8conf.cli_v8path(prune=True))
 EPF = os.environ.get(
     "VA_EPF",
     r"C:\Program Files\OneScript\lib\vanessa-automation-single\vanessa-automation-single.epf",

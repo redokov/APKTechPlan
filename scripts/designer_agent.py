@@ -12,7 +12,11 @@ import sys
 import tempfile
 import time
 
-V8 = r"C:\Program Files\1cv8\8.5.4.2028\bin\1cv8.exe"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v8conf
+
+# Platform path: --v8path > APK_V8_PATH > autodetect (scripts/v8conf.py).
+V8 = v8conf.v8_exe(v8conf.cli_v8path(prune=True))
 SERVER = "localhost"
 REF = "dev_erpapk_demo"
 ADMIN_ORLOV = "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440" \

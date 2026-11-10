@@ -2,7 +2,8 @@
 """Dump DB config of extension to temp dir; grep FillValue in the plan document XML."""
 import subprocess, os, shutil, glob
 
-V8 = r"C:\Program Files\1cv8\8.5.4.1683\bin\1cv8.exe"
+import v8conf  # platform path via scripts/v8conf.py
+V8 = v8conf.v8_exe()
 TMP = r"C:\MyProjects\APKTechPlan\heartbeat\_dumpcfg_check"
 OUT = TMP + ".out"
 shutil.rmtree(TMP, ignore_errors=True)

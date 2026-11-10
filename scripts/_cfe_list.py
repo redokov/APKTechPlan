@@ -1,7 +1,8 @@
 import subprocess, sys, os, tempfile, time, io
 sys.stdout.reconfigure(encoding='utf-8')
 
-V8 = r'C:\Program Files\1cv8\8.5.4.1683\bin\1cv8.exe'
+import v8conf  # platform path via scripts/v8conf.py
+V8 = v8conf.v8_exe()
 ADMIN_ORLOV = 'Администратор (ОрловАВ)'
 
 def designer(args, timeout=900):

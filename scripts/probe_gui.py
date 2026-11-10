@@ -14,7 +14,8 @@ import subprocess
 import sys
 import time
 
-V8C = r"C:\Program Files\1cv8\8.5.4.1683\bin\1cv8c.exe"
+import v8conf  # platform path via scripts/v8conf.py
+V8C = v8conf.v8c_exe()
 USER = "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440 (\u041e\u0440\u043b\u043e\u0432\u0410\u0412)"
 BASE = "localhost\\dev_erpapk_demo"
 

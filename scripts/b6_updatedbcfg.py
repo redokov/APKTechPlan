@@ -4,7 +4,8 @@ Prints raw /Out log and exit code."""
 import subprocess
 import sys
 
-V8 = r"C:\Program Files\1cv8\8.5.4.1683\bin\1cv8.exe"
+import v8conf  # platform path via scripts/v8conf.py
+V8 = v8conf.v8_exe()
 OUT = r"C:\MyProjects\APKTechPlan\heartbeat\b6_updcfg3.txt"
 
 args = [

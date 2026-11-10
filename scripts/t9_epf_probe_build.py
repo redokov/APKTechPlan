@@ -18,7 +18,8 @@ SK = pathlib.Path(r"C:/MyProjects/PiPack/skills/1c")
 SRC = pathlib.Path("src/epf")
 OUT = pathlib.Path("build")
 NAME = "\u0422\u0445_\u0417\u043e\u043d\u0434\u041e\u0442\u043a\u0440\u044b\u0442\u0438\u044f\u0424\u043e\u0440\u043c\u044b"
-V8 = r"C:\Program Files\1cv8\8.5.4.1683\bin"
+import v8conf  # platform path via scripts/v8conf.py
+V8 = v8conf.resolve_v8path()
 
 def run(cmd, **kw):
     print("+", " ".join(str(c) for c in cmd[:3]), "...")

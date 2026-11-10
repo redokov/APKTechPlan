@@ -4,7 +4,8 @@
 Builds Cyrillic args in Python and calls CreateProcess directly."""
 import subprocess, sys, os, tempfile, time
 
-V8 = r'C:\Program Files\1cv8\8.5.4.1683\bin\1cv8.exe'
+import v8conf  # platform path via scripts/v8conf.py
+V8 = v8conf.v8_exe()
 SERVER = 'localhost'
 REF = 'dev_erpapk_demo'
 # user candidates: built from unicode escapes, no inline Cyrillic needed

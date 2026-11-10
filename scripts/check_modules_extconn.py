@@ -4,12 +4,14 @@
 import subprocess
 import sys
 
+import v8conf  # platform path via scripts/v8conf.py
+
 PS = r"C:/MyProjects/PiPack/skills/1c/db-cfe-admin/scripts/db-cfe-admin.ps1"
 
 cmd = [
     "powershell.exe", "-NoProfile", "-File", PS,
     "-Command", "check",
-    "-V8Path", r"C:\Program Files\1cv8\8.5.4.1683\bin",
+    "-V8Path", v8conf.resolve_v8path(),
     "-InfoBaseServer", "localhost",
     "-InfoBaseRef", "dev_erpapk_demo",
     "-UserName", "Администратор (ОрловАВ)",

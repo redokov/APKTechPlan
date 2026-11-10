@@ -26,7 +26,8 @@ import subprocess
 import tempfile
 import time
 
-V8 = r"C:\Program Files\1cv8\8.5.4.1683\bin\1cv8.exe"
+import v8conf  # platform path via scripts/v8conf.py
+V8 = v8conf.v8_exe()
 SERVER = "localhost"
 REF = "dev_erpapk_demo"
 USER = "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440 (\u041e\u0440\u043b\u043e\u0432\u0410\u0412)"

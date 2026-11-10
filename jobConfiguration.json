@@ -12,7 +12,19 @@
     "yaxunit": false,
     "runInContainer": false,
     "email": false,
-    "telegram": false
+    "telegram": false,
+    "pachca": true
+  },
+  "notifications": {
+    "pachca": {
+      "onAlways": true,
+      "onFailure": true,
+      "onUnstable": true,
+      "onSuccess": true
+    }
+  },
+  "secrets": {
+    "pachcaChatId": "APKTechPlan_PACHCA_CHAT_ID"
   },
   "timeout": {
     "sonarqube": 90

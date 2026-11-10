@@ -226,6 +226,62 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</valueType>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НехватаетПослеСвоихСмен</dataPath>
+			<field>НехватаетПослеСвоихСмен</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не хватает после своих</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПеремещеноСмен</dataPath>
+			<field>ПеремещеноСмен</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перемещено смен</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИсточникОрганизации</dataPath>
+			<field>ИсточникОрганизации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Источник: организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИсточникПодразделения</dataPath>
+			<field>ИсточникПодразделения</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Источник: подразделение</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ДефицитТехники.Организация КАК Организация,
@@ -242,7 +298,11 @@
 	ДефицитТехники.ДнейПериода КАК ДнейПериода,
 	ДефицитТехники.СменВДень КАК СменВДень,
 	ДефицитТехники.КоэффициентНеЗадан КАК КоэффициентНеЗадан,
-	ДефицитТехники.ПланТехресурсовОтсутствует КАК ПланТехресурсовОтсутствует
+	ДефицитТехники.ПланТехресурсовОтсутствует КАК ПланТехресурсовОтсутствует,
+	ДефицитТехники.НехватаетПослеСвоихСмен КАК НехватаетПослеСвоихСмен,
+	ДефицитТехники.ПеремещеноСмен КАК ПеремещеноСмен,
+	ДефицитТехники.ИсточникОрганизации КАК ИсточникОрганизации,
+	ДефицитТехники.ИсточникПодразделения КАК ИсточникПодразделения
 ИЗ
 	РегистрСведений.Тх_ДефицитТехники КАК ДефицитТехники
 </query>
@@ -266,7 +326,7 @@
 	</calculatedField>
 	<calculatedField>
 		<dataPath>ПометкаПлана</dataPath>
-		<expression>ВЫБОР КОГДА ПланТехресурсовОтсутствует ТОГДА "план техресурсов отсутствует" ИНАЧЕ "" КОНЕЦ</expression>
+		<expression>ВЫБОР КОГДА ПланТехресурсовОтсутствует ТОГДА "нет исправных ТС в срезе" ИНАЧЕ "" КОНЕЦ</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -292,6 +352,14 @@
 	<totalField>
 		<dataPath>НехватаетСмен</dataPath>
 		<expression>Сумма(НехватаетСмен)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>НехватаетПослеСвоихСмен</dataPath>
+		<expression>Сумма(НехватаетПослеСвоихСмен)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПеремещеноСмен</dataPath>
+		<expression>Сумма(ПеремещеноСмен)</expression>
 	</totalField>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>

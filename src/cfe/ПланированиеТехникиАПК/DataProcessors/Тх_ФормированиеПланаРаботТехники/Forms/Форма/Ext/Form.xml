@@ -293,7 +293,7 @@
 				</v8:item>
 			</Title>
 				<Type>
-					<v8:Type>cfg:DocumentRef.Тх_ПланТехническихРесурсов</v8:Type>
+					<v8:Type>cfg:DocumentRef.АпкПланТехническихРесурсов</v8:Type>
 				</Type>
 		</Attribute>
 	</Attributes>

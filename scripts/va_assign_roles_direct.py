@@ -109,8 +109,11 @@ def main():
     else:
         print("[write] nothing to change")
 
-    # verify in a fresh session
-    agent2 = c.Connect(CONN_STRING)
+    # verify. A fresh second COM connection used to be opened here, but the
+    # client-license pool on this host is tight (designer agent + VA +
+    # TestClient sessions); Записать() commits to the DB, and re-fetching
+    # the user in the same session reflects the persisted state.
+    agent2 = agent
     user2 = find_ib_user(agent2, name)
     have2 = set()
     md2 = agent2.Метаданные.Роли

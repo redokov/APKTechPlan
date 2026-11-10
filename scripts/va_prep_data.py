@@ -65,17 +65,39 @@ def find_by_code(agent, catalog, code):
     return None
 
 
-def ensure_item(agent, catalog, finder, key, name, fields=None):
+def _is_empty_value(v):
+    if v is None:
+        return True
+    try:
+        return bool(v.Пустая())
+    except Exception:
+        return str(v) == ""
+
+
+def ensure_item(agent, catalog, finder, key, name, fields=None, update_fields=None):
     ref = finder(agent, catalog, key)
     created = False
     if ref is None:
         obj = getattr(agent.Справочники, catalog).СоздатьЭлемент()
         obj.Наименование = name
         for k, v in (fields or {}).items():
-            setattr(obj, k, v)
+            if v is not None:
+                setattr(obj, k, v)
         obj.Записать()
         ref = obj.Ссылка
         created = True
+    elif update_fields:
+        # SRV-02 (решение владельца 10.11.2026): вид строки пула - из
+        # реквизита ТС АпкТипТС; у элементов, созданных раньше, он пуст -
+        # дозаполняем существующие (idempotent update).
+        obj = ref.ПолучитьОбъект()
+        changed = False
+        for k, v in update_fields.items():
+            if v is not None and _is_empty_value(getattr(obj, k, None)):
+                setattr(obj, k, v)
+                changed = True
+        if changed:
+            obj.Записать()
     return ref, created
 
 
@@ -103,18 +125,14 @@ def main():
 
     ts_refs = []
     base_ref = None
-    q = agent.NewObject("Query")
-    q.Text = ("ВЫБРАТЬ ПЕРВЫЕ 1 Спр.Ссылка КАК Ссылка ИЗ Справочник."
-              "АпкМоделиСХТехники КАК Спр ГДЕ Спр.Наименование = &Имя")
-    q.SetParameter("Имя", MODEL_BASE_NAME)
-    sel = q.Execute().Choose()
-    if sel.Next():
-        base_ref = sel.Ссылка
+    tip_ss_ref = agent.Перечисления.АпкТипыТС.СХТехника
 
     for name, code, hoz in TS_ITEMS:
         ref, cr = ensure_item(
             agent, "ТранспортныеСредства", find_by_code, code, name,
-            {"Код": code, "АпкМодель": base_ref, "АпкХозНомер": hoz},
+            {"Код": code, "АпкМодель": base_ref, "АпкХозНомер": hoz,
+             "АпкТипТС": tip_ss_ref},
+            update_fields={"АпкТипТС": tip_ss_ref},
         )
         ts_refs.append(str(ref))
         report["created" if cr else "existing"].append("ТС " + code)

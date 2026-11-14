@@ -24,7 +24,7 @@ import time
 from contextlib import redirect_stdout
 
 VALID_STATUSES = ("PASS", "FAIL", "SKIP")
-EXPECTED_TOTAL = 29
+EXPECTED_TOTAL = 30
 
 
 def _get(obj, name, default=None):
@@ -142,27 +142,30 @@ def _selftest():
 
     cases = []
     p = lambda i: _Item("t%02d_pass" % i, "PASS")  # noqa: E731
-    cases.append(("20x PASS -> 0", {"total": 20, "passed": 20, "skipped": 0, "failed": 0}, 0,
-                  [p(i) for i in range(20)]))
-    cases.append(("19 PASS + 1 FAIL -> 1", {"total": 20, "passed": 19, "skipped": 0, "failed": 1}, 1,
-                  [p(i) for i in range(19)] + [_Item("t_fail", "FAIL")]))
-    cases.append(("19 PASS + 1 SKIP -> 1 (SKIP is a failure per Q-007/Ж1)",
-                  {"total": 20, "passed": 19, "skipped": 1, "failed": 0}, 1,
-                  [p(i) for i in range(19)] + [_Item("t_skip", "SKIP")]))
+    # TEST-02 hygiene: fixtures follow EXPECTED_TOTAL (was hardcoded 20,
+    # silently drifted as the suite grew 20 -> 24 -> 28 -> 29 -> 30).
+    n = EXPECTED_TOTAL
+    cases.append(("%dx PASS -> 0" % n, {"total": n, "passed": n, "skipped": 0, "failed": 0}, 0,
+                  [p(i) for i in range(n)]))
+    cases.append(("%d PASS + 1 FAIL -> 1" % (n - 1), {"total": n, "passed": n - 1, "skipped": 0, "failed": 1}, 1,
+                  [p(i) for i in range(n - 1)] + [_Item("t_fail", "FAIL")]))
+    cases.append(("%d PASS + 1 SKIP -> 1 (SKIP is a failure per Q-007/Ж1)" % (n - 1),
+                  {"total": n, "passed": n - 1, "skipped": 1, "failed": 0}, 1,
+                  [p(i) for i in range(n - 1)] + [_Item("t_skip", "SKIP")]))
     cases.append(("unknown status ERROR -> fail-closed 1",
-                  {"total": 20, "passed": 19, "skipped": 0, "failed": 1}, 1,
-                  [p(i) for i in range(19)] + [_Item("t_bad", "ERROR")]))
+                  {"total": n, "passed": n - 1, "skipped": 0, "failed": 1}, 1,
+                  [p(i) for i in range(n - 1)] + [_Item("t_bad", "ERROR")]))
     cases.append(("missing Статус attribute -> fail-closed 1",
-                  {"total": 20, "passed": 19, "skipped": 0, "failed": 1}, 1,
-                  [p(i) for i in range(19)] + [_Item("t_nostatus", include_status=False)]))
+                  {"total": n, "passed": n - 1, "skipped": 0, "failed": 1}, 1,
+                  [p(i) for i in range(n - 1)] + [_Item("t_nostatus", include_status=False)]))
     cases.append(("status with spaces ' PASS ' -> recognized",
-                  {"total": 20, "passed": 20, "skipped": 0, "failed": 0}, 0,
-                  [p(i) for i in range(19)] + [_Item("t_ws", " PASS ")]))
-    cases.append(("total 19 -> 1 (count mismatch)", {"total": 19, "passed": 19, "skipped": 0, "failed": 0}, 1,
-                  [p(i) for i in range(19)]))
+                  {"total": n, "passed": n, "skipped": 0, "failed": 0}, 0,
+                  [p(i) for i in range(n - 1)] + [_Item("t_ws", " PASS ")]))
+    cases.append(("total %d -> 1 (count mismatch)" % (n - 1), {"total": n - 1, "passed": n - 1, "skipped": 0, "failed": 0}, 1,
+                  [p(i) for i in range(n - 1)]))
     cases.append(("SKIP + FAIL -> 1 (SKIP is a failure too, Q-007/Ж1)",
-                  {"total": 20, "passed": 18, "skipped": 1, "failed": 1}, 1,
-                  [p(i) for i in range(18)] + [_Item("t_skip", "SKIP"), _Item("t_fail", "FAIL")]))
+                  {"total": n, "passed": n - 2, "skipped": 1, "failed": 1}, 1,
+                  [p(i) for i in range(n - 2)] + [_Item("t_skip", "SKIP"), _Item("t_fail", "FAIL")]))
 
     failures = []
     for name, expect_c, expect_code, items in cases:

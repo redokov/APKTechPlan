@@ -121,18 +121,24 @@ def main():
         ref, cr = ensure_item(agent, "АпкМоделиСХТехники",
                               find_by_name, name, name, fields)
         models[name] = str(ref)
+        if name == MODEL_BASE_NAME:
+            models[name + "_ref"] = ref
         report["created" if cr else "existing"].append("Модель " + name)
 
-    ts_refs = []
-    base_ref = None
+    # TEST-02 fix (2026-11-14): SRV-02 commit 9bec7c1 accidentally removed
+    # the base-model lookup, so ТС were created with АпкМодель = None
+    # (silently skipped by "if v is not None"). Restore the ref, keep it
+    # as a COM ref (not str), and backfill existing ТС via update_fields.
+    base_ref = models[MODEL_BASE_NAME + "_ref"]
     tip_ss_ref = agent.Перечисления.АпкТипыТС.СХТехника
+    ts_refs = []
 
     for name, code, hoz in TS_ITEMS:
         ref, cr = ensure_item(
             agent, "ТранспортныеСредства", find_by_code, code, name,
             {"Код": code, "АпкМодель": base_ref, "АпкХозНомер": hoz,
              "АпкТипТС": tip_ss_ref},
-            update_fields={"АпкТипТС": tip_ss_ref},
+            update_fields={"АпкТипТС": tip_ss_ref, "АпкМодель": base_ref},
         )
         ts_refs.append(str(ref))
         report["created" if cr else "existing"].append("ТС " + code)

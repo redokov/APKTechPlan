@@ -9,6 +9,10 @@ Default action: add (idempotent). Verifies by re-reading roles in a fresh
 session.
 """
 import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ib_guard
 
 import win32com.client
 
@@ -56,6 +60,9 @@ def main():
     # argv[3] (optional): comma-separated role list (T12: stage-wise
     # assignment, e.g. only Тх_Чтение). Default: both Тх_-roles.
     roles = sys.argv[3].split(",") if len(sys.argv) > 3 else list(ROLES)
+
+    # TEST-02 (Q-006): verify the target infobase BEFORE connecting.
+    ib_guard.check_ib_ref(CONN_STRING, "va_assign_roles_direct.py")
 
     c = win32com.client.Dispatch("V85.COMConnector")
     agent = c.Connect(CONN_STRING)

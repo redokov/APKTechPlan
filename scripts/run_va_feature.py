@@ -31,6 +31,7 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import v8conf
+import ib_guard
 
 # Thin-client path: --v8path > APK_V8_PATH > autodetect (scripts/v8conf.py).
 V8C = v8conf.v8c_exe(v8conf.cli_v8path(prune=True))
@@ -55,6 +56,10 @@ _VERDICT_RE = re.compile(
 
 ROLES_SCRIPT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "va_assign_roles_direct.py")
 
+# TEST-02 (Q-006): the Тх_ roles managed by this runner.
+TX_ROLES = ("Тх_Чтение", "Тх_Редактирование")
+CONN = "Srvr='localhost';Ref='dev_erpapk_demo';Usr=%s;Pwd='';" % json.dumps(USER, ensure_ascii=False)
+
 
 def ensure_roles():
     """BSP access-management periodically rewrites IB-user roles from access
@@ -68,6 +73,58 @@ def ensure_roles():
     tail = (p.stdout or b"")[-200:].decode("utf-8", errors="replace")
     print("[va] ensure_roles rc=%s %s" % (p.returncode, tail.strip()))
     return p.returncode == 0
+
+
+def tx_roles_snapshot():
+    """Initial Тх_-roles state of USER via the list action (parsed from
+    the stable "[roles] ..." line). None = unknown (restore guarantee
+    impossible -> caller must abort; TEST-02 checklist item 3)."""
+    p = subprocess.run(
+        [sys.executable, ROLES_SCRIPT, USER, "list"],
+        capture_output=True, timeout=300)
+    out = (p.stdout or b"").decode("utf-8", errors="replace")
+    if p.returncode != 0:
+        return None
+    lines = [l for l in out.splitlines() if "[roles]" in l]
+    if not lines:
+        return None
+    return [r for r in TX_ROLES if r in lines[-1]]
+
+
+def tx_roles_restore(initial):
+    """Guaranteed-block restore of the initial Тх_-roles state + verify.
+    Returns (ok, final_state); ok=False is a VISIBLE run failure (the
+    caller must turn it into verdict FAIL; TEST-02 checklist item 3)."""
+    want = list(initial or [])
+    ok = True
+    for r in TX_ROLES:
+        have = tx_roles_snapshot() or []
+        if (r in want) != (r in have):
+            action = "add" if r in want else "remove"
+            p = subprocess.run(
+                [sys.executable, ROLES_SCRIPT, USER, action],
+                capture_output=True, timeout=300)
+            if p.returncode != 0:
+                ok = False
+    final = tx_roles_snapshot()
+    ok = ok and final is not None and sorted(final) == sorted(want)
+    return ok, final
+
+
+def t02_teardown_sweep():
+    """TEST-02 teardown: COM connect -> ensure Тх_ТестоваяБаза marker ->
+    Тх_Тесты.УбратьОстаткиПоМаскам() sweep of VA fixture leftovers
+    (Тх_Тест% / Тх_VA_%). Returns the leftover list (empty = clean).
+    Raises on COM failure (the caller treats it as a visible failure)."""
+    import win32com.client
+    agent = win32com.client.Dispatch("V85.COMConnector").Connect(CONN)
+    if not ib_guard.ensure_test_marker(agent):
+        raise RuntimeError("could not set Тх_ТестоваяБаза marker")
+    tests = getattr(agent, "Тх_Тесты")
+    leftovers = tests.УбратьОстаткиПоМаскам()
+    n = leftovers.Count() if hasattr(leftovers, "Count") else len(leftovers)
+    return [leftovers.Get(i) if hasattr(leftovers, "Get") else leftovers[i]
+            for i in range(n)]
 
 
 # ---------------------------------------------------------------------------
@@ -244,7 +301,16 @@ def main():
     # Role ensure (admin's Tх_ roles) is skipped for override runs: the
     # override user's roles are managed by the caller (T12 stages).
     tc_user = sys.argv[3] if len(sys.argv) > 3 else None
+    # TEST-02 (Q-006): verify the target infobase reference BEFORE
+    # anything is launched (checklist item 2).
+    ib_guard.check_ib_ref(CONN, "run_va_feature.py")
+    initial_tx = None
     if tc_user is None:
+        initial_tx = tx_roles_snapshot()
+        if initial_tx is None:
+            print("[va] ABORT: could not read initial Tх_ roles "
+                  "(restore guarantee impossible, TEST-02)")
+            return 2
         if not ensure_roles():
             print("[va] ABORT: could not ensure roles")
             return 2
@@ -261,76 +327,105 @@ def main():
         if os.path.exists(p):
             os.remove(p)
 
-    vap = {
-        "ИмяСборки": "B6 " + stem,
-        "ВерсияПлатформы": "8.5.4",
-        "КаталогПоискаВерсииПлатформы": r"C:\Program Files\1cv8",
-        # 1C's parser rejects the spaced form  /N "user"  ("Ошибка в параметрах
-        # командной строки") - keys and values must be glued: /N"user".
-        "СтрокаПодключенияКБазе": (
-            'ENTERPRISE /S"%s" /N"%s" /P""' % (BASE, USER)
-        ),
-        "ПутьКVanessaAutomation": EPF,
-        "КаталогФич": feature.replace("\\", "/"),
-        "КаталогиБиблиотек": [],
-        "КлиентыТестирования": [
-            {
-                "Имя": "Основной",
-                "ПутьКИнфобазе": '/S"%s" /N"%s" /P""' % (
-                    BASE, tc_user if tc_user is not None else USER),
-                "ДопПараметры": (
-                    "/DisableStartupMessages /DisableStartupDialogs"
-                ),
-                "ТипКлиента": "Тонкий",
-                "ИмяКомпьютера": "localhost",
-                "ПортЗапускаТестКлиента": "1538",
-            }
-        ],
-        "ВыполнитьСценарии": "Истина",
-        "ЗавершитьРаботуСистемы": "Истина",
-        "ЗакрытьTestClientПослеЗапускаСценариев": "Истина",
-        "ДелатьЛогВыполненияСценариевВТекстовыйФайл": "Истина",
-        "ИмяФайлаЛогВыполненияСценариев": run_log.replace("\\", "/"),
-        "ВыгружатьСтатусВыполненияСценариевВФайл": "Истина",
-        "ПутьКФайлуДляВыгрузкиСтатусаВыполненияСценариев": (
-            status_log.replace("\\", "/")
-        ),
-        "ТаймаутЗапуска1С": "600",
-    }
-    with io.open(vap_path, "w", encoding="utf-8") as f:
-        json.dump(vap, f, ensure_ascii=False)
-
-    cmd = [
-        V8C, "ENTERPRISE", "/TESTMANAGER",
-        "/S", BASE,
-        "/N", USER, "/P", "",
-        "/Execute", EPF,
-        "/CStartFeaturePlayer;VAParams=" + vap_path.replace("\\", "/"),
-        "/DisableStartupDialogs", "/DisableStartupMessages",
-        "/Out", onec_log,
-    ]
-    print("[va] launching TestManager for %s" % os.path.basename(feature))
-    proc = subprocess.Popen(cmd)
+    verdict = "UNKNOWN"
     rc = None
+    run_code = 1
+    t02_fail = False
     try:
-        rc = proc.wait(timeout=timeout)
-    except subprocess.TimeoutExpired:
-        subprocess.run(["taskkill", "/F", "/T", "/PID", str(proc.pid)],
-                       capture_output=True)
-        print("[va] TIMEOUT after %ds, killed" % timeout)
-        return 124
+        vap = {
+            "ИмяСборки": "B6 " + stem,
+            "ВерсияПлатформы": "8.5.4",
+            "КаталогПоискаВерсииПлатформы": r"C:\Program Files\1cv8",
+            # 1C's parser rejects the spaced form  /N "user"  ("Ошибка в параметрах
+            # командной строки") - keys and values must be glued: /N"user".
+            "СтрокаПодключенияКБазе": (
+                'ENTERPRISE /S"%s" /N"%s" /P""' % (BASE, USER)
+            ),
+            "ПутьКVanessaAutomation": EPF,
+            "КаталогФич": feature.replace("\\", "/"),
+            "КаталогиБиблиотек": [],
+            "КлиентыТестирования": [
+                {
+                    "Имя": "Основной",
+                    "ПутьКИнфобазе": '/S"%s" /N"%s" /P""' % (
+                        BASE, tc_user if tc_user is not None else USER),
+                    "ДопПараметры": (
+                        "/DisableStartupMessages /DisableStartupDialogs"
+                    ),
+                    "ТипКлиента": "Тонкий",
+                    "ИмяКомпьютера": "localhost",
+                    "ПортЗапускаТестКлиента": "1538",
+                }
+            ],
+            "ВыполнитьСценарии": "Истина",
+            "ЗавершитьРаботуСистемы": "Истина",
+            "ЗакрытьTestClientПослеЗапускаСценариев": "Истина",
+            "ДелатьЛогВыполненияСценариевВТекстовыйФайл": "Истина",
+            "ИмяФайлаЛогВыполненияСценариев": run_log.replace("\\", "/"),
+            "ВыгружатьСтатусВыполненияСценариевВФайл": "Истина",
+            "ПутьКФайлуДляВыгрузкиСтатусаВыполненияСценариев": (
+                status_log.replace("\\", "/")
+            ),
+            "ТаймаутЗапуска1С": "600",
+        }
+        with io.open(vap_path, "w", encoding="utf-8") as f:
+            json.dump(vap, f, ensure_ascii=False)
 
-    time.sleep(2)
-    verdict, source, note = verdict_from_files(onec_log, status_log)
-    print("[va] %s: %s (source=%s, rc=%s)" % (os.path.basename(feature), verdict, source, rc))
-    if note:
-        print("[va] note: %s" % note)
-    if verdict == "UNKNOWN":
-        print("[va] UNRESOLVED verdict: artifacts inconclusive; not counted as PASS")
-    print("[va] 1C log: %s" % onec_log)
-    print("[va] run log: %s" % run_log)
-    print("[va] status artifact: %s" % status_log)
-    return 0 if verdict == "PASS" else 1
+        cmd = [
+            V8C, "ENTERPRISE", "/TESTMANAGER",
+            "/S", BASE,
+            "/N", USER, "/P", "",
+            "/Execute", EPF,
+            "/CStartFeaturePlayer;VAParams=" + vap_path.replace("\\", "/"),
+            "/DisableStartupDialogs", "/DisableStartupMessages",
+            "/Out", onec_log,
+        ]
+        print("[va] launching TestManager for %s" % os.path.basename(feature))
+        proc = subprocess.Popen(cmd)
+        try:
+            rc = proc.wait(timeout=timeout)
+        except subprocess.TimeoutExpired:
+            subprocess.run(["taskkill", "/F", "/T", "/PID", str(proc.pid)],
+                           capture_output=True)
+            print("[va] TIMEOUT after %ds, killed" % timeout)
+            run_code = 124
+        else:
+            time.sleep(2)
+            verdict, source, note = verdict_from_files(onec_log, status_log)
+            print("[va] %s: %s (source=%s, rc=%s)" % (os.path.basename(feature), verdict, source, rc))
+            if note:
+                print("[va] note: %s" % note)
+            if verdict == "UNKNOWN":
+                print("[va] UNRESOLVED verdict: artifacts inconclusive; not counted as PASS")
+            print("[va] 1C log: %s" % onec_log)
+            print("[va] run log: %s" % run_log)
+            print("[va] status artifact: %s" % status_log)
+            run_code = 0 if verdict == "PASS" else 1
+    finally:
+        # TEST-02 (Q-006): guaranteed-block restore + teardown sweep.
+        # A failed restore or a failed sweep is a VISIBLE run failure.
+        if tc_user is None:
+            ok, final = tx_roles_restore(initial_tx)
+            if not ok:
+                t02_fail = True
+                print("[t02] ROLE-RESTORE-FAILED (visible run failure); "
+                      "current=%s want=%s" % (final, initial_tx))
+            print("[t02] roles after run: %s" % (tx_roles_snapshot(),))
+        try:
+            leftovers = t02_teardown_sweep()
+            if leftovers:
+                t02_fail = True
+                artifact = os.path.join(LOGDIR, "leftovers_%s.txt" % stem)
+                with io.open(artifact, "w", encoding="utf-8") as f:
+                    f.write(u"\n".join(leftovers))
+                print("[t02] SWEEP LEFTOVERS (visible run failure): %s" % artifact)
+        except Exception as e:
+            t02_fail = True
+            print("[t02] teardown sweep FAILED (visible run failure): %r" % (e,))
+    if t02_fail and run_code == 0:
+        print("[t02] forcing verdict FAIL: cleanup/restore failure")
+        run_code = 1
+    return run_code
 
 
 if __name__ == "__main__":

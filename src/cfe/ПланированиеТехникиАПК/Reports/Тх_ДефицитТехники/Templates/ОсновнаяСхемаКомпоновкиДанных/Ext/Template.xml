@@ -514,6 +514,12 @@
 						</dcsset:item>
 				</dcsset:selection>
 			</dcsset:item>
+			<dcsset:noDataText>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные за выбранный период не рассчитаны. Выполните «Расчет дефицита» и повторите формирование отчёта.</v8:content>
+				</v8:item>
+			</dcsset:noDataText>
 		</dcsset:settings>
 	</settingsVariant>
 </DataCompositionSchema>

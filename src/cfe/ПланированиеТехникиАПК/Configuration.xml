@@ -86,6 +86,7 @@
 			<DataProcessor>Тх_ФормированиеПланаРаботТехники</DataProcessor>
 			<InformationRegister>Тх_ДефицитТехники</InformationRegister>
 			<InformationRegister>Тх_РеестрТестовыхОбъектов</InformationRegister>
+			<InformationRegister>Тх_МоментРасчета</InformationRegister>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>

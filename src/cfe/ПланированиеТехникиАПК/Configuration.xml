@@ -84,6 +84,8 @@
 			<DataProcessor>Тх_РасчетДефицита</DataProcessor>
 			<DataProcessor>Тх_РаннерТестов</DataProcessor>
 			<DataProcessor>Тх_ФормированиеПланаРаботТехники</DataProcessor>
+			<DataProcessor>Тх_ПодготовкаТестовыхДанных</DataProcessor>
+			<DataProcessor>Тх_ЗапускVanessa</DataProcessor>
 			<InformationRegister>Тх_ДефицитТехники</InformationRegister>
 			<InformationRegister>Тх_РеестрТестовыхОбъектов</InformationRegister>
 			<InformationRegister>Тх_МоментРасчета</InformationRegister>

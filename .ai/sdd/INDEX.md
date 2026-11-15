@@ -28,7 +28,7 @@
 |----|---------|--------|--------------|--------|-------|--------|
 | 001 | Анализ дефицита техники | superseded (заменена спекой 002; частично реализована в релизе 001, факты — справочник; ревью не проводилось, т.к. всё ценное переделано и проверено в 002) | approved (ночной прогон, ревью утром; Q-001..Q-007 открыты с рекомендациями) | approved (ночной прогон, ревью утром; Q-001..Q-007 закрыты в дизайне, см. §18 Requirements feedback) | approved (ночной прогон, ревью утром; Фаза A офлайн + Фаза B после подъёма кластера) | pending |
 | 002 | Редизайн планирования техники (расчёт потребности) | review:done | approved (D-001..D-008) | approved (TD-001..TD-008, FAQ Q1–Q4 ок) | done (T1–T13, все гейты зелёные, поколение 6693e570) | approved with follow-ups (2026-10-10; Findings: Low×2 — сцепка структурно, фичи 05/06 stale) |
-| 003 | Исправление дефектов по код-ревью APKTechPlan | implementation:in-progress | approved | approved | approved | safe remediation + authorized scenario/e2e verification in progress |
+| 003 | Исправление дефектов по код-ревью APKTechPlan | implemented:done (2026-11-16; TEST-03 выполнен поставочным профилем, UI-01 текст «нет данных» — программно; открытых работ нет, остаются только решения владельца по эксплуатации) | approved | approved | approved | all tasks DONE: SRV-01..04, TEST-01/02/04, UI-01, TEST-03 (shipment profile); evidence in tasks.md §7.3 |
 
 ## Handoff
 
@@ -38,9 +38,9 @@
 
 - [x] User approved spec-003 remediation envelope and safe source fixes (2026-11-08)
 - [x] DECISION-2026-11-09: owner confirmed approval of safe source fixes + test-IB E2E (variant 2); documentation-only self-description superseded
-- [ ] Keep Q-001..Q-008 blocked for dependent business-rule changes; do not invent semantics
+- [x] Keep Q-001..Q-008 blocked for dependent business-rule changes; do not invent semantics — все восемь вопросов закрыты владельцем (2026-11-09), задачи реализованы
 - [x] Safe source implementation and target test-IB verification explicitly authorized by user (2026-11-08)
-- [ ] Run static gate, then authorized scenario/E2E verification
+- [x] Run static gate, then authorized scenario/E2E verification — выполнено: юнит 31/31, сценарии 01-09 9/9, круговая сверка 46=46 (два объявленных расхождения)
 
 ## Historical / Existing Actions
 

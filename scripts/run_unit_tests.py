@@ -24,7 +24,7 @@ import time
 from contextlib import redirect_stdout
 
 VALID_STATUSES = ("PASS", "FAIL", "SKIP")
-EXPECTED_TOTAL = 30
+EXPECTED_TOTAL = 31
 
 
 def _get(obj, name, default=None):

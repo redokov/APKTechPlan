@@ -81,6 +81,7 @@
 					<ContextMenu name="СценарийПланированияКонтекстноеМеню" id="10"/>
 					<ExtendedTooltip name="СценарийПланированияРасширеннаяПодсказка" id="11"/>
 					<Events>
+						<Event name="OnChange">СценарийПланированияПриИзменении</Event>
 						<Event name="StartChoice">СценарийПланированияНачалоВыбора</Event>
 					</Events>
 				</InputField>
@@ -214,7 +215,17 @@
 					<ExtendedTooltip name="ВариантОбъемаРасширеннаяПодсказка" id="26"/>
 				</InputField>
 			</ChildItems>
-		</UsualGroup>
+			</UsualGroup>
+		<LabelDecoration name="ПометкаУстаревания" id="42">
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные расчёта устарели</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ПометкаУстареванияКонтекстноеМеню" id="43"/>
+			<ExtendedTooltip name="ПометкаУстареванияРасширеннаяПодсказка" id="44"/>
+		</LabelDecoration>
 		<LabelDecoration name="ПояснениеРасчета" id="27">
 			<Title formatted="false">
 				<v8:item>
@@ -330,6 +341,21 @@
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Вариант объема</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПометкаУстаревания" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометка устаревания</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

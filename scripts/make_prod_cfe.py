@@ -62,6 +62,10 @@ def build(dst):
             os.remove(xml)
         if os.path.isdir(obj_dir):
             shutil.rmtree(obj_dir)
+    # пустые каталоги удалённых объектов не оставляем
+    for root, dirs, files in os.walk(dst, topdown=False):
+        if not dirs and not files:
+            os.rmdir(root)
     cfg = os.path.join(dst, 'Configuration.xml')
     with open(cfg, 'rb') as f:
         raw = f.read()

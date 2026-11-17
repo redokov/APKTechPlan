@@ -34,6 +34,6 @@
     "useSonarScannerFromPath": false,
     "sonarScannerToolName": "sonar-scanner",
     "branchAnalysisConfiguration": "auto",
-    "waitForQualityGate": false
+    "waitForQualityGate": true
   }
 }

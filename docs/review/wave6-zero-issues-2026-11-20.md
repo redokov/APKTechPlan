@@ -135,22 +135,26 @@
 | **Sonar Quality Gate** | **OK** (reliability 1, security 1, duplicated 0.16%, new_blocker/critical/major = 0) |
 | **Sonar OPEN** | **0** |
 | Vanessa `08-formirovanie-plana-rabot-tekhniki` | PASS |
-| Vanessa `01-zameshchenie-po-shirine` | PASS (статус 0) |
-| Vanessa `02-zameshchenie-po-moshchnosti` | PASS (статус 0) |
-| Vanessa 03–07, 09 | выполняется пакетно (`tmp/wave6/va_all.log`) |
+| Vanessa 01–07, 09 | **7/7 PASS** (пакетный прогон, 20:42–22:00) |
 
-## 7. Vanessa (BDD-сценарии)
+## 7. Vanessa (BDD-сценарии): 9/9 PASS
 
-| Сценарий | Результат |
-|---|---|
-| 01-zameshchenie-po-shirine | **PASS** (статус-артефакт `0`) |
-| 02-zameshchenie-po-moshchnosti | **PASS** (статус-артефакт `0`) |
-| 08-formirovanie-plana-rabot-tekhniki | **PASS** (source=status-artifact, rc=0) |
-| 03, 04, 05, 06, 07, 09 | пакетный прогон, результаты в `tmp/wave6/va_all.log` |
+| Сценарий | Результат | Время |
+|---|---|---|
+| 01-zameshchenie-po-shirine | **PASS** | 20:46 |
+| 02-zameshchenie-po-moshchnosti | **PASS** | 20:58 |
+| 03-plan-tehresursov-prinyatye-tc | **PASS** | 21:09 |
+| 04-preduprezhdenie-ts-dva-podrazdeleniya | **PASS** | 21:19 |
+| 05-raschet-deficita-i-filtry-otcheta | **PASS** | 21:30 |
+| 06-otchet-tolko-defitsitnye-stroki | **PASS** | 21:39 |
+| 07-pometka-koeffitsient-ne-zadan | **PASS** | 21:49 |
+| 08-formirovanie-plana-rabot-tekhniki | **PASS** | 20:25 |
+| 09-prava-agronom | **PASS** | 22:00 |
 
-Замечание по инфраструктуре: первый пакетный прогон провис на завершении TestClient после
-сценария 01 (сценарий при этом завершился с нулём ошибок), пакет перезапущен
-(`scripts/run_va_all_features.sh`), далее сценарии идут штатно.
+Все вердикты сняты с машинных статус-артефактов `heartbeat/va_status_*.log` (0 = нет ошибок).
+Пакетный прогон: `scripts/run_va_all_features.sh`, лог `tmp/wave6/va_all.log`.
+Замечание по инфраструктуре: обёртка `run_va_feature.py` иногда задерживает возврат после
+завершения сценария (TestClient), сценарии при этом завершаются штатно.
 
 ## 8. Sonar: сборки #16 и #17, срез замечаний
 
